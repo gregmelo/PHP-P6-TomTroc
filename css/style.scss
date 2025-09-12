@@ -1,0 +1,509 @@
+@use 'variables';
+@use 'mixins';
+
+/* Fichier SCSS principal */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+body {
+    font-family: var(--font-body);
+    margin: auto;
+    padding: 0;
+    max-width: 1440px;
+    background-color: var(--main-bg);
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 400;
+    font-size: 14px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 0 150px;
+    height: 80px;
+}
+
+.logo img {
+    width: 155px;
+    height: 51px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navbar-left {
+    display: flex;
+    gap: 44px;
+    padding-left: 78px;
+}
+
+.navbar-right {
+    display: flex;
+    gap: 58px;
+}
+
+.fa-user, .fa-message {
+    height: 13px;
+}
+
+.message-badge {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    border-radius: 7px;
+    padding: 2px 2px;
+    font-size: 14px;
+    height: 15px;
+    font-weight: 700;
+}
+
+.active {
+    font-weight: 600;
+}
+
+.hero-content {
+    display: flex;
+    gap: 105px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+}
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 329px;
+}
+
+.hero-left h1 {
+    @include mixins.title(36px, 400);
+    color: #000;
+}
+
+.hero-left p {
+    @include mixins.paragraph(16px, 300, #000);
+}
+
+.btn {
+    @extend .btn;
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hero-right img {
+    width: 404px;
+    height: 539px;
+}
+.hero-right p {
+    margin: 0;
+    padding-top: 12px;
+    width: 404px;
+    text-align: right;
+    font-weight: 400;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.last-books {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--section-bg);
+    padding: 80px 0;
+    gap: 40px;
+}
+
+.last-books h2 {
+    @include mixins.title(32px, 400);
+}
+
+.books-list {
+    display: flex;
+    gap: 38px;
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 200px;
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    cursor: pointer;
+}
+
+.book-card .book-tag {
+    display: flex;
+    position: absolute;
+    margin: 0;
+    top: 16px;
+    left: 117px;
+    font-weight: 500;
+    font-size: 9px;
+    font-family: var(--font-body);
+    color: #FFFFFF;
+}
+
+.book-card img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.book-infos {
+    padding: 0px 0 23px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.book-infos h3 {
+    @include mixins.paragraph(16px, 400, #000);
+    padding-bottom: 8px;
+}
+
+.book-infos p.author {
+    @include mixins.paragraph(14px, 400, var(--text-light));
+    padding-bottom: 22px;
+}
+
+.book-infos p.seller {
+    @include mixins.paragraph(10px, 400, var(--text-light));
+}
+
+.functioning {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 80px 0;
+}
+
+.functioning h2 {
+    @include mixins.title(32px, 400);
+    padding-bottom: 24px;
+}
+
+.functioning p {
+    @include mixins.paragraph(16px, 300, var(--text-main));
+    padding-bottom: 40px;
+    width: 397px;
+    text-align: center;
+}
+
+.functioning-cards {
+    display: flex;
+    gap: 36px;
+    padding-bottom: 48px;
+}
+
+.functioning-card {
+    @include mixins.flex(row, center, center, 0);
+    margin: 0;
+    @include mixins.card();
+    max-width: 215px;
+    height: 140px;
+    text-align: center;
+    padding: 0 18px;
+    @include mixins.paragraph(14px, 400, var(--text-main));
+}
+
+.functioning .btn {
+    background-color: transparent;
+    border: var(--primary) 1px solid;
+    color: var(--primary);
+}
+
+.values {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    align-items: center;
+}
+
+.home-banner {
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+    margin-bottom: 80px;
+}
+
+.home-banner img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    object-position: center -293px;
+}
+
+.values h2 {
+    @include mixins.title(32px, 400);
+    padding-bottom: 24px;
+}
+
+.values p {
+    @include mixins.paragraph(16px, 300, var(--text-main));
+    width: 392px;
+    padding-bottom: 25px;
+}
+
+.values-signature {
+    display: flex;
+    justify-content: space-between;
+    width: 392px;
+    padding-bottom: 90px;
+}
+
+.signature {
+    padding-top: 14px;
+    @include mixins.paragraph(12px, 400, var(--text-light));
+    font-style: italic;
+}
+
+.values-signature img {
+    right: -50px;
+    position: relative;
+}
+
+footer {
+    display: flex;
+    background-color: #FFF;
+    color: var(--text-main);
+    justify-content: end;
+    align-items: center;
+    padding: 0px 23px;
+    width: 100%;
+    font-size: 16px;
+    gap: 40px;
+}
+
+.footer-content {
+    display: flex;
+    gap: 40px;
+}
+.footer-content a {
+    color: var(--text-main);
+    font-weight: 300;
+    font-size: 12px;
+    text-decoration: none;
+    font-family: var(--font-body);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    header {
+        padding: 0 40px;
+    }
+    .hero-content {
+        gap: 40px;
+        padding-top: 40px;
+    }
+    .books-list {
+        gap: 20px;
+    }
+    .values-signature, .values p {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+        padding: 0 10px;
+    }
+    .navbar, .navbar-left, .navbar-right {
+        display: none;
+    }
+    .logo {
+        display: block;
+    }
+    .fa-user, .fa-message {
+        display: block;
+    }
+    /* Ajoute ici le style du menu burger si besoin */
+    .hero-content {
+        flex-direction: column-reverse;
+        gap: 20px;
+        padding-top: 20px;
+    }
+    .hero-right img {
+        width: 100%;
+        height: auto;
+        max-width: 350px;
+    }
+    .books-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .book-card {
+        width: 100%;
+        max-width: 350px;
+    }
+    .book-card img {
+        width: 100%;
+        height: auto;
+        max-width: 350px;
+    }
+    .functioning-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .values-signature, .values p {
+        width: 100%;
+        max-width: 300px;
+    }
+    .home-banner {
+        height: 120px;
+        margin-bottom: 40px;
+    }
+    .home-banner img {
+        height: 120px;
+    }
+    footer {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+        font-size: 14px;
+    }
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-left h1 {
+        font-size: 30px;
+    }
+    .last-books h2, .functioning h2, .values h2 {
+        font-size: 20px;
+    }
+    .btn {
+        padding: 12px 18px;
+        font-size: 14px;
+    }
+    .books-list {
+        grid-template-columns: 1fr 1fr;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .functioning-cards {
+        grid-template-columns: 1fr 1fr;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .book-card {
+        max-width: 95vw;
+    }
+    .values-signature, .values p {
+        max-width: 95vw;
+    }
+}
+
+@media (max-width: 375px) {
+body {
+    margin: 0 20px;
+}
+header {
+    padding: 0;
+}
+    .hero-content {
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 0;
+    }
+
+    .hero-right {
+        order: -1;
+        width: 100vw;
+        margin: 0;
+    }
+    .hero-right img {
+        width: 100vw;
+        margin: 0;
+        max-width: 100vw;
+    }
+    .hero-right p {
+        width: 100%;
+        padding: 5px 26px 0 0;
+    }
+
+.hero-left .btn {
+    width: 100%;
+    text-align: center;
+    padding: 22px 0;
+    margin-bottom: 48px;
+}
+    .books-list {
+        grid-template-columns: 1fr 1fr;
+    }
+    .book-card {
+        max-width: 100%;
+    }
+    .functioning-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .home-banner {
+        width: 100vw;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .home-banner img {
+        width: 100vw;
+        margin: 0;
+    }
+
+    .values-signature {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 20px;
+    }
+    .signature {
+        margin-bottom: 10px;
+        margin-right: 20px;
+        align-self: flex-start;
+    }
+    .values-signature img {
+        display: block;
+        margin: 0 auto;
+        position: static;
+    }
+    footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        font-size: 12px;
+    }
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+}
