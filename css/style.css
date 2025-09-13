@@ -1,4 +1,5 @@
 /* Fichier SCSS principal */
+/* Fichier SCSS page Home */
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 :root {
   --main-bg: #F5F3EF;
@@ -101,6 +102,12 @@ header {
   font-weight: 600;
 }
 
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
 .hero-content {
   display: flex;
   gap: 105px;
@@ -200,12 +207,17 @@ header {
   font-size: 9px;
   font-family: var(--font-body);
   color: #FFFFFF;
+  background-color: var(--primary);
+  padding: 4px 8px;
+  border-radius: 5px;
+  order: -1;
 }
 
 .book-card img {
   width: 200px;
   height: 200px;
   object-fit: cover;
+  order: -2;
 }
 
 .book-infos {
@@ -309,18 +321,12 @@ header {
   align-items: center;
 }
 
-.home-banner {
-  width: 100%;
-  height: 230px;
-  overflow: hidden;
-  margin-bottom: 80px;
-}
-
-.home-banner img {
+.values img {
   width: 100%;
   height: 230px;
   object-fit: cover;
   object-position: center -293px;
+  margin-bottom: 80px;
 }
 
 .values h2 {
@@ -343,10 +349,7 @@ header {
 }
 
 .values-signature {
-  display: flex;
-  justify-content: space-between;
   width: 392px;
-  padding-bottom: 90px;
 }
 
 .signature {
@@ -360,8 +363,11 @@ header {
 }
 
 .values-signature img {
-  right: -50px;
+  right: -310px;
   position: relative;
+  object-fit: none;
+  object-position: 0 0;
+  margin: 0;
 }
 
 footer {
@@ -403,7 +409,6 @@ footer {
   }
   .values-signature, .values p {
     width: 100%;
-    max-width: 350px;
   }
 }
 @media (max-width: 768px) {
@@ -439,8 +444,6 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
   }
   .book-card {
     width: 100%;
@@ -455,19 +458,9 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
   }
   .values-signature, .values p {
     width: 100%;
-    max-width: 300px;
-  }
-  .home-banner {
-    height: 120px;
-    margin-bottom: 40px;
-  }
-  .home-banner img {
-    height: 120px;
   }
   footer {
     flex-direction: column;
@@ -493,13 +486,9 @@ footer {
   }
   .books-list {
     grid-template-columns: 1fr 1fr;
-    margin-left: 10px;
-    margin-right: 10px;
   }
   .functioning-cards {
     grid-template-columns: 1fr 1fr;
-    margin-left: 10px;
-    margin-right: 10px;
   }
   .book-card {
     max-width: 95vw;
@@ -514,6 +503,47 @@ footer {
   }
   header {
     padding: 0;
+  }
+  .logo img {
+    width: 77.5px;
+    height: 25.5px;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .menu-toggle i {
+    color: var(--text-light);
+  }
+  .navbar {
+    display: none;
+  }
+  .navbar.menu-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    justify-content: flex-start;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    min-height: auto;
+    background: var(--main-bg);
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  .navbar.menu-open .navbar-left,
+  .navbar.menu-open .navbar-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+  .navbar.menu-open a {
+    font-size: 18px;
+    padding: 10px 0;
+    width: 100%;
   }
   .hero-content {
     flex-direction: column;
@@ -540,52 +570,135 @@ footer {
     padding: 22px 0;
     margin-bottom: 48px;
   }
+  .last-books {
+    padding: 48px 0 80px;
+    width: 100vw;
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .last-books h2 {
+    font-size: 28px;
+    margin: 0 55px;
+    padding: 0;
+    text-align: center;
+  }
   .books-list {
     grid-template-columns: 1fr 1fr;
   }
   .book-card {
     max-width: 100%;
   }
+  .book-card .book-tag {
+    left: 97px;
+    top: 13px;
+  }
+  .book-card img {
+    width: 160px;
+    height: 160px;
+  }
+  .book-infos {
+    padding: 0 0 18px 11px;
+  }
+  .book-infos h3 {
+    font-size: 13px;
+    padding-bottom: 6px;
+  }
+  .book-infos p.author {
+    font-size: 11px;
+    padding-bottom: 18px;
+  }
+  .book-infos p.seller {
+    font-size: 8px;
+  }
+  .last-books .btn {
+    display: none;
+  }
+  .functioning {
+    padding: 48px 0;
+  }
+  .functioning h2 {
+    font-size: 28px;
+    padding-bottom: 16px;
+  }
+  .functioning p {
+    width: 100%;
+    font-size: 14px;
+    padding-bottom: 32px;
+  }
   .functioning-cards {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    width: 100%;
+    gap: 16px;
+    padding-bottom: 32px;
   }
-  .home-banner {
-    width: 100vw;
-    margin-left: 0;
-    margin-right: 0;
+  .functioning-card {
+    max-width: 100%;
+    font-size: 14px;
   }
-  .home-banner img {
+  .functioning .btn {
+    width: 100%;
+    text-align: center;
+    padding: 22px 0;
+    margin-bottom: 48px;
+  }
+  .values {
+    align-items: start;
+  }
+  .values img {
     width: 100vw;
-    margin: 0;
+    height: 425px;
+    margin-bottom: 33px;
+    object-position: -229px -10px;
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .values h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 35px;
+    padding-bottom: 0;
+  }
+  .values p {
+    width: 100%;
+    font-size: 14px;
+    padding-bottom: 28px;
   }
   .values-signature {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-bottom: 20px;
+    padding-bottom: 32px;
+    gap: 62px;
   }
   .signature {
-    margin-bottom: 10px;
-    margin-right: 20px;
+    font-size: 12px;
     align-self: flex-start;
   }
   .values-signature img {
+    width: 120px;
+    height: 105px;
     display: block;
     margin: 0 auto;
     position: static;
+    align-self: center;
+    object-fit: none;
+    object-position: 0 0;
   }
   footer {
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 10px;
+    gap: 20px;
+    padding: 31px 0;
+    margin-left: -20px;
+    margin-right: -20px;
+    width: 100vw;
     font-size: 12px;
   }
   .footer-content {
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 0;
   }
 }
 

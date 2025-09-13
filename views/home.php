@@ -9,7 +9,7 @@
             <a href="#" class="btn">Découvrir</a>
         </div>
         <div class="hero-right">
-            <img src="./assets/home/hero_img.jpg" alt="Image d'une librairie, auteur Hamza Nouasria">
+            <img src="./assets/home/hero_img.jpg" alt="">
             <p>Hamza</p>
         </div>
     </div>
@@ -18,40 +18,40 @@
     <h2>Les derniers livres ajoutés</h2>
     <div class="books-list">
         <div class="book-card">
-            <div class="book-tag">Disponible</div>
-            <img src="./assets/books/book01.jpg" alt="Couverture du livre 1">
-            <div class="book-infos">
+            <div class="book-infos"><!-- On place les infos en premier pour facilité les lecteurs d'écrans-->
                 <h3 class="title">Esther</h3>
                 <p class="author">Alabaster</p>
                 <p class="seller">Vendu par : CamilleClubLit</p>
             </div>
+            <div class="book-tag">Disponible</div>
+            <img src="./assets/books/book01.jpg" alt="Couverture du livre 1">
         </div>
         <div class="book-card">
-            <div class="book-tag">Disponible</div>
-            <img src="./assets/books/book02.jpg" alt="Couverture du livre 2">
             <div class="book-infos">
                 <h3 class="title">The Kinfolk Table</h3>
                 <p class="author">Nathan Williams</p>
                 <p class="seller">Vendu par : Nathalire</p>
             </div>
+            <div class="book-tag">Disponible</div>
+            <img src="./assets/books/book02.jpg" alt="Couverture du livre 2">
         </div>
         <div class="book-card">
-            <div class="book-tag">Disponible</div>
-            <img src="./assets/books/book03.jpg" alt="Couverture du livre 3">
             <div class="book-infos">
                 <h3 class="title">Wabi Sabi</h3>
                 <p class="author">Beth Kempton</p>
                 <p class="seller">Vendu par : Alexlecture</p>
             </div>
+            <div class="book-tag">Disponible</div>
+            <img src="./assets/books/book03.jpg" alt="Couverture du livre 3">
         </div>
         <div class="book-card">
-            <div class="book-tag">Disponible</div>
-            <img src="./assets/books/book04.jpg" alt="Couverture du livre 4">
             <div class="book-infos">
                 <h3 class="title">Milk & honey</h3>
                 <p class="author">Rupi Kaur</p>
                 <p class="seller">Vendu par : Hugo1990_12</p>
             </div>
+            <div class="book-tag">Disponible</div>
+            <img src="./assets/books/book04.jpg" alt="Couverture du livre 4">
         </div>
     </div>
     <a href="#" class="btn">Voir tous les livres</a>
@@ -69,10 +69,7 @@
 </section>
 
 <section class="values">
-    <picture class="home-banner">
-        <!--<source media="(max-width: 768px)" srcset="./assets/home/home_banner_mobile.jpg">-->
-        <img src="./assets/home/home_banner.jpg" alt="Image d'une pile de livres dans des étagères, auteur Darwin Vegher">
-    </picture>
+        <img src="./assets/home/home_banner.jpg" alt="">
     <h2>Nos valeurs</h2>
     <p>
         Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté. Nos valeurs sont ancrées dans notre passion pour les livres et notre désir de créer des liens entre les lecteurs. Nous croyons en la puissance des histoires pour rassembler les gens et inspirer des conversations enrichissantes.<br><br>
@@ -81,7 +78,7 @@
     </p>
     <div class="values-signature">
         <span class="signature">L'équipe Tom Troc</span>
-        <img src="./assets/logo/logo_coeur.svg" alt="Dessin d'un coeur tracé au stylo vert" class="values-logo">
+        <img src="./assets/logo/logo_coeur.svg" alt="" class="values-logo">
     </div>
 </section>
 
