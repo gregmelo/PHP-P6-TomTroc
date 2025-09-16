@@ -1,0 +1,195 @@
+@use 'variables';
+@use 'mixins';
+
+.content-book-details {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--section-bg);
+    gap: 40px;
+
+    .book-navigation {
+        display: none;
+    }
+    .illustration-book-detail {
+        overflow: hidden;
+        width: 100vw;
+        height: 462px;
+
+        img {
+            width: 100vw;
+            height: 462px;
+            object-fit: cover;
+        }
+    }
+
+    .book-detail-infos {
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px 80px;
+
+        h1 {
+            @include mixins.title(var(--font-title), 30px, 400, #000000);
+            padding-bottom: 40px;
+        }
+
+        h2 {
+            @include mixins.title(var(--font-body), 16px, 400, var(--text-light));
+            padding-bottom: 32px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--text-light);
+            width: 27px;
+            margin: 0;
+            padding-bottom: 32px;
+        }
+
+        h3 {
+            @include mixins.title(var(--font-body), 8px, 600, var(--text-main));
+            padding-bottom: 16px;
+        }
+
+        p {
+            @include mixins.paragraph(14px, 400, var(--text-main));
+            padding-bottom: 40px;
+        }
+
+        .proprietaire-infos {
+            display: flex;
+            gap: 16px;
+            background-color: #fff;
+            border-radius: 114px;
+            padding: 6px 17px 6px 6px;
+            align-items: center;
+            text-align: center;
+            width: fit-content;
+
+            .avatar {
+                position: relative;
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                overflow: hidden;
+                display: inline-block;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    transform-origin: 50% 60%;
+                    transform: scale(2);
+                    display: block;
+                }
+
+                .overlay {
+                    position: absolute;
+                    inset: 0;
+                    /* top:0; right:0; bottom:0; left:0 */
+                    background: var(--primary);
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+            }
+
+            p {
+                @include mixins.paragraph(14px, 400, var(--text-main));
+                margin: 0;
+                padding: 0;
+                text-align: center;
+            }
+        }
+
+        .btn {
+            width: 100%;
+            height: 63px;
+            margin-top: 40px;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+
+@media (min-width: 1024px) {
+    .book-navigation {
+        display: block;
+        font-family: var(--font-body);
+        font-size: 10px;
+        font-weight: 300;
+        color: var(--text-light);
+        background-color: var(--main-bg);
+        max-width: 1440px;
+        padding: 0 150px;
+        height: 44px;
+        align-content: center;
+        
+    }
+    .content-book-details {
+        max-width: 1440px;
+        margin: 0;
+        flex-direction: row;
+        gap: 0;
+
+        .illustration-book-detail {
+            width: 50%;
+            height: auto;
+            margin: 0;
+
+            img {
+                width: 100%;
+                height: 863px;
+                object-fit: cover;
+            }
+        }
+
+        .book-detail-infos {
+            width: 50%;
+            padding: 59px 150px 0 85px;
+            box-sizing: border-box;
+
+            h1 {
+                @include mixins.title(var(--font-title), 36px, 400, #000000);
+                padding-bottom: 24px;
+            }
+
+            h2 {
+                @include mixins.title(var(--font-body), 16px, 400, var(--text-light));
+                padding-bottom: 40px;
+            }
+
+            h3 {
+                @include mixins.title(var(--font-body), 8px, 600, var(--text-main));
+                padding-bottom: 16px;
+            }
+
+            p {
+                @include mixins.paragraph(14px, 400, var(--text-main));
+                padding-bottom: 40px;
+            }
+
+            .proprietaire-infos {
+                            /* ========== HOVER : quand on survole tout le bloc proprietaire-infos ========== */
+            &:hover {
+                .overlay {
+                    opacity: 0.3;
+                    /* voile légère — ajuste entre 0.08 et 0.2 selon l'effet désiré */
+                }
+
+                p {
+                    @include mixins.paragraph(14px, 500, var(--primary));
+                }
+            }
+            }
+
+            .btn {
+                width: 485px;
+                padding: 0 38px;
+            }
+        }
+    }
+}

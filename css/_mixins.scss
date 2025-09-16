@@ -23,8 +23,8 @@
 }
 
 // Mixin pour titres
-@mixin title($size: 32px, $weight: 400, $color: var(--text-main)) {
-    font-family: var(--font-title);
+@mixin title($font-family: var(--font-body), $size: 32px, $weight: 400, $color: var(--text-main)) {
+    font-family: $font-family;
     font-size: $size;
     font-weight: $weight;
     color: $color;

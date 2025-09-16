@@ -54,18 +54,15 @@
 
 .books-section-list {
     display: grid;
-    width: 100%;
-    grid-template-columns: auto 1fr 1fr auto; // pour répartir l'espace restant de chaque côtés des colonnes
     gap: 15px;
     padding-bottom: 55px;
+    max-width: 375px;
+    justify-content: center;
+    grid-template-columns: repeat(2, max-content); // 2 colonnes de taille égale
 
-    // ont place les cartes dans les colonnes 2 et 3
-    .book-card:nth-child(odd) {
-        grid-column: 2;
-    }
-
+    .book-card:nth-child(odd),
     .book-card:nth-child(even) {
-        grid-column: 3;
+        grid-column: auto; // réinitialiser la position des cartes
     }
 }
 
