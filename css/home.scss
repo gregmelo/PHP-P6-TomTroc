@@ -9,7 +9,7 @@ body {
     margin: auto;
     padding: 0;
     max-width: 1440px;
-    background-color: var(--main-bg);
+    background-color: var(--section-bg);
     color: #333;
 }
 
@@ -25,6 +25,7 @@ header {
     align-items: center;
     padding: 0 150px;
     height: 80px;
+    background-color: var(--main-bg);
 }
 
 .logo img {
@@ -79,6 +80,7 @@ header {
     align-items: center;
     justify-content: center;
     padding-top: 80px;
+    background-color: var(--main-bg);
 }
 .hero-left {
     display: flex;
@@ -112,7 +114,7 @@ header {
 }
 .hero-right p {
     margin: 0;
-    padding-top: 12px;
+    padding: 12px 0 100px;
     width: 404px;
     text-align: right;
     font-weight: 400;
@@ -135,7 +137,7 @@ header {
     @include mixins.title(32px, 400);
 }
 
-.books-list {
+.last-books-list {
     display: flex;
     gap: 38px;
 }
@@ -165,6 +167,10 @@ header {
     padding: 4px 8px;
     border-radius: 5px;
     order: -1;
+}
+
+.book-card .book-tag-red {
+    background-color: var(--secondary);
 }
 
 .book-card img {
@@ -201,6 +207,7 @@ header {
     align-items: center;
     margin: 0;
     padding: 80px 0;
+    background-color: var(--main-bg)
 }
 
 .functioning h2 {
@@ -243,6 +250,7 @@ header {
     flex-direction: column;
     margin: 0;
     align-items: center;
+    background-color: var(--main-bg);
 }
 
 .values img {
@@ -291,7 +299,6 @@ footer {
     color: var(--text-main);
     justify-content: end;
     align-items: center;
-    padding: 0px 23px;
     width: 100%;
     font-size: 16px;
     gap: 40px;
@@ -309,6 +316,10 @@ footer {
     font-family: var(--font-body);
 }
 
+.logo-footer {
+    padding-right: 23px;
+}
+
 /* Responsive design */
 @media (max-width: 1024px) {
     header {
@@ -318,7 +329,7 @@ footer {
         gap: 40px;
         padding-top: 40px;
     }
-    .books-list {
+    .last-books-list {
         gap: 20px;
     }
     .values-signature, .values p {
@@ -355,7 +366,7 @@ footer {
         height: auto;
         max-width: 350px;
     }
-    .books-list {
+    .last-books-list {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
@@ -397,11 +408,7 @@ footer {
     .last-books h2, .functioning h2, .values h2 {
         font-size: 20px;
     }
-    .btn {
-        padding: 12px 18px;
-        font-size: 14px;
-    }
-    .books-list {
+    .last-books-list {
         grid-template-columns: 1fr 1fr;
     }
     .functioning-cards {
@@ -416,12 +423,13 @@ footer {
 }
 
 @media (max-width: 375px) {
-    body {
-        margin: 0 20px;
-    }
     header {
-        padding: 0;
+        padding: 0 20px;
+        background-color: var(--main-bg);
     }
+    // header {
+    //     padding: 0;
+    // }
     .logo img {
         width: 77.5px;
         height: 25.5px;
@@ -497,8 +505,6 @@ footer {
     .last-books {
         padding: 48px 0 80px;
         width: 100vw;
-        margin-left: -20px;
-        margin-right: -20px;
     }
     .last-books h2 {
         font-size: 28px;
@@ -506,14 +512,14 @@ footer {
         padding: 0;
         text-align: center;
     }
-    .books-list {
+    .last-books-list {
         grid-template-columns: 1fr 1fr;
     }
     .book-card {
         max-width: 100%;
     }
     .book-card .book-tag {
-        left: 97px;
+        left: 90px;
         top: 13px;
     }
     .book-card img {
@@ -538,7 +544,7 @@ footer {
         display: none;
     }
     .functioning {
-        padding: 48px 0;
+        padding: 48px 20px;
     }
     .functioning h2 {
         font-size: 28px;
@@ -568,6 +574,7 @@ footer {
     }
     .values {
         align-items: start;
+        padding: 0 20px;
     }
     .values img {
         width: 100vw;
@@ -614,8 +621,6 @@ footer {
         align-items: center;
         gap: 20px;
         padding: 31px 0;
-        margin-left: -20px;
-        margin-right: -20px;
         width: 100vw;
         font-size: 12px;
     }
@@ -623,5 +628,8 @@ footer {
         flex-direction: column;
         align-items: center;
         gap: 0;
+    }
+    .logo-footer {
+        padding: 0;
     }
 }

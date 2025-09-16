@@ -20,7 +20,7 @@
             <nav class="navbar-right">
                 <a href="index.php?page=login"><i class="fa-regular fa-message"></i> Messagerie <span class="message-badge">1</span></a>
                 <a href="index.php?page=register"><i class="fa-regular fa-user"></i> Mon compte</a>
-                <a href="index.php?page=addbook">Connexion</a>
+                <a href="index.php?page=login">Connexion</a>
                 <!--<a href="index.php?page=addbook">Deconnexion</a>-->
             </nav>
         </div>

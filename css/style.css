@@ -6,6 +6,7 @@
   --section-bg: #FAF9F7;
   --primary: #00AC66;
   --primary-hover: #006D41;
+  --secondary: #C56D6D;
   --text-main: #292929;
   --text-light: #A6A6A6;
   --font-title: "Playfair Display", serif;
@@ -43,7 +44,7 @@ body {
   margin: auto;
   padding: 0;
   max-width: 1440px;
-  background-color: var(--main-bg);
+  background-color: var(--section-bg);
   color: #333;
 }
 
@@ -59,6 +60,7 @@ header {
   align-items: center;
   padding: 0 150px;
   height: 80px;
+  background-color: var(--main-bg);
 }
 
 .logo img {
@@ -114,6 +116,7 @@ header {
   align-items: center;
   justify-content: center;
   padding-top: 80px;
+  background-color: var(--main-bg);
 }
 
 .hero-left {
@@ -154,7 +157,7 @@ header {
 
 .hero-right p {
   margin: 0;
-  padding-top: 12px;
+  padding: 12px 0 100px;
   width: 404px;
   text-align: right;
   font-weight: 400;
@@ -181,7 +184,7 @@ header {
   margin: 0;
 }
 
-.books-list {
+.last-books-list {
   display: flex;
   gap: 38px;
 }
@@ -211,6 +214,10 @@ header {
   padding: 4px 8px;
   border-radius: 5px;
   order: -1;
+}
+
+.book-card .book-tag-red {
+  background-color: var(--secondary);
 }
 
 .book-card img {
@@ -259,6 +266,7 @@ header {
   align-items: center;
   margin: 0;
   padding: 80px 0;
+  background-color: var(--main-bg);
 }
 
 .functioning h2 {
@@ -319,6 +327,7 @@ header {
   flex-direction: column;
   margin: 0;
   align-items: center;
+  background-color: var(--main-bg);
 }
 
 .values img {
@@ -376,7 +385,6 @@ footer {
   color: var(--text-main);
   justify-content: end;
   align-items: center;
-  padding: 0px 23px;
   width: 100%;
   font-size: 16px;
   gap: 40px;
@@ -395,6 +403,10 @@ footer {
   font-family: var(--font-body);
 }
 
+.logo-footer {
+  padding-right: 23px;
+}
+
 /* Responsive design */
 @media (max-width: 1024px) {
   header {
@@ -404,7 +416,7 @@ footer {
     gap: 40px;
     padding-top: 40px;
   }
-  .books-list {
+  .last-books-list {
     gap: 20px;
   }
   .values-signature, .values p {
@@ -440,7 +452,7 @@ footer {
     height: auto;
     max-width: 350px;
   }
-  .books-list {
+  .last-books-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -480,11 +492,7 @@ footer {
   .last-books h2, .functioning h2, .values h2 {
     font-size: 20px;
   }
-  .btn {
-    padding: 12px 18px;
-    font-size: 14px;
-  }
-  .books-list {
+  .last-books-list {
     grid-template-columns: 1fr 1fr;
   }
   .functioning-cards {
@@ -498,11 +506,9 @@ footer {
   }
 }
 @media (max-width: 375px) {
-  body {
-    margin: 0 20px;
-  }
   header {
-    padding: 0;
+    padding: 0 20px;
+    background-color: var(--main-bg);
   }
   .logo img {
     width: 77.5px;
@@ -573,8 +579,6 @@ footer {
   .last-books {
     padding: 48px 0 80px;
     width: 100vw;
-    margin-left: -20px;
-    margin-right: -20px;
   }
   .last-books h2 {
     font-size: 28px;
@@ -582,14 +586,14 @@ footer {
     padding: 0;
     text-align: center;
   }
-  .books-list {
+  .last-books-list {
     grid-template-columns: 1fr 1fr;
   }
   .book-card {
     max-width: 100%;
   }
   .book-card .book-tag {
-    left: 97px;
+    left: 90px;
     top: 13px;
   }
   .book-card img {
@@ -614,7 +618,7 @@ footer {
     display: none;
   }
   .functioning {
-    padding: 48px 0;
+    padding: 48px 20px;
   }
   .functioning h2 {
     font-size: 28px;
@@ -644,6 +648,7 @@ footer {
   }
   .values {
     align-items: start;
+    padding: 0 20px;
   }
   .values img {
     width: 100vw;
@@ -690,8 +695,6 @@ footer {
     align-items: center;
     gap: 20px;
     padding: 31px 0;
-    margin-left: -20px;
-    margin-right: -20px;
     width: 100vw;
     font-size: 12px;
   }
@@ -699,6 +702,203 @@ footer {
     flex-direction: column;
     align-items: center;
     gap: 0;
+  }
+  .logo-footer {
+    padding: 0;
+  }
+}
+.connexion {
+  padding: 78px 20px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background-color: var(--section-bg);
+}
+.connexion h2 {
+  font-family: var(--font-title);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--text-main);
+  margin: 0;
+  text-align: start;
+}
+.connexion form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.connexion form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.connexion form .form-group label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-light);
+  margin: 0;
+}
+.connexion form .form-group input {
+  height: 50px;
+  border: 1px solid #F0F0F0;
+  border-radius: 6px;
+  color: var(--text-main);
+  background-color: #fff;
+}
+.connexion form .btn {
+  width: 100%;
+  height: 63px;
+  text-align: center;
+}
+.connexion form p, .connexion form p a {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-main);
+  margin: 0;
+}
+.connexion form p a, .connexion form p a a {
+  text-decoration: underline;
+}
+
+.illustration-connexion {
+  overflow: hidden;
+  width: 100vw;
+  height: 462px;
+}
+.illustration-connexion img {
+  width: 100vw;
+  height: 462px;
+  object-fit: cover;
+}
+
+@media (min-width: 1024px) {
+  .content-login {
+    display: flex;
+    flex-direction: row;
+    max-width: 1440px;
+    margin: 0;
+  }
+  .content-login .connexion {
+    width: 50%;
+    gap: 0;
+    justify-content: center;
+  }
+  .content-login .connexion h2 {
+    font-family: var(--font-title);
+    font-size: 36px;
+    font-weight: 400;
+    color: #000000;
+    margin: 0;
+    margin-bottom: 56px;
+    margin-left: 150px;
+  }
+  .content-login .connexion form {
+    width: 322px;
+    margin-left: 150px;
+  }
+  .content-login .illustration-connexion {
+    width: 50%;
+    margin: 0;
+    height: auto;
+  }
+  .content-login .illustration-connexion img {
+    width: 720px;
+    height: 886px;
+    object-fit: cover;
+  }
+}
+.books-section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  background-color: var(--section-bg);
+  padding: 0 20px;
+}
+.books-section-header h1 {
+  font-family: var(--font-title);
+  font-size: 30px;
+  font-weight: 400;
+  color: #000000;
+  margin: 0;
+  padding-top: 55px;
+}
+.books-section-header .search-bar-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+}
+.books-section-header .search-bar-wrapper i {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 18px;
+  color: var(--text-light);
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.books-section-header .search-bar-wrapper input {
+  width: 100%;
+  height: 55px;
+  border-radius: 6px;
+  border: 1px solid #F0F0F0;
+  background-color: #fff;
+  color: var(--text-light);
+  font-size: 14px;
+  padding-left: 40px;
+}
+.books-section-header .search-bar-wrapper input:focus + i,
+.books-section-header .search-bar-wrapper input:not(:placeholder-shown) + i {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.books-section-list {
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto 1fr 1fr auto;
+  gap: 15px;
+  padding-bottom: 55px;
+}
+.books-section-list .book-card:nth-child(odd) {
+  grid-column: 2;
+}
+.books-section-list .book-card:nth-child(even) {
+  grid-column: 3;
+}
+
+@media (min-width: 1024px) {
+  .books-section-header {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 130px 40px 72px;
+  }
+  .books-section-header h1 {
+    padding-top: 0;
+  }
+  .books-section-header .search-bar-wrapper {
+    margin: 0;
+    max-width: 322px;
+    height: 50px;
+    align-items: center;
+    display: flex;
+  }
+  .books-section-list {
+    max-width: 1440px;
+    justify-content: center;
+    grid-template-columns: repeat(4, max-content);
+    column-gap: 38px;
+    row-gap: 48px;
+    padding-bottom: 80px;
+  }
+  .books-section-list .book-card:nth-child(odd),
+  .books-section-list .book-card:nth-child(even) {
+    grid-column: auto;
   }
 }
 

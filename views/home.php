@@ -1,5 +1,3 @@
-<?php include __DIR__ . '/header.php'; ?>
-
 <section class="hero">
     <div class="hero-content">
         <div class="hero-left">
@@ -16,7 +14,7 @@
 </section>
 <section class="last-books">
     <h2>Les derniers livres ajoutés</h2>
-    <div class="books-list">
+    <div class="last-books-list">
         <div class="book-card">
             <div class="book-infos"><!-- On place les infos en premier pour facilité les lecteurs d'écrans-->
                 <h3 class="title">Esther</h3>
@@ -81,6 +79,3 @@
         <img src="./assets/logo/logo_coeur.svg" alt="" class="values-logo">
     </div>
 </section>
-
-
-<?php include __DIR__ . '/footer.php'; ?>
