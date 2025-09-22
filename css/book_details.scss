@@ -1,15 +1,15 @@
 @use 'variables';
 @use 'mixins';
 
+.book-navigation {
+    display: none;
+}
 .content-book-details {
     display: flex;
     flex-direction: column;
     background-color: var(--section-bg);
     gap: 40px;
 
-    .book-navigation {
-        display: none;
-    }
     .illustration-book-detail {
         overflow: hidden;
         width: 100vw;

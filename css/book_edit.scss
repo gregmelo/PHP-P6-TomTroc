@@ -1,0 +1,204 @@
+@use 'mixins';
+@use 'variables';
+
+.content-book-edit {
+    .book-edit-navigation {
+        font-family: var(--font-body);
+        font-size: 10px;
+        font-weight: 300;
+        color: var(--text-light);
+        max-width: 1440px;
+        padding: 54px 0 7px 20px;
+        align-content: center;
+    }
+
+    .content-book-edit-form {
+        margin-bottom: 80px;
+
+        h1 {
+            @include mixins.title(var(--font-title), 30px, 400, black);
+            padding-left: 20px;
+            width: 271px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            border-radius: 20px;
+            background-color: white;
+            max-width: 375px;
+            padding: 42px 20px 47px;
+            margin-top: 35px;
+
+            .form-group-fields {
+                display: flex;
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                img {
+                    width: 335px;
+                    height: 335px;
+                    object-fit: cover;
+                }
+
+                label {
+                    @include mixins.paragraph(11px, 400, var(--text-light));
+                }
+
+                #book-edit-photo-btn {
+                    text-decoration: underline;
+                    @include mixins.paragraph(16px, 400, var(--text-main));
+                    padding: 0;
+                    margin-top: 25px;
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    text-align: end;
+                }
+
+                input,
+                textarea {
+                    width: 335px;
+                    height: 50px;
+                    border-radius: 6px;
+                    border: 1px solid #F0F0F0;
+                    background-color: var(--line-table);
+                    color: var(--text-main);
+                    font-size: 14px;
+                    padding-left: 15px;
+                    box-sizing: border-box;
+                }
+
+                textarea {
+                    height: 433px;
+                    padding-top: 16px;
+                    padding-right: 23px;
+                    resize: none;
+                    box-sizing: border-box;
+                    text-align: left;
+                    @include mixins.paragraph(14px, 400, var(--text-main));
+                }
+
+                .select-wrapper {
+                    position: relative;
+                    width: 335px;
+
+                    .select-custom {
+                        padding-right: 32px; // espace pour l'icône
+                        appearance: none;
+                        box-sizing: border-box;
+                        width: 335px;
+                        height: 50px;
+                        border-radius: 6px;
+                        border: 1px solid #F0F0F0;
+                        background-color: var(--line-table);
+                        color: var(--text-main);
+                        font-size: 14px;
+                        padding-left: 15px;
+                    }
+
+                    .fa {
+                        position: absolute;
+                        right: 14px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        pointer-events: none;
+                        color: var(--text-main);
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .content-book-edit {
+        max-width: 1440px;
+        margin: auto;
+        padding: 0 150px;
+
+        .book-edit-navigation {
+            padding: 40px 0 23px;
+        }
+
+        .content-book-edit-form {
+            h1 {
+                width: 100%;
+                padding-left: 0;
+            }
+
+            form {
+                max-width: 100%;
+                display: flex;
+                flex-direction: row;
+                padding: 56px 50px 68px;
+                gap: 118px;
+
+                .form-group-img {
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    img {
+                        width: 488px;
+                        height: 488px;
+                        object-fit: cover;
+                    }
+
+                    label {
+                        @include mixins.paragraph(14px, 400, var(--text-light));
+                    }
+
+                    #book-edit-photo-btn {
+                        width: 100%;
+                        display: block;
+                        justify-content: flex-end;
+                        text-align: end;
+                        align-items: flex-end;
+                        @include mixins.paragraph(12px, 400, var(--text-main));
+                        margin-top: 23px;
+                    }
+                }
+
+                .form-group-fields {
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+                    justify-content: center;
+
+                    label {
+                        @include mixins.paragraph(14px, 400, var(--text-light));
+                    }
+
+                    input,
+                    textarea,
+                    .select-wrapper {
+                        width: 100%;
+                    }
+
+                    .select-wrapper .select-custom {
+                        width: 100%;
+                    }
+
+                    .btn {
+                        width: 322px;
+                    }
+                }
+            }
+        }
+    }
+}

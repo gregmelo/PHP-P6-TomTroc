@@ -17,16 +17,30 @@ switch ($page) {
 		$controller = new LoginController();
 		$controller->register();
 		break;
-	case 'home':
 	case 'books':
 		require_once 'controllers/BooksController.php';
 		$controller = new BooksController();
-		$controller->index();
+		$controller->books_list();
 		break;
 	case 'book_details':
 		require_once 'controllers/BooksController.php';
 		$controller = new BooksController();
 		$controller->book_details();
+		break;
+			case 'book_edit':
+		require_once 'controllers/BooksController.php';
+		$controller = new BooksController();
+		$controller->book_edit();
+		break;
+	case 'account':
+		require_once 'controllers/LoginController.php';
+		$controller = new LoginController();
+		$controller->account();
+		break;
+	case 'public_account':
+		require_once 'controllers/LoginController.php';
+		$controller = new LoginController();
+		$controller->public_account();
 		break;
 	default:
 		require_once 'controllers/HomeController.php';

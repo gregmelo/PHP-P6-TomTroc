@@ -1,0 +1,318 @@
+@use 'mixins';
+@use 'variables';
+
+.content-public-account {
+    padding: 78px 20px 62px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    h1 {
+        @include mixins.title(var(--font-title), 30px, 400, #000000);
+        padding-bottom: 8px;
+    }
+
+    .public-account-infos-group {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        .public-account-infos {
+            background-color: #fff;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img {
+                width: 135px;
+                height: 135px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-top: 48px;
+                margin-bottom: 5px;
+            }
+
+            a {
+                text-decoration: underline;
+                @include mixins.paragraph(14px, 400, var(--text-light));
+                padding-bottom: 96px;
+            }
+
+            hr {
+                width: 242px;
+                border: none;
+                border-top: 1px solid var(--main-bg);
+                margin-bottom: 48px;
+            }
+
+            h2 {
+                @include mixins.title(var(--font-title), 24px, 400, var(--text-main));
+                padding-bottom: 11px;
+            }
+
+            .public-account-during {
+                @include mixins.paragraph(16px, 400, var(--text-light));
+                padding-bottom: 21px;
+            }
+
+            h3 {
+                @include mixins.title(var(--font-body), 8px, 600, var(--text-main));
+                padding-bottom: 6px;
+            }
+
+            .books-numbers {
+                @include mixins.paragraph(14px, 400, var(--text-main));
+                padding-bottom: 36px;
+            }
+
+
+                .btn {
+                    width: fit-content;
+                    height: 63px;
+                    text-align: center;
+                    background-color: var(--main-bg);
+                    color: var(--primary);
+                    border: 1px solid var(--primary);
+                    margin-bottom: 56px;
+
+                    &:hover {
+                        background-color: var(--primary);
+                        color: white;
+                        border: none;
+                    }
+                }
+        }
+    }
+
+    .public-account-books-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        max-width: 375px;
+        justify-content: center;
+
+        .public-account-book-card {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 52px 56px;
+            background-color: white;
+            border: 1px solid var(--main-bg);
+            border-radius: 20px;
+            box-sizing: border-box;
+
+            .public-account-book-infos {
+                display: flex;
+                flex-direction: row;
+                gap: 18px;
+
+                img {
+                    width: 79px;
+                    height: 79px;
+                    object-fit: cover;
+                }
+
+                .public-account-book-details {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    p {
+                        @include mixins.paragraph(14px, 400, var(--text-main));
+                        font-style: normal;
+                    }
+
+                    .tag {
+                        @include mixins.paragraph(9px, 500, #FFFFFF);
+                        background-color: var(--primary-light);
+                        padding: 4px 13px;
+                        border-radius: 30px;
+                        width: fit-content;
+                        margin-top: 16px;
+                    }
+                }
+            }
+
+            p {
+                max-width: 220px;
+                @include mixins.paragraph(14px, 400, var(--text-main));
+                margin: 21px 0 0px;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+                word-break: break-word;
+                font-style: italic
+            }
+
+            .public-account-book-actions {
+                display: flex;
+                flex-direction: row;
+                gap: 43px;
+                padding-left: 5px;
+
+                a {
+                    @include mixins.paragraph(16px, 400, var(--text-main));
+                    text-decoration: underline;
+                }
+
+                .public-account-book-delete {
+                    color: var(--red);
+                }
+            }
+        }
+    }
+
+    .public-account-books-table {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .content-public-account {
+        max-width: 1440px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 90px 150px 102px;
+        display: flex;
+        flex-direction: row;
+
+        .public-account-infos-group {
+            width: 28%;
+            flex-direction: row;
+            gap: 33px;
+            align-items: stretch;
+
+            .public-account-infos {
+                flex: 1;
+                width: 50%;
+                height: auto;
+                padding: 38px 116px;
+                align-items: center;
+                box-sizing: border-box;
+
+                .books-numbers {
+                    padding-bottom: 48px;
+                }
+                .btn {
+                    width: max-content;
+                }
+            }
+        }
+
+        .public-account-books-list {
+            display: none;
+        }
+
+        .public-account-books-table {
+            display: block;
+            width: 49%;
+
+            table {
+                width: 100%;
+                background-color: white;
+                border-radius: 20px;
+                border-collapse: collapse;
+
+                thead {
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                }
+                thead tr {
+                    height: 45px;
+                    vertical-align: middle;
+                    text-align: center;
+                    background-color: white;
+
+                }
+
+                th,
+                td {
+                    height: 60px;
+                    vertical-align: middle;
+                    padding: 0;
+                    text-align: left;
+                    width: 100px;
+                }
+
+                td {
+                    @include mixins.paragraph(12px, 400, var(--text-main));
+                    padding: 26px 0 26px 0;
+                }
+
+                th {
+                    height: 55px;
+                    background-color: white;
+                    @include mixins.paragraph(8px, 600, var(--text-main));
+                    vertical-align: bottom;
+                    border-bottom: 1px solid var(--main-bg);
+                    padding-bottom: 8px;
+                }
+
+                tbody tr:nth-child(even) {
+                    background-color: #EDF2F6;
+                }
+
+                td:nth-child(1),
+                th:nth-child(1) {
+                    width: 55px;
+                }
+
+
+
+                th:nth-child(1),
+                td:nth-child(1) {
+                    text-align: center;
+                }
+
+                img {
+                    width: 78px;
+                    height: 78px;
+                    object-fit: cover;
+                }
+
+                td:nth-child(4),
+                th:nth-child(4) {
+                    width: 180px;
+                }
+
+                .description-cell {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    line-clamp: 4;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: normal;
+                    word-break: break-word;
+                    padding: 0 10px;
+                    top: 37px;
+                    position: relative;
+                    font-style: italic;
+                }
+
+                a {
+                    @include mixins.paragraph(16px, 400, var(--text-main));
+                    text-decoration: underline;
+                }
+
+                .public-account-book-delete {
+                    color: var(--red);
+                }
+
+                .tag {
+                    @include mixins.paragraph(9px, 500, #FFFFFF);
+                    background-color: var(--primary-light);
+                    padding: 4px 13px;
+                    border-radius: 30px;
+                    width: fit-content;
+                    margin-top: 16px;
+                }
+            }
+        }
+    }
+}
