@@ -373,6 +373,7 @@
 
                 .message-form {
                     display: flex;
+                    flex-direction: row;
                     gap: 21px;
                     margin-bottom: 98px;
 
@@ -384,6 +385,7 @@
                     }
 
                     .btn {
+                        width: fit-content;
                         height: 49px;
                         padding: 15px 35px;
                     }
