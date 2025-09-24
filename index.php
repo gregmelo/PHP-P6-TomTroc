@@ -32,6 +32,11 @@ switch ($page) {
 		$controller = new BooksController();
 		$controller->book_edit();
 		break;
+			case 'messages':
+		require_once 'controllers/MessagesController.php';
+		$controller = new MessagesController();
+		$controller->messages();
+		break;
 	case 'account':
 		require_once 'controllers/LoginController.php';
 		$controller = new LoginController();
