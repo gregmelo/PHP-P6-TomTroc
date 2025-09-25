@@ -858,7 +858,7 @@ footer {
 .books-section-header .search-bar-wrapper {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 335px;
   margin: 20px auto;
 }
 .books-section-header .search-bar-wrapper i {
@@ -881,6 +881,7 @@ footer {
   color: var(--text-light);
   font-size: 14px;
   padding-left: 40px;
+  box-sizing: border-box;
 }
 .books-section-header .search-bar-wrapper input:focus + i,
 .books-section-header .search-bar-wrapper input:not(:placeholder-shown) + i {
@@ -1365,8 +1366,8 @@ footer {
 @media (min-width: 1024px) {
   .content-account {
     max-width: 1440px;
-    margin: 0 auto;
-    padding: 90px 150px 102px;
+    margin: 0 150px;
+    padding: 90px 0px 102px;
   }
   .content-account h1 {
     font-size: 40px;

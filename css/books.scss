@@ -18,7 +18,7 @@
     .search-bar-wrapper {
         position: relative;
         width: 100%;
-        max-width: 400px;
+        max-width: 335px;
         margin: 20px auto;
 
         i {
@@ -42,6 +42,7 @@
             color: var(--text-light);
             font-size: 14px;
             padding-left: 40px;
+            box-sizing: border-box;
         }
 
         input:focus+i,
