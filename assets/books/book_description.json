@@ -17,7 +17,7 @@
     "image": "./assets/books/book02.jpg",
     "status": "Disponible",
     "description": "J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante. Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table. Les photographies magnifiques et le ton chaleureux captivent dès le départ, transportant le lecteur dans un voyage à travers des recettes et des histoires qui mettent en avant la beauté de la simplicité et de la convivialité. Chaque page est une invitation à ralentir, à savourer et à créer des souvenirs durables avec les êtres chers. 'The Kinfolk Table' incarne parfaitement l'esprit de la cuisine et de la camaraderie, et il est certain que ce livre trouvera une place spéciale dans le cœur de tout amoureux de la cuisine et des rencontres inspirantes.",
-    "owner": { "name": "Alexlecture", "avatar": "./assets/users/Alexlecture.jpg" }
+    "owner": { "name": "Nathalire", "avatar": "./assets/users/Nathalire.jpg" }
   },
   {
     "id": 3,
@@ -107,7 +107,7 @@
     "image": "./assets/books/book11.jpg",
     "status": "non dispo.",
     "description": "Un des livres les plus influents du 21ème siècle : le classique de la psychologie révolutionnaire - plus de 10 millions d'exemplaires vendus - qui a changé notre façon de penser «Il y a eu de nombreux bons livres sur la rationalité humaine et l'irrationalité, mais un seul chef-d'œuvre. Ce chef-d'œuvre est le Financial Times de la pensée, du ralentissement et du ralentissement'Une vie vaut la sagesse' Steven D. Levitt, co-auteur de Freakonomics Pourquoi prenons-nous les décisions que nous prenons? Le prix Nobel Daniel Kahneman a révolutionné notre compréhension du comportement humain avec Thinking, Fast and Slow. En distinguant le travail de sa vie, Kahneman a montré qu'il y a deux façons de faire des choix : une pensée rapide, intuitive et une pensée lente et rationnelle. Son livre révèle comment nos esprits sont trébuchés par l'erreur, le biais et les préjugés (même lorsque nous pensons que nous sommes logiques) et donne des techniques pratiques qui nous permettent à tous d'améliorer notre prise de décision. Cette exploration profonde des merveilles et des limites de l'esprit humain a eu un impact durable sur notre façon de nous voir nous-mêmes. 'Le parrain de la science du comportement ... son analyse aciere de l'esprit humain et ses nombreux défauts reste peut-être le guide le plus utile pour rester sain d'esprit et de veille'.",
-    "owner": { "name": "Sas634", "avatar": "" }
+    "owner": { "name": "Sas634", "avatar": "./assets/users/Sas634.jpg" }
   },
   {
     "id": 12,
@@ -153,7 +153,7 @@
     "id": 16,
     "title": "The two towers",
     "author": "J.R.R. Tolkien",
-    "seller": "Victoirefabr912",
+    "seller": "Lotrfanclub67",
     "image": "./assets/books/book16.jpg",
     "status": "Disponible",
     "description": "Frodo et les Compagnons de l'Anneau ont été assaillis par le danger pendant leur quête pour empêcher l'anneau de décision de tomber entre les mains du Seigneur Noir en le détruisant dans les Cracks of Doom. Ils ont perdu le sorcier Gandalf, dans la bataille avec un esprit maléfique dans les Mines de Moria, et aux chutes de Rauros, Boromir, séduits par la puissance de l'Anneau, ont essayé de le saisir par la force. Alors que Frodon et Sam s'échappèrent, le reste de la compagnie fut attaqué par les Orques. Maintenant ils continuent leur voyage seul le long de la grande rivière Anduin - seul, c'est-à-dire, à l'exception du mystérieux personnage rampant qui suit partout où ils vont",
