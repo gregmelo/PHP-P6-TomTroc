@@ -3,160 +3,144 @@
     "id": 1,
     "title": "Esther",
     "author": "Alabaster",
-    "seller": "CamilleClubLit",
+    "seller": { "name": "CamilleClubLit", "avatar": "" },
     "image": "./assets/books/book01.jpg",
     "status": "Disponible",
-    "description": "Le Livre d'Esther: Curieux et excitant, l'éclat d'Esther est dans son mystérieux et unique mélange de hasard et de providence divine. Bien que son complot paraisse aléatoire, et rempli de hasard au début, c'est une invitation à le voir comme une rencontre fatidique avec Dieu. C'est un encouragement pour nous tous, d'observer et d'écouter - avec curiosité et attention - pour le fonctionnement implicite de Dieu dans les moments de l'autre. Ce n'est peut-être pas explicite ou ce que nous attendions, mais Dieu est certainement là.",
-    "owner": { "name": "CamilleClubLit", "avatar": "" }
+    "description": "Le Livre d'Esther: Curieux et excitant, l'éclat d'Esther est dans son mystérieux et unique mélange de hasard et de providence divine. Bien que son complot paraisse aléatoire, et rempli de hasard au début, c'est une invitation à le voir comme une rencontre fatidique avec Dieu. C'est un encouragement pour nous tous, d'observer et d'écouter - avec curiosité et attention - pour le fonctionnement implicite de Dieu dans les moments de l'autre. Ce n'est peut-être pas explicite ou ce que nous attendions, mais Dieu est certainement là."
   },
   {
     "id": 2,
     "title": "The Kinfolk Table",
     "author": "Nathan Williams",
-    "seller": "Nathalire",
+    "seller": { "name": "Nathalire", "avatar": "./assets/users/Nathalire.jpg" },
     "image": "./assets/books/book02.jpg",
     "status": "Disponible",
-    "description": "J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante. Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table. Les photographies magnifiques et le ton chaleureux captivent dès le départ, transportant le lecteur dans un voyage à travers des recettes et des histoires qui mettent en avant la beauté de la simplicité et de la convivialité. Chaque page est une invitation à ralentir, à savourer et à créer des souvenirs durables avec les êtres chers. 'The Kinfolk Table' incarne parfaitement l'esprit de la cuisine et de la camaraderie, et il est certain que ce livre trouvera une place spéciale dans le cœur de tout amoureux de la cuisine et des rencontres inspirantes.",
-    "owner": { "name": "Nathalire", "avatar": "./assets/users/Nathalire.jpg" }
+    "description": "J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante. Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table. Les photographies magnifiques et le ton chaleureux captivent dès le départ, transportant le lecteur dans un voyage à travers des recettes et des histoires qui mettent en avant la beauté de la simplicité et de la convivialité. Chaque page est une invitation à ralentir, à savourer et à créer des souvenirs durables avec les êtres chers. 'The Kinfolk Table' incarne parfaitement l'esprit de la cuisine et de la camaraderie, et il est certain que ce livre trouvera une place spéciale dans le cœur de tout amoureux de la cuisine et des rencontres inspirantes."
   },
   {
     "id": 3,
     "title": "Wabi Sabi",
     "author": "Beth Kempton",
-    "seller": "Alexlecture",
+    "seller": { "name": "Alexlecture", "avatar": "./assets/users/Alexlecture.jpg" },
     "image": "./assets/books/book03.jpg",
     "status": "Disponible",
-    "description": "Wabi sabi ('wah-bi sah-bi') est un concept captivant de l'esthétique japonaise, qui nous aide à voir la beauté dans l'imperfection, à apprécier la simplicité et à accepter la nature transitoire de toutes choses. Avec les racines du zen et la voie du thé, la sagesse intemporelle du wabi sabi est plus pertinente que jamais pour la vie moderne, alors que nous recherchons de nouvelles façons d'aborder les défis de la vie et de chercher un sens au-delà du matérialisme. Le wabi sabi est un antidote rafraîchissant à notre monde rapide et axé sur la consommation, qui vous encouragera à ralentir, à renouer avec la nature, et à être plus doux sur vous-même. Cela vous aidera à tout simplifier et à vous concentrer sur ce qui compte vraiment. De l'honneur du rythme des saisons à la création d'une maison accueillante, de la recadrage au vieillissement à la grâce, le wabi sabi vous apprendra à trouver plus de joie et d'inspiration tout au long de votre vie parfaitement imparfaite.",
-    "owner": { "name": "Alexlecture", "avatar": "./assets/users/Alexlecture.jpg" }
+    "description": "Wabi sabi ('wah-bi sah-bi') est un concept captivant de l'esthétique japonaise, qui nous aide à voir la beauté dans l'imperfection, à apprécier la simplicité et à accepter la nature transitoire de toutes choses. Avec les racines du zen et la voie du thé, la sagesse intemporelle du wabi sabi est plus pertinente que jamais pour la vie moderne, alors que nous recherchons de nouvelles façons d'aborder les défis de la vie et de chercher un sens au-delà du matérialisme. Le wabi sabi est un antidote rafraîchissant à notre monde rapide et axé sur la consommation, qui vous encouragera à ralentir, à renouer avec la nature, et à être plus doux sur vous-même. Cela vous aidera à tout simplifier et à vous concentrer sur ce qui compte vraiment. De l'honneur du rythme des saisons à la création d'une maison accueillante, de la recadrage au vieillissement à la grâce, le wabi sabi vous apprendra à trouver plus de joie et d'inspiration tout au long de votre vie parfaitement imparfaite."
   },
   {
     "id": 4,
     "title": "Milk & Honey",
     "author": "Rupi Kaur",
-    "seller": "Hugo1990_12",
+    "seller": { "name": "Hugo1990_12", "avatar": "" },
     "image": "./assets/books/book04.jpg",
     "status": "Disponible",
-    "description": "Recueil de poésie de l'auteure Rupi Kaur, Milk and Honey aborde des thèmes tels que l'amour, la douleur, la guérison et l'émancipation. Divisé en quatre parties, ce livre explore les différentes facettes des relations interpersonnelles et de la croissance personnelle, avec des illustrations poignantes accompagnant les poèmes. Les vers simples mais percutants de Kaur ont touché de nombreux lecteurs à travers le monde. ",
-    "owner": { "name": "Hugo1990_12", "avatar": "" }
+    "description": "Recueil de poésie de l'auteure Rupi Kaur, Milk and Honey aborde des thèmes tels que l'amour, la douleur, la guérison et l'émancipation. Divisé en quatre parties, ce livre explore les différentes facettes des relations interpersonnelles et de la croissance personnelle, avec des illustrations poignantes accompagnant les poèmes. Les vers simples mais percutants de Kaur ont touché de nombreux lecteurs à travers le monde. "
   },
   {
     "id": 5,
     "title": "Delight!",
     "author": "Justin Rossow",
-    "seller": "Juju1432",
+    "seller": { "name": "Juju1432", "avatar": "" },
     "image": "./assets/books/book05.jpg",
     "status": "non dispo.",
-    "description": "voici le voyage d'une survie grâce à la poésie voici mes larmes, ma sueur et mon sang de vingt et un ans voici mon cœur dans tes mains voici la blessure l'amour la rupture la guérison ",
-    "owner": { "name": "Juju1432", "avatar": "" }
+    "description": "voici le voyage d'une survie grâce à la poésie voici mes larmes, ma sueur et mon sang de vingt et un ans voici mon cœur dans tes mains voici la blessure l'amour la rupture la guérison "
   },
   {
     "id": 6,
     "title": "Milwaukee Mission",
     "author": "Elder Cooper Low",
-    "seller": "Christiane75014",
+    "seller": { "name": "Christiane75014", "avatar": "" },
     "image": "./assets/books/book06.jpg",
     "status": "Disponible",
-    "description": "",
-    "owner": { "name": "Christiane75014", "avatar": "" }
+    "description": ""
   },
   {
     "id": 7,
     "title": "Minimalist Graphics",
     "author": "Julia Schonlau",
-    "seller": "Hamzalecture",
+    "seller": { "name": "Hamzalecture", "avatar": "" },
     "image": "./assets/books/book07.jpg",
     "status": "Disponible",
-    "description": "Maia Francisco présente une approche de pointe, moins d'is-remardes, de design graphique dans le graphisme minimaliste révolutionnaire. À la suite de son label Sourcebook of Contemporary Graphic Design , Francisco présente ce regard éclairant sur les dernières tendances et concepts les plus recherchés de l'industrie - une ressource efficace et indispensable pour le graphiste moderne., Maia Francisco présente une approche de pointe, moins - plus - plus importante de la conception graphique dans le Minimalist Graphics révolutionnaire. À la suite de son label Sourcebook of Contemporary Graphic Design, Francisco présente ce regard éclairant sur les dernières tendances et concepts les plus recherchés de l'industrie - une ressource efficace et indispensable pour le concepteur graphique moderne., Les clients et les consommateurs ont besoin de designs, ils peuvent rapidement comprendre des conceptions qui utilisent des lignes et des formes claires, des images et des textes clairs. De cette manière, l'œuvre de Graphics minimalistes illustre des designs faciles à lire et intemporels de graphistes contemporains qui adoptent des principes minimalistes pour une communication efficace. Avec une introduction explorant l'histoire et l'importance du design minimaliste, le graphicsis minimaliste s'est organisé en sections révélant une richesse de projets d'identité minimaliste, de publication et de design imprimé. Des informations générales sont fournies pour chaque conception par l'entreprise qui l'a créée, et une section de biographie révèle comment chaque entreprise s'est établie. Le résultat est un livre moderne et très inspirant sur un principe de design intemporel, qui est plus et généralement meilleur.",
-    "owner": { "name": "Hamzalecture", "avatar": "" }
+    "description": "Maia Francisco présente une approche de pointe, moins d'is-remardes, de design graphique dans le graphisme minimaliste révolutionnaire. À la suite de son label Sourcebook of Contemporary Graphic Design , Francisco présente ce regard éclairant sur les dernières tendances et concepts les plus recherchés de l'industrie - une ressource efficace et indispensable pour le graphiste moderne., Maia Francisco présente une approche de pointe, moins - plus - plus importante de la conception graphique dans le Minimalist Graphics révolutionnaire. À la suite de son label Sourcebook of Contemporary Graphic Design, Francisco présente ce regard éclairant sur les dernières tendances et concepts les plus recherchés de l'industrie - une ressource efficace et indispensable pour le concepteur graphique moderne., Les clients et les consommateurs ont besoin de designs, ils peuvent rapidement comprendre des conceptions qui utilisent des lignes et des formes claires, des images et des textes clairs. De cette manière, l'œuvre de Graphics minimalistes illustre des designs faciles à lire et intemporels de graphistes contemporains qui adoptent des principes minimalistes pour une communication efficace. Avec une introduction explorant l'histoire et l'importance du design minimaliste, le graphicsis minimaliste s'est organisé en sections révélant une richesse de projets d'identité minimaliste, de publication et de design imprimé. Des informations générales sont fournies pour chaque conception par l'entreprise qui l'a créée, et une section de biographie révèle comment chaque entreprise s'est établie. Le résultat est un livre moderne et très inspirant sur un principe de design intemporel, qui est plus et généralement meilleur."
   },
   {
     "id": 8,
     "title": "Hygge",
     "author": "Meik Wiking",
-    "seller": "Hugo1990_12",
+    "seller": { "name": "Hugo1990_12", "avatar": "" },
     "image": "./assets/books/book08.jpg",
     "status": "Disponible",
-    "description": "Dans ce best-seller, Meik Wiking, expert en bonheur et PDG de l'Institut de Recherche sur le Bonheur à Copenhague, présente le concept danois du bien-être, le Hygge. Il explique comment créer une atmosphère chaleureuse et confortable, propice au bonheur, en s'entourant de choses simples et en partageant des moments de convivialité avec ses proches. À travers des conseils pratiques sur l'éclairage, la décoration, les repas et même le dressing, il vous apprendra à intégrer le Hygge dans votre quotidien pour vous sentir plus heureux et épanoui",
-    "owner": { "name": "Hugo1990_12", "avatar": "" }
+    "description": "Dans ce best-seller, Meik Wiking, expert en bonheur et PDG de l'Institut de Recherche sur le Bonheur à Copenhague, présente le concept danois du bien-être, le Hygge. Il explique comment créer une atmosphère chaleureuse et confortable, propice au bonheur, en s'entourant de choses simples et en partageant des moments de convivialité avec ses proches. À travers des conseils pratiques sur l'éclairage, la décoration, les repas et même le dressing, il vous apprendra à intégrer le Hygge dans votre quotidien pour vous sentir plus heureux et épanoui"
   },
   {
     "id": 9,
     "title": "Innovation",
     "author": "Matt Ridley",
-    "seller": "Lou&Ben50",
+    "seller": { "name": "Lou&Ben50", "avatar": "" },
     "image": "./assets/books/book09.jpg",
     "status": "Disponible",
-    "description": "Sir James Dyson Construit sur son best-seller The Rational Optimist, Matt Ridley relate l'histoire de l'innovation et la manière dont nous devons changer notre façon de penser sur le sujet. L'innovation est le principal événement de l'ère moderne, la raison pour laquelle nous connaissons à la fois des améliorations spectaculaires de notre niveau de vie et des changements troublants dans notre société. C'est l'innovation qui façonnera le XXIe siècle. Pourtant, l'innovation reste un processus mystérieux, mal compris par les décideurs et les hommes d'affaires. Matt Ridley fait valoir que nous devons considérer l'innovation comme un processus incrémental, ascendant et fortuit qui résulte directement de l'habitude humaine d'échange, plutôt qu'un processus descendant ordonné se développant selon un plan. L'innovation est particulièrement différente de l'invention, car elle est la transformation d'inventions en objets d'utilisation pratique et abordable pour les gens. Elle s'accélère dans certains secteurs et ralentit dans d'autres. C'est toujours un phénomène collectif et collaboratif, impliquant des tâtonnements et des erreurs, et non une question de génie solitaire. Il ne peut toujours pas être modélisé correctement par les économistes, mais il peut facilement être découragé par les politiciens. Loin d'être trop d'innovation, nous sommes peut-être au bord d'une famine de l'innovation. Ridley tire ces leçons et d'autres des histoires animées de dizaines d'innovations – des moteurs à vapeur aux moteurs de recherche – comment ils ont commencé et pourquoi ils ont réussi ou échoué.",
-    "owner": { "name": "Lou&Ben50", "avatar": "" }
+    "description": "Sir James Dyson Construit sur son best-seller The Rational Optimist, Matt Ridley relate l'histoire de l'innovation et la manière dont nous devons changer notre façon de penser sur le sujet. L'innovation est le principal événement de l'ère moderne, la raison pour laquelle nous connaissons à la fois des améliorations spectaculaires de notre niveau de vie et des changements troublants dans notre société. C'est l'innovation qui façonnera le XXIe siècle. Pourtant, l'innovation reste un processus mystérieux, mal compris par les décideurs et les hommes d'affaires. Matt Ridley fait valoir que nous devons considérer l'innovation comme un processus incrémental, ascendant et fortuit qui résulte directement de l'habitude humaine d'échange, plutôt qu'un processus descendant ordonné se développant selon un plan. L'innovation est particulièrement différente de l'invention, car elle est la transformation d'inventions en objets d'utilisation pratique et abordable pour les gens. Elle s'accélère dans certains secteurs et ralentit dans d'autres. C'est toujours un phénomène collectif et collaboratif, impliquant des tâtonnements et des erreurs, et non une question de génie solitaire. Il ne peut toujours pas être modélisé correctement par les économistes, mais il peut facilement être découragé par les politiciens. Loin d'être trop d'innovation, nous sommes peut-être au bord d'une famine de l'innovation. Ridley tire ces leçons et d'autres des histoires animées de dizaines d'innovations – des moteurs à vapeur aux moteurs de recherche – comment ils ont commencé et pourquoi ils ont réussi ou échoué."
   },
   {
     "id": 10,
     "title": "Psalms",
     "author": "Alabaster",
-    "seller": "Lolobzh",
+    "seller": { "name": "Lolobzh", "avatar": "" },
     "image": "./assets/books/book10.jpg",
     "status": "Disponible",
-    "description": "Des poèmes bruts et honnêtes racontant les histoires des humains et le désir de connaître Dieu. Ce livre ancien et intemporel de poésie et de chants souligne toute la gamme des expériences émotionnelles et spirituelles que nous vivons en tant qu'êtres humains. Nous apprenons sur le deuil, le chagrin, la lamentation, l'amour, la joie, le pardon, et ce que cela signifie de se connecter avec Dieu au milieu de nos vies complexes. «Notez-vous, l'image présentant à la fois la taille standard Mini et Softcover est présentée pour référence visuelle uniquement. Votre commande comprendra un livre dans la taille que vous choisissez.",
-    "owner": { "name": "Lolobzh", "avatar": "" }
+    "description": "Des poèmes bruts et honnêtes racontant les histoires des humains et le désir de connaître Dieu. Ce livre ancien et intemporel de poésie et de chants souligne toute la gamme des expériences émotionnelles et spirituelles que nous vivons en tant qu'êtres humains. Nous apprenons sur le deuil, le chagrin, la lamentation, l'amour, la joie, le pardon, et ce que cela signifie de se connecter avec Dieu au milieu de nos vies complexes. «Notez-vous, l'image présentant à la fois la taille standard Mini et Softcover est présentée pour référence visuelle uniquement. Votre commande comprendra un livre dans la taille que vous choisissez."
   },
   {
     "id": 11,
     "title": "Thinking, Fast & Slow",
     "author": "Daniel Kahneman",
-    "seller": "Sas634",
+    "seller": { "name": "Sas634", "avatar": "./assets/users/Sas634.jpg" },
     "image": "./assets/books/book11.jpg",
     "status": "non dispo.",
-    "description": "Un des livres les plus influents du 21ème siècle : le classique de la psychologie révolutionnaire - plus de 10 millions d'exemplaires vendus - qui a changé notre façon de penser «Il y a eu de nombreux bons livres sur la rationalité humaine et l'irrationalité, mais un seul chef-d'œuvre. Ce chef-d'œuvre est le Financial Times de la pensée, du ralentissement et du ralentissement'Une vie vaut la sagesse' Steven D. Levitt, co-auteur de Freakonomics Pourquoi prenons-nous les décisions que nous prenons? Le prix Nobel Daniel Kahneman a révolutionné notre compréhension du comportement humain avec Thinking, Fast and Slow. En distinguant le travail de sa vie, Kahneman a montré qu'il y a deux façons de faire des choix : une pensée rapide, intuitive et une pensée lente et rationnelle. Son livre révèle comment nos esprits sont trébuchés par l'erreur, le biais et les préjugés (même lorsque nous pensons que nous sommes logiques) et donne des techniques pratiques qui nous permettent à tous d'améliorer notre prise de décision. Cette exploration profonde des merveilles et des limites de l'esprit humain a eu un impact durable sur notre façon de nous voir nous-mêmes. 'Le parrain de la science du comportement ... son analyse aciere de l'esprit humain et ses nombreux défauts reste peut-être le guide le plus utile pour rester sain d'esprit et de veille'.",
-    "owner": { "name": "Sas634", "avatar": "./assets/users/Sas634.jpg" }
+    "description": "Un des livres les plus influents du 21ème siècle : le classique de la psychologie révolutionnaire - plus de 10 millions d'exemplaires vendus - qui a changé notre façon de penser «Il y a eu de nombreux bons livres sur la rationalité humaine et l'irrationalité, mais un seul chef-d'œuvre. Ce chef-d'œuvre est le Financial Times de la pensée, du ralentissement et du ralentissement'Une vie vaut la sagesse' Steven D. Levitt, co-auteur de Freakonomics Pourquoi prenons-nous les décisions que nous prenons? Le prix Nobel Daniel Kahneman a révolutionné notre compréhension du comportement humain avec Thinking, Fast and Slow. En distinguant le travail de sa vie, Kahneman a montré qu'il y a deux façons de faire des choix : une pensée rapide, intuitive et une pensée lente et rationnelle. Son livre révèle comment nos esprits sont trébuchés par l'erreur, le biais et les préjugés (même lorsque nous pensons que nous sommes logiques) et donne des techniques pratiques qui nous permettent à tous d'améliorer notre prise de décision. Cette exploration profonde des merveilles et des limites de l'esprit humain a eu un impact durable sur notre façon de nous voir nous-mêmes. 'Le parrain de la science du comportement ... son analyse aciere de l'esprit humain et ses nombreux défauts reste peut-être le guide le plus utile pour rester sain d'esprit et de veille'."
   },
   {
     "id": 12,
     "title": "A Book Full Of Hope",
     "author": "Rupi Kaur",
-    "seller": "ML95",
+    "seller": { "name": "ML95", "avatar": "" },
     "image": "./assets/books/book12.jpg",
     "status": "Disponible",
-    "description": "",
-    "owner": { "name": "ML95", "avatar": "" }
+    "description": ""
   },
   {
     "id": 13,
     "title": "The Subtle Art Of...",
     "author": "Mark Manson",
-    "seller": "Verogo33",
+    "seller": { "name": "Verogo33", "avatar": "" },
     "image": "./assets/books/book13.jpg",
     "status": "Disponible",
-    "description": "Dans ce guide d'auto-assistance, un blogueur superstar coupe à travers la merde pour nous montrer comment arrêter d'essayer d'être 'positifs' tout le temps afin que nous puissions vraiment devenir des gens meilleurs et plus heureux. Depuis des décennies, on nous dit que la pensée positive est la clé d'une vie heureuse et riche. « La profane de la population », dit Mark Manson. 'Soyons honnêtes, merde est f-ked et nous devons vivre avec.' Dans son blog très populaire sur Internet, Manson ne protège pas le sucre ni l'équipe. Il le dit comme s'il s'agissait d'une dose de vérité brute, rafraîchissante et honnête qui fait cruellement défaut aujourd'hui. L'art subtil de ne pas donner un Fôk est son antidote à la morgue, un état d'esprit tout à fait bien qui a infecté la société américaine et gâché une génération, les récompensant avec des médailles d'or juste pour se présenter. Manson fait valoir, soutenu à la fois par des recherches universitaires et des blagues de caca bien opportunes, que l'amélioration de nos vies dépend non pas de notre capacité à transformer les citrons en limonade, mais en apprenant mieux à l'estomac des citrons. Les êtres humains sont imparfaits et limités. 'Tout le monde ne peut pas être extraordinaire, il y a des gagnants et des perdants dans la société, et certains d'entre eux ne sont pas justes ou de votre faute.' Manson nous conseille de connaître nos limites et de les accepter. Une fois que nous embrasserons nos peurs, nos fautes et nos incertitudes, une fois que nous arrêtons de courir et d'éviter et commencer à faire face à des vérités douloureuses, nous pouvons commencer à trouver le courage, la persévérance, l'honnêteté, la responsabilité, la curiosité et le pardon que nous recherchons. Il n'y a que tant de choses que nous pouvons donner à un fôk donc nous devons déterminer lesquelles sont vraiment importantes, Manson le dit clairement. Alors que l'argent est bien, se soucier de ce que vous faites de votre vie est meilleur, parce que la vraie richesse est une question d'expérience. Un moment de dialogue réel, rempli d'histoires divertissantes et profanes, l'humour impitoyable, l'art subtil de ne pas donner un flot est une bourdonnement rafraîchissante pour une génération pour les aider à mener des vies contentées et ancrées.",
-    "owner": { "name": "Verogo33", "avatar": "" }
+    "description": "Dans ce guide d'auto-assistance, un blogueur superstar coupe à travers la merde pour nous montrer comment arrêter d'essayer d'être 'positifs' tout le temps afin que nous puissions vraiment devenir des gens meilleurs et plus heureux. Depuis des décennies, on nous dit que la pensée positive est la clé d'une vie heureuse et riche. « La profane de la population », dit Mark Manson. 'Soyons honnêtes, merde est f-ked et nous devons vivre avec.' Dans son blog très populaire sur Internet, Manson ne protège pas le sucre ni l'équipe. Il le dit comme s'il s'agissait d'une dose de vérité brute, rafraîchissante et honnête qui fait cruellement défaut aujourd'hui. L'art subtil de ne pas donner un Fôk est son antidote à la morgue, un état d'esprit tout à fait bien qui a infecté la société américaine et gâché une génération, les récompensant avec des médailles d'or juste pour se présenter. Manson fait valoir, soutenu à la fois par des recherches universitaires et des blagues de caca bien opportunes, que l'amélioration de nos vies dépend non pas de notre capacité à transformer les citrons en limonade, mais en apprenant mieux à l'estomac des citrons. Les êtres humains sont imparfaits et limités. 'Tout le monde ne peut pas être extraordinaire, il y a des gagnants et des perdants dans la société, et certains d'entre eux ne sont pas justes ou de votre faute.' Manson nous conseille de connaître nos limites et de les accepter. Une fois que nous embrasserons nos peurs, nos fautes et nos incertitudes, une fois que nous arrêtons de courir et d'éviter et commencer à faire face à des vérités douloureuses, nous pouvons commencer à trouver le courage, la persévérance, l'honnêteté, la responsabilité, la curiosité et le pardon que nous recherchons. Il n'y a que tant de choses que nous pouvons donner à un fôk donc nous devons déterminer lesquelles sont vraiment importantes, Manson le dit clairement. Alors que l'argent est bien, se soucier de ce que vous faites de votre vie est meilleur, parce que la vraie richesse est une question d'expérience. Un moment de dialogue réel, rempli d'histoires divertissantes et profanes, l'humour impitoyable, l'art subtil de ne pas donner un flot est une bourdonnement rafraîchissante pour une génération pour les aider à mener des vies contentées et ancrées."
   },
   {
     "id": 14,
     "title": "Narnia",
     "author": "C.S Lewis",
-    "seller": "AnnikaBrahms",
+    "seller":  { "name": "AnnikaBrahms", "avatar": "" },
     "image": "./assets/books/book14.jpg",
     "status": "non dispo.",
-    "description": "Le Monde de Narnia est une série de sept romans de fantasy écrits par C.S. Lewis. Les enfants Peter, Susan, Edmund et Lucy Pevensie découvrent par le biais d'une armoire magique un monde enchanté peuplé de créatures fantastiques. Ils y vivent des aventures extraordinaires, aidés par le puissant Lion Aslan, dans leur lutte contre la Sorcière Blanche. Cette saga mêle merveilleux, courage et valeurs morales.",
-    "owner": { "name": "AnnikaBrahms", "avatar": "" }
+    "description": "Le Monde de Narnia est une série de sept romans de fantasy écrits par C.S. Lewis. Les enfants Peter, Susan, Edmund et Lucy Pevensie découvrent par le biais d'une armoire magique un monde enchanté peuplé de créatures fantastiques. Ils y vivent des aventures extraordinaires, aidés par le puissant Lion Aslan, dans leur lutte contre la Sorcière Blanche. Cette saga mêle merveilleux, courage et valeurs morales."
   },
   {
     "id": 15,
     "title": "Company Of One",
     "author": "Paul Jarvis",
-    "seller": "Victoirefabr912",
+    "seller": { "name": "Victoirefabr912", "avatar": "" },
     "image": "./assets/books/book15.jpg",
     "status": "Disponible",
-    "description": "Et si la vraie clé d'une carrière plus riche et plus épanouissante n'était pas de créer et d'étendre une nouvelle start-up, mais plutôt de pouvoir travailler pour vous-même, de déterminer vos propres heures et de devenir une entreprise (hautement rentable) et durable d'une seule? Supposons que la solution la meilleure et plus intelligente soit simplement de rester petite ? Ce livre explique comment faire exactement cela. L'entreprise de One est une nouvelle approche rafraîchissante centrée sur le fait de rester petit et d'éviter la croissance, pour toutes les tailles d'entreprises. Pas en tant que freein qui n'est payé qu'à titre individuel, et non pas en tant que start-up entrepreneuriale qui veut s'étendre le plus rapidement possible, mais en tant que petite entreprise qui s'engage délibérément à rester ainsi. En restant petit, on peut avoir la liberté de rechercher des plaisirs plus significatifs dans la vie, et d'éviter les maux de tête qui résultent du traitement des employés, des longues réunions ou de l'inquiétude à propos de l'expansion. Company of One présente cette stratégie commerciale unique et explique comment le faire fonctionner pour vous, y compris comment générer des flux de trésorerie sur une base continue. Paul Jarvis a quitté le monde de l'entreprise quand il s'est rendu compte que travailler dans un monde à haute pression et très médiatisé n'était pas son idée de succès. Au lieu de cela, il travaille maintenant pour lui-même hors de sa maison sur une petite île luxuriante au large de Vancouver, et vit une vie beaucoup plus gratifiante et productive. Il n'a plus à faire face à un environnement qui exige constamment plus de productivité, plus de production et plus de croissance.   Dans Company of One, Jarvis explique comment vous pouvez trouver la bonne voie pour faire de même, y compris la planification de la mise en place de votre magasin, la détermination de vos revenus souhaités, la gestion des crises inattendues, le fait de garder vos clients clés heureux, et bien sûr, de faire tout cela par vous-même.",
-    "owner": { "name": "Victoirefabr912", "avatar": "" }
+    "description": "Et si la vraie clé d'une carrière plus riche et plus épanouissante n'était pas de créer et d'étendre une nouvelle start-up, mais plutôt de pouvoir travailler pour vous-même, de déterminer vos propres heures et de devenir une entreprise (hautement rentable) et durable d'une seule? Supposons que la solution la meilleure et plus intelligente soit simplement de rester petite ? Ce livre explique comment faire exactement cela. L'entreprise de One est une nouvelle approche rafraîchissante centrée sur le fait de rester petit et d'éviter la croissance, pour toutes les tailles d'entreprises. Pas en tant que freein qui n'est payé qu'à titre individuel, et non pas en tant que start-up entrepreneuriale qui veut s'étendre le plus rapidement possible, mais en tant que petite entreprise qui s'engage délibérément à rester ainsi. En restant petit, on peut avoir la liberté de rechercher des plaisirs plus significatifs dans la vie, et d'éviter les maux de tête qui résultent du traitement des employés, des longues réunions ou de l'inquiétude à propos de l'expansion. Company of One présente cette stratégie commerciale unique et explique comment le faire fonctionner pour vous, y compris comment générer des flux de trésorerie sur une base continue. Paul Jarvis a quitté le monde de l'entreprise quand il s'est rendu compte que travailler dans un monde à haute pression et très médiatisé n'était pas son idée de succès. Au lieu de cela, il travaille maintenant pour lui-même hors de sa maison sur une petite île luxuriante au large de Vancouver, et vit une vie beaucoup plus gratifiante et productive. Il n'a plus à faire face à un environnement qui exige constamment plus de productivité, plus de production et plus de croissance.   Dans Company of One, Jarvis explique comment vous pouvez trouver la bonne voie pour faire de même, y compris la planification de la mise en place de votre magasin, la détermination de vos revenus souhaités, la gestion des crises inattendues, le fait de garder vos clients clés heureux, et bien sûr, de faire tout cela par vous-même."
   },
     {
     "id": 16,
     "title": "The two towers",
     "author": "J.R.R. Tolkien",
-    "seller": "Lotrfanclub67",
+    "seller": { "name": "Lotrfanclub67", "avatar": "" },
     "image": "./assets/books/book16.jpg",
     "status": "Disponible",
-    "description": "Frodo et les Compagnons de l'Anneau ont été assaillis par le danger pendant leur quête pour empêcher l'anneau de décision de tomber entre les mains du Seigneur Noir en le détruisant dans les Cracks of Doom. Ils ont perdu le sorcier Gandalf, dans la bataille avec un esprit maléfique dans les Mines de Moria, et aux chutes de Rauros, Boromir, séduits par la puissance de l'Anneau, ont essayé de le saisir par la force. Alors que Frodon et Sam s'échappèrent, le reste de la compagnie fut attaqué par les Orques. Maintenant ils continuent leur voyage seul le long de la grande rivière Anduin - seul, c'est-à-dire, à l'exception du mystérieux personnage rampant qui suit partout où ils vont",
-    "owner": { "name": "Lotrfanclub67", "avatar": "" }
+    "description": "Frodo et les Compagnons de l'Anneau ont été assaillis par le danger pendant leur quête pour empêcher l'anneau de décision de tomber entre les mains du Seigneur Noir en le détruisant dans les Cracks of Doom. Ils ont perdu le sorcier Gandalf, dans la bataille avec un esprit maléfique dans les Mines de Moria, et aux chutes de Rauros, Boromir, séduits par la puissance de l'Anneau, ont essayé de le saisir par la force. Alors que Frodon et Sam s'échappèrent, le reste de la compagnie fut attaqué par les Orques. Maintenant ils continuent leur voyage seul le long de la grande rivière Anduin - seul, c'est-à-dire, à l'exception du mystérieux personnage rampant qui suit partout où ils vont"
   }
 ]
