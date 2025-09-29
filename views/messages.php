@@ -71,21 +71,33 @@
 
 
 <script>
-    // Récupère le HTML de la conversation statique
+    // Responsive JS pour affichage des conversations
     const conversationHTML = document.querySelector('.conversation-content').innerHTML;
 
-    document.querySelectorAll('.message-card').forEach(card => {
-        card.addEventListener('click', function() {
-            document.querySelector('.conversation-content').innerHTML = conversationHTML;
+    function showConversation() {
+        document.querySelector('.conversation-content').innerHTML = conversationHTML;
+        if (window.matchMedia('(max-width: 1023px)').matches) {
             document.querySelector('.messages-list').style.display = 'none';
             document.querySelector('.conversation-content').style.display = 'block';
-        });
+        } else {
+            document.querySelector('.messages-list').style.display = 'block';
+            document.querySelector('.conversation-content').style.display = 'block';
+        }
+    }
+
+    document.querySelectorAll('.message-card').forEach(card => {
+        card.addEventListener('click', showConversation);
     });
 
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('btn-retour')) {
-            document.querySelector('.messages-list').style.display = 'block';
-            document.querySelector('.conversation-content').style.display = 'none';
+            if (window.matchMedia('(max-width: 1023px)').matches) {
+                document.querySelector('.messages-list').style.display = 'block';
+                document.querySelector('.conversation-content').style.display = 'none';
+            } else {
+                document.querySelector('.messages-list').style.display = 'block';
+                document.querySelector('.conversation-content').style.display = 'block';
+            }
         }
     });
 </script>

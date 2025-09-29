@@ -14,7 +14,7 @@
         </div>
         <div class="navbar" id="navbar">
             <nav class="navbar-left">
-                <a href="index.php" class="active">Accueil</a>
+                <a href="index.php?page=home" class="active">Accueil</a>
                 <a href="index.php?page=books">Nos livres à l'échange</a>
             </nav>
             <nav class="navbar-right">

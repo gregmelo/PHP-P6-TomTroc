@@ -1,0 +1,53 @@
+@use 'mixins';
+@use 'variables';
+
+.error-404 {
+    text-align: center;
+    padding: 60px 20px;
+    min-height: calc(100vh - 52px - 80px);
+    box-sizing: border-box;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        font-size: 4rem;
+        color: #e74c3c;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+
+    a {
+        display: inline-block;
+        padding: 12px 32px;
+        background: var(--primary-light);
+        color: #fff;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: background 0.2s;
+        width: fit-content;
+    }
+
+    a:hover {
+        background: var(--primary-hover);
+    }
+
+    .logo-404-container {
+        margin-top: 40px;
+
+        img {
+            width: 230px;
+        }
+    }
+}

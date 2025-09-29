@@ -7,6 +7,11 @@ require_once 'config/_config.php';
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 switch ($page) {
+	case 'home':
+		require_once 'controllers/HomeController.php';
+		$controller = new HomeController();
+		$controller->index();
+		break;
 	case 'login':
 		require_once 'controllers/LoginController.php';
 		$controller = new LoginController();
@@ -27,12 +32,12 @@ switch ($page) {
 		$controller = new BooksController();
 		$controller->book_details();
 		break;
-			case 'book_edit':
+	case 'book_edit':
 		require_once 'controllers/BooksController.php';
 		$controller = new BooksController();
 		$controller->book_edit();
 		break;
-			case 'messages':
+	case 'messages':
 		require_once 'controllers/MessagesController.php';
 		$controller = new MessagesController();
 		$controller->messages();
@@ -47,9 +52,13 @@ switch ($page) {
 		$controller = new LoginController();
 		$controller->public_account();
 		break;
+	case 'testBDD':
+		require_once 'views/testBDD.php';
+		break;
 	default:
-		require_once 'controllers/HomeController.php';
-		$controller = new HomeController();
-		$controller->index();
+		ob_start();
+		require_once 'views/error404.php';
+		$content = ob_get_clean();
+		require_once 'views/main.php';
 		break;
 }
