@@ -1,3 +1,4 @@
 config/_config.php
 config/config.php
 pwd.txt
+tools/rehash_users.php
