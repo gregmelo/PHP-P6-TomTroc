@@ -995,6 +995,10 @@ footer {
   color: var(--text-main);
   margin: 0;
   padding-bottom: 40px;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  height: auto;
 }
 .content-book-details .book-detail-infos .proprietaire-infos {
   display: flex;
@@ -1065,6 +1069,13 @@ footer {
     height: 44px;
     align-content: center;
   }
+  .book-navigation a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 300;
+  }
   .content-book-details {
     max-width: 1440px;
     margin: 0;
@@ -1117,6 +1128,11 @@ footer {
     color: var(--text-main);
     margin: 0;
     padding-bottom: 40px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    height: auto;
+    max-height: none;
   }
   .content-book-details .book-detail-infos .proprietaire-infos {
     /* ========== HOVER : quand on survole tout le bloc proprietaire-infos ========== */

@@ -15,44 +15,25 @@
 <section class="last-books">
     <h2>Les derniers livres ajoutés</h2>
     <div class="last-books-list">
-        <div class="book-card">
-            <div class="book-infos"><!-- On place les infos en premier pour facilité les lecteurs d'écrans-->
-                <h3 class="title">Esther</h3>
-                <p class="author">Alabaster</p>
-                <p class="seller">Vendu par : CamilleClubLit</p>
-            </div>
-            <div class="book-tag">Disponible</div>
-            <img src="./assets/books/book01.jpg" alt="Couverture du livre 1">
-        </div>
-        <div class="book-card">
-            <div class="book-infos">
-                <h3 class="title">The Kinfolk Table</h3>
-                <p class="author">Nathan Williams</p>
-                <p class="seller">Vendu par : Nathalire</p>
-            </div>
-            <div class="book-tag">Disponible</div>
-            <img src="./assets/books/book02.jpg" alt="Couverture du livre 2">
-        </div>
-        <div class="book-card">
-            <div class="book-infos">
-                <h3 class="title">Wabi Sabi</h3>
-                <p class="author">Beth Kempton</p>
-                <p class="seller">Vendu par : Alexlecture</p>
-            </div>
-            <div class="book-tag">Disponible</div>
-            <img src="./assets/books/book03.jpg" alt="Couverture du livre 3">
-        </div>
-        <div class="book-card">
-            <div class="book-infos">
-                <h3 class="title">Milk & honey</h3>
-                <p class="author">Rupi Kaur</p>
-                <p class="seller">Vendu par : Hugo1990_12</p>
-            </div>
-            <div class="book-tag">Disponible</div>
-            <img src="./assets/books/book04.jpg" alt="Couverture du livre 4">
-        </div>
+        <?php if (!empty($lastBooks)): ?>
+            <?php foreach ($lastBooks as $book): ?>
+                <div class="book-card">
+                    <div class="book-infos">
+                        <h3 class="title"><?= htmlspecialchars($book['title']) ?></h3>
+                        <p class="author"><?= htmlspecialchars($book['author']) ?></p>
+                        <p class="seller">Vendu par : <?= htmlspecialchars($book['owner_pseudo'] ?? '') ?></p>
+                    </div>
+                    <div class="book-tag<?= (isset($book['availability']) && $book['availability'] !== 'Disponible') ? ' book-tag-red' : '' ?>">
+                        <?= htmlspecialchars($book['availability'] ?? 'Disponible') ?>
+                    </div>
+                    <img src="<?= htmlspecialchars($book['cover'] ?? 'assets/books/default.png') ?>" alt="Couverture du livre <?= htmlspecialchars($book['title'] ?? '') ?>">
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Aucun livre à afficher.</p>
+        <?php endif; ?>
     </div>
-    <a href="#" class="btn">Voir tous les livres</a>
+    <a href="index.php?page=books" class="btn">Voir tous les livres</a>
 </section>
 <section class="functioning">
     <h2>Comment ça marche ?</h2>
@@ -63,7 +44,7 @@
         <div class="functioning-card">Parcourez les livres disponibles chez d'autres membres.</div>
         <div class="functioning-card">Proposez un échange et discutez avec d'autres passionnés de lecture.</div>
     </div>
-    <a href="#" class="btn">Voir tous les livres</a>
+    <a href="index.php?page=books" class="btn">Voir tous les livres</a>
 </section>
 
 <section class="values">

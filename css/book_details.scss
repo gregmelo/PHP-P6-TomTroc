@@ -4,6 +4,7 @@
 .book-navigation {
     display: none;
 }
+
 .content-book-details {
     display: flex;
     flex-direction: column;
@@ -53,6 +54,10 @@
         p {
             @include mixins.paragraph(14px, 400, var(--text-main));
             padding-bottom: 40px;
+            white-space: normal;
+            overflow: visible;
+            text-overflow: unset;
+            height: auto;
         }
 
         .proprietaire-infos {
@@ -127,8 +132,16 @@
         padding: 0 150px;
         height: 44px;
         align-content: center;
-        
+
+        a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: 10px;
+            font-weight: 300;
+        }
     }
+
     .content-book-details {
         max-width: 1440px;
         margin: 0;
@@ -170,20 +183,26 @@
             p {
                 @include mixins.paragraph(14px, 400, var(--text-main));
                 padding-bottom: 40px;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: unset;
+                height: auto;
+                max-height: none;
             }
 
             .proprietaire-infos {
-                            /* ========== HOVER : quand on survole tout le bloc proprietaire-infos ========== */
-            &:hover {
-                .overlay {
-                    opacity: 0.3;
-                    /* voile légère — ajuste entre 0.08 et 0.2 selon l'effet désiré */
-                }
 
-                p {
-                    @include mixins.paragraph(14px, 500, var(--primary));
+                /* ========== HOVER : quand on survole tout le bloc proprietaire-infos ========== */
+                &:hover {
+                    .overlay {
+                        opacity: 0.3;
+                        /* voile légère — ajuste entre 0.08 et 0.2 selon l'effet désiré */
+                    }
+
+                    p {
+                        @include mixins.paragraph(14px, 500, var(--primary));
+                    }
                 }
-            }
             }
 
             .btn {

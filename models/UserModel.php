@@ -1,5 +1,6 @@
 <?php
 class UserModel
+
 {
     private $pdo;
 
@@ -80,5 +81,12 @@ class UserModel
             'avatar' => $avatarPath,
             'id' => $id
         ]);
+    }
+
+    public function getUserById($id)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM user WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
