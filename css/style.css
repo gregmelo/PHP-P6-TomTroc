@@ -1260,6 +1260,27 @@ footer {
   background-color: #EDF2F6;
   padding: 0 15px;
 }
+.content-account .account-infos-group .personal-infos form .form-group .infos-password {
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 400;
+  color: var(--text-main);
+  margin: 0;
+}
+.content-account .account-infos-group .personal-infos form .success p {
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 400;
+  color: var(--primary-light);
+  margin: 0;
+}
+.content-account .account-infos-group .personal-infos form .error p {
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 400;
+  color: var(--red);
+  margin: 0;
+}
 .content-account .account-infos-group .personal-infos form .btn {
   width: 100%;
   height: 63px;

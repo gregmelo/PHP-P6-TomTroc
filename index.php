@@ -55,6 +55,24 @@ switch ($page) {
 	case 'testBDD':
 		require_once 'views/testBDD.php';
 		break;
+	case 'process_register':
+		require_once 'controllers/LoginController.php';
+		$controller = new LoginController();
+		$controller->processRegister();
+		break;
+	case 'process_login':
+		require_once 'controllers/LoginController.php';
+		$controller = new LoginController();
+		$controller->processLogin();
+		break;
+	case 'logout':
+		require_once 'views/logout.php';
+		break;
+	case 'updateAccount':
+		require_once 'controllers/LoginController.php';
+		$controller = new LoginController();
+		$controller->updateAccount();
+		break;
 	default:
 		ob_start();
 		require_once 'views/error404.php';

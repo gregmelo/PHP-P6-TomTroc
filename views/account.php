@@ -1,103 +1,100 @@
+<?php $title = "Page mon compte"; ?>
+<?php
+if (!isset($_SESSION)) session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: index.php?page=login');
+    exit;
+}
+$user = $_SESSION['user'];
+
+function getMemberDuration($creation_date)
+{
+    $date = new DateTime($creation_date);
+    $now = new DateTime();
+    $interval = $date->diff($now);
+
+    if ($interval->y >= 1) {
+        return $interval->y . ' an' . ($interval->y > 1 ? 's' : '');
+    } elseif ($interval->m >= 1) {
+        return $interval->m . ' mois';
+    } elseif ($interval->days < 31) {
+        return 'moins d\'un mois';
+    }
+    return '';
+}
+
+?>
+
 <div class="content-account">
     <h1>Mon compte</h1>
     <div class="account-infos-group">
         <section class="account-infos">
-            <img src="assets/users/nathalire.jpg" alt="Avatar de Nathalire" class="avatar-account">
-            <button href="#" id="change-photo-btn">modifier</button>
-            <input type="file" accept="image/*" style="display:none;" id="photo-upload">
-            <h2>Nathalire</h2>
-            <p class="account-during">Membre d'epuis 1 an</p>
+            <img src="<?php echo $user['avatar']; ?>" alt="Avatar de <?php echo $user['pseudo']; ?>" class="avatar-account">
+            <button type="button" id="change-photo-btn">modifier</button>
+            <h2><?php echo $user['pseudo']; ?></h2>
+            <p class="account-during">Membre depuis <?php echo getMemberDuration($user['creation_date']); ?></p>
             <h3>bibliothèque</h3>
-            <p class="books-numbers"><i class="fa-solid fa-book"></i> 4 livres</p>
+            <p class="books-numbers"><i class="fa-solid fa-book"></i> <?php echo count($userBooks); ?> livre<?php echo count($userBooks) > 1 ? 's' : ''; ?></p>
         </section>
         <section class="personal-infos">
             <p>Vos informations personnelles</p>
-            <form action="">
+            <form action="index.php?page=updateAccount" method="post" enctype="multipart/form-data" id="account-form">
                 <div class="form-group">
                     <label for="email">Adresse email</label>
-                    <input type="text" id="email" name="email" value="nathalire@example.com" required>
+                    <input type="text" id="email" name="email" value="<?php echo $user['email']; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="avatar">Avatar</label>
+                    <input type="file" name="avatar" id="photo-upload" accept="image/*" style="display:none;">
                 </div>
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
-                    <input type="password" id="password" name="password" value="********" required>
+                    <input type="password" id="password" name="password" value="" placeholder="************">
+                    <small class="infos-password">Laisser vide pour ne pas modifier le mot de passe</small>
                 </div>
                 <div class="form-group">
                     <label for="pseudo">Pseudo</label>
-                    <input type="text" id="pseudo" name="pseudo" value="Nathalire" required>
+                    <input type="text" id="pseudo" name="pseudo" value="<?php echo $user['pseudo']; ?>" required>
                 </div>
+                <?php if (!empty($errors)): ?>
+                    <div class="error">
+                        <?php foreach ($errors as $error): ?>
+                            <p><?= htmlspecialchars($error) ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+                <?php if (!empty($success)): ?>
+                    <div class="success">
+                        <p><?= htmlspecialchars($success) ?></p>
+                    </div>
+                <?php endif; ?>
                 <button type="submit" class="btn">Enregistrer</button>
             </form>
+
         </section>
     </div>
     <section class="account-books-list">
-        <div class="account-book-card">
-            <div class="account-book-infos">
-                <img src="assets/books/book01.jpg" alt="couverture du livre 1">
-                <div class="account-book-details">
-                    <p>The Kinkfolk Table</p>
-                    <p>Nathan Williams</p>
-                    <div class="tag">disponible</div>
+        <?php if (!empty($userBooks)): ?>
+            <?php foreach ($userBooks as $book): ?>
+                <div class="account-book-card">
+                    <div class="account-book-infos">
+                        <img src="<?= htmlspecialchars($book['cover'] ?? 'assets/books/default.png') ?>" alt="couverture du livre">
+                        <div class="account-book-details">
+                            <p><?= htmlspecialchars($book['title']) ?></p>
+                            <p><?= htmlspecialchars($book['author']) ?></p>
+                            <div class="tag"><?= htmlspecialchars($book['availability'] ?? 'disponible') ?></div>
+                        </div>
+                    </div>
+                    <p><?= htmlspecialchars($book['description'] ?? '') ?></p>
+                    <div class="account-book-actions">
+                        <a href="index.php?page=book_edit&id=<?= $book['id'] ?>" class="account-book-edit">&Eacute;diter</a>
+                        <a href="#" class="account-book-delete">Supprimer</a>
+                    </div>
                 </div>
-            </div>
-            <p>J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante. Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table.
-
-            </p>
-            <div class="account-book-actions">
-                <a href="index.php?page=book_edit" class="account-book-edit">&Eacute;diter</a>
-                <a href="#" class="account-book-delete">Supprimer</a>
-            </div>
-        </div>
-        <div class="account-book-card">
-            <div class="account-book-infos">
-                <img src="assets/books/book01.jpg" alt="couverture du livre 1">
-                <div class="account-book-details">
-                    <p>The Kinkfolk Table</p>
-                    <p>Nathan Williams</p>
-                    <div class="tag">disponible</div>
-                </div>
-            </div>
-            <p>J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante. Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table.
-
-            </p>
-            <div class="account-book-actions">
-                <a href="index.php?page=book_edit" class="account-book-edit">&Eacute;diter</a>
-                <a href="#" class="account-book-delete">Supprimer</a>
-            </div>
-        </div>
-        <div class="account-book-card">
-            <div class="account-book-infos">
-                <img src="assets/books/book01.jpg" alt="couverture du livre 1">
-                <div class="account-book-details">
-                    <p>The Kinkfolk Table</p>
-                    <p>Nathan Williams</p>
-                    <div class="tag">disponible</div>
-                </div>
-            </div>
-            <p>J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante. Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table.
-
-            </p>
-            <div class="account-book-actions">
-                <a href="index.php?page=book_edit" class="account-book-edit">&Eacute;diter</a>
-                <a href="#" class="account-book-delete">Supprimer</a>
-            </div>
-        </div>
-        <div class="account-book-card">
-            <div class="account-book-infos">
-                <img src="assets/books/book01.jpg" alt="couverture du livre 1">
-                <div class="account-book-details">
-                    <p>The Kinkfolk Table</p>
-                    <p>Nathan Williams</p>
-                    <div class="tag">disponible</div>
-                </div>
-            </div>
-            <p>J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante. Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table.
-
-            </p>
-            <div class="account-book-actions">
-                <a href="index.php?page=book_edit" class="account-book-edit">&Eacute;diter</a>
-                <a href="#" class="account-book-delete">Supprimer</a>
-            </div>
-        </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Aucun livre dans votre bibliothèque.</p>
+        <?php endif; ?>
     </section>
     <section class="account-books-table">
         <table>
@@ -112,62 +109,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><img src="assets/books/book01.jpg" alt="couverture du livre 1" width="80"></td>
-                    <td>The Kinfolk Table</td>
-                    <td>Nathan Williams</td>
-                    <td class="description-cell">
-                        J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante.
-                        Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table.
-                    </td>
-                    <td><span class="tag">Disponible</span></td>
-                    <td>
-                        <a href="index.php?page=book_edit" class="account-book-edit">&Eacute;diter</a>
-                        <a href="#" class="account-book-delete">Supprimer</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="assets/books/book01.jpg" alt="couverture du livre 1" width="80"></td>
-                    <td>The Kinfolk Table</td>
-                    <td>Nathan Williams</td>
-                    <td class="description-cell">
-                        J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante.
-                        Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table.
-                    </td>
-                    <td><span class="tag">Disponible</span></td>
-                    <td>
-                        <a href="index.php?page=book_edit" class="account-book-edit">&Eacute;diter</a>
-                        <a href="#" class="account-book-delete">Supprimer</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="assets/books/book01.jpg" alt="couverture du livre 1" width="80"></td>
-                    <td>The Kinfolk Table</td>
-                    <td>Nathan Williams</td>
-                    <td class="description-cell">
-                        J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante.
-                        Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table.
-                    </td>
-                    <td><span class="tag">Disponible</span></td>
-                    <td>
-                        <a href="index.php?page=book_edit" class="account-book-edit">&Eacute;diter</a>
-                        <a href="#" class="account-book-delete">Supprimer</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="assets/books/book01.jpg" alt="couverture du livre 1" width="80"></td>
-                    <td>The Kinfolk Table</td>
-                    <td>Nathan Williams</td>
-                    <td class="description-cell">
-                        J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante.
-                        Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table.
-                    </td>
-                    <td><span class="tag">Disponible</span></td>
-                    <td>
-                        <a href="index.php?page=book_edit" class="account-book-edit">&Eacute;diter</a>
-                        <a href="#" class="account-book-delete">Supprimer</a>
-                    </td>
-                </tr>
+                <?php if (!empty($userBooks)): ?>
+                    <?php foreach ($userBooks as $book): ?>
+                        <tr>
+                            <td><img src="<?= htmlspecialchars($book['cover'] ?? 'assets/books/default.png') ?>" alt="couverture du livre 1" width="80"></td>
+                            <td><?= htmlspecialchars($book['title']) ?></td>
+                            <td><?= htmlspecialchars($book['author']) ?></td>
+                            <td class="description-cell">
+                                <?= htmlspecialchars($book['description'] ?? '') ?>
+                            </td>
+                            <td><span class="tag"><?= htmlspecialchars($book['availability'] ?? 'disponible') ?></span></td>
+                            <td>
+                                <a href="index.php?page=book_edit&id=<?= $book['id'] ?>" class="account-book-edit">&Eacute;diter</a>
+                                <a href="#" class="account-book-delete">Supprimer</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Aucun livre dans votre bibliothèque.</p>
+                <?php endif; ?>
             </tbody>
         </table>
 
@@ -175,7 +135,10 @@
 </div>
 
 <script>
-document.getElementById('change-photo-btn').addEventListener('click', function() {
-  document.getElementById('photo-upload').click();
-});
+    document.getElementById('change-photo-btn').addEventListener('click', function() {
+        document.getElementById('photo-upload').click();
+    });
+    document.getElementById('photo-upload').addEventListener('change', function() {
+        document.getElementById('account-form').submit();
+    });
 </script>

@@ -1,7 +1,10 @@
+<?php $title = "page d'inscription"; ?>
+
+<!-- Formulaire d'inscription -->
 <div class="content-login">
     <section class="connexion">
         <h2>Inscription</h2>
-        <form action="" method="post">
+        <form action="index.php?page=process_register" method="post">
             <div class="form-group">
                 <label for="pseudo">Pseudo</label>
                 <input type="text" id="pseudo" name="pseudo" required>
@@ -14,7 +17,14 @@
                 <label for="password">Mot de passe</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="btn" class="btn">Se connecter</button>
+            <?php if (!empty($errors)): ?>
+                <div class="error">
+                    <?php foreach ($errors as $error): ?>
+                        <p><?= htmlspecialchars($error) ?></p>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+            <button type="btn" class="btn">S'inscrire</button>
             <p>Déjà inscrit ? <a href="index.php?page=login">Connectez-vous</a></p>
         </form>
     </section>

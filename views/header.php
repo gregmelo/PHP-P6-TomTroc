@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -20,21 +22,24 @@
             <nav class="navbar-right">
                 <a href="index.php?page=messages"><i class="fa-regular fa-message"></i> Messagerie <span class="message-badge">1</span></a>
                 <a href="index.php?page=account"><i class="fa-regular fa-user"></i> Mon compte</a>
-                <a href="index.php?page=login">Connexion</a>
-                <!--<a href="index.php?page=addbook">Deconnexion</a>-->
+                <?php if (isset($_SESSION['user'])): ?>
+                    <a href="index.php?page=logout">Déconnexion</a>
+                <?php else: ?>
+                    <a href="index.php?page=login">Connexion</a>
+                <?php endif; ?>
             </nav>
         </div>
         <div class="menu-toggle" id="menu-toggle">
             <i class="fa-solid fa-bars" id="burger-icon"></i>
             <i class="fa-solid fa-xmark" id="close-icon" style="display:none;"></i>
         </div>
-</header>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.getElementById('menu-toggle');
-    const burgerIcon = document.getElementById('burger-icon');
-    const closeIcon = document.getElementById('close-icon');
-    const navbar = document.getElementById('navbar');
+    </header>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const burgerIcon = document.getElementById('burger-icon');
+            const closeIcon = document.getElementById('close-icon');
+            const navbar = document.getElementById('navbar');
 
 
             burgerIcon.addEventListener('click', function() {
@@ -50,19 +55,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 closeIcon.style.display = 'none';
             });
 
-    // Au chargement, cacher le menu en mobile
-    function handleResize() {
-        if(window.innerWidth <= 768) {
-            // navbar.style.display = 'none';
-            burgerIcon.style.display = 'inline';
-            closeIcon.style.display = 'none';
-        } else {
-            navbar.style.display = 'flex';
-            burgerIcon.style.display = 'none';
-            closeIcon.style.display = 'none';
-        }
-    }
-    window.addEventListener('resize', handleResize);
-    handleResize();
-});
-</script>
+            // Au chargement, cacher le menu en mobile
+            function handleResize() {
+                if (window.innerWidth <= 768) {
+                    // navbar.style.display = 'none';
+                    burgerIcon.style.display = 'inline';
+                    closeIcon.style.display = 'none';
+                } else {
+                    navbar.style.display = 'flex';
+                    burgerIcon.style.display = 'none';
+                    closeIcon.style.display = 'none';
+                }
+            }
+            window.addEventListener('resize', handleResize);
+            handleResize();
+        });
+    </script>
