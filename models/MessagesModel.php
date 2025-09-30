@@ -1,0 +1,68 @@
+<?php
+class MessagesModel {
+    // Compte le nombre de messages reçus non lus pour l'utilisateur
+    public function countUnreadMessages($userId) {
+        $stmt = $this->pdo->prepare(
+            "SELECT COUNT(*) FROM message WHERE receiver_id = :userId AND message_read = 0"
+        );
+        $stmt->execute(['userId' => $userId]);
+        return (int)$stmt->fetchColumn();
+    }
+    private $pdo;
+    public function __construct($pdo) {
+        $this->pdo = $pdo;
+    }
+
+    // Récupère la liste des conversations de l'utilisateur (groupées par interlocuteur)
+    public function getConversations($userId) {
+        $stmt = $this->pdo->prepare(
+            "SELECT m.*, u.pseudo, u.avatar
+             FROM message m
+             JOIN user u ON (u.id = IF(m.sender_id = :userId, m.receiver_id, m.sender_id))
+             WHERE m.sender_id = :userId OR m.receiver_id = :userId
+             GROUP BY u.id
+             ORDER BY MAX(m.send_at) DESC"
+        );
+        $stmt->execute(['userId' => $userId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Récupère tous les messages d'une conversation entre deux utilisateurs
+    public function getConversationMessages($userId, $otherId) {
+        $stmt = $this->pdo->prepare(
+            "SELECT m.*, u.pseudo, u.avatar
+             FROM message m
+             JOIN user u ON u.id = m.sender_id
+             WHERE (m.sender_id = :userId AND m.receiver_id = :otherId)
+                OR (m.sender_id = :otherId AND m.receiver_id = :userId)
+             ORDER BY m.send_at ASC"
+        );
+        $stmt->execute(['userId' => $userId, 'otherId' => $otherId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Envoie un nouveau message
+    public function sendMessage($senderId, $receiverId, $content) {
+        $stmt = $this->pdo->prepare(
+            "INSERT INTO message (sender_id, receiver_id, content, send_at, message_read)
+             VALUES (:senderId, :receiverId, :content, NOW(), 0)"
+        );
+        return $stmt->execute([
+            'senderId' => $senderId,
+            'receiverId' => $receiverId,
+            'content' => $content
+        ]);
+    }
+
+    // Marque tous les messages reçus comme lus dans une conversation
+    public function markAsRead($userId, $otherId) {
+        $stmt = $this->pdo->prepare(
+            "UPDATE message SET message_read = 1
+             WHERE receiver_id = :userId AND sender_id = :otherId AND message_read = 0"
+        );
+        return $stmt->execute([
+            'userId' => $userId,
+            'otherId' => $otherId
+        ]);
+    }
+}

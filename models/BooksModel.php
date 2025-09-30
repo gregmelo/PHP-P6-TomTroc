@@ -2,7 +2,7 @@
 class BooksModel
 {
     private $pdo;
-    
+
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
@@ -12,7 +12,6 @@ class BooksModel
         $stmt = $this->pdo->prepare("SELECT * FROM book WHERE id_user = :user_id");
         $stmt->execute(['user_id' => $userId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
     }
     public function getAllBooks()
     {

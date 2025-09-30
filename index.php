@@ -40,7 +40,12 @@ switch ($page) {
 	case 'messages':
 		require_once 'controllers/MessagesController.php';
 		$controller = new MessagesController();
-		$controller->messages();
+		$controller->index();
+		break;
+	case 'messages_send':
+		require_once 'controllers/MessagesController.php';
+		$controller = new MessagesController();
+		$controller->send();
 		break;
 	case 'account':
 		require_once 'controllers/LoginController.php';

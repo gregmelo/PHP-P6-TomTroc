@@ -1,71 +1,77 @@
 <div class="messages-container">
     <aside class="messages-list">
         <h1>Messagerie</h1>
-        <div class="message-card" data-conversation="1">
-            <img src="assets/users/Alexlecture.jpg" alt="Photo de profil de l'utilisateur">
-            <div class="message-infos">
-                <div class="message-details">
-                    <p class="message-username">Alexlecture</p>
-                    <p class="message-time">15:43</p>
-                </div>
-                <p class="last-message">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-        </div>
-        <hr>
-        <div class="message-card" data-conversation="2">
-            <img src="assets/users/Nathalire.jpg" alt="Photo de profil de l'utilisateur">
-            <div class="message-infos">
-                <div class="message-details">
-                    <p class="message-username">Nathalire</p>
-                    <p class="message-time">20:08</p>
-                </div>
-                <p class="last-message">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-        </div>
-        <hr>
-        <div class="message-card" data-conversation="3">
-            <img src="assets/users/Sas634.jpg" alt="Photo de profil de l'utilisateur">
-            <div class="message-infos">
-                <div class="message-details">
-                    <p class="message-username">Sas634</p>
-                    <p class="message-time">15:08</p>
-                </div>
-                <p class="last-message">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </div>
-        </div>
-        <hr>
+        <?php if (!empty($conversations)): ?>
+            <?php foreach ($conversations as $conv): ?>
+                <a href="index.php?page=messages&with=<?= htmlspecialchars($conv['sender_id'] == $_SESSION['user']['id'] ? $conv['receiver_id'] : $conv['sender_id']) ?>" class="message-card" data-conversation="<?= htmlspecialchars($conv['sender_id'] == $_SESSION['user']['id'] ? $conv['receiver_id'] : $conv['sender_id']) ?>">
+                    <img src="<?= htmlspecialchars($conv['avatar'] ?? 'assets/users/default.png') ?>" alt="Photo de profil de l'utilisateur">
+                    <div class="message-infos">
+                        <div class="message-details">
+                            <p class="message-username"><?= htmlspecialchars($conv['pseudo']) ?></p>
+                            <p class="message-time"><?= date('H:i', strtotime($conv['send_at'])) ?></p>
+                        </div>
+                        <p class="last-message"><?= htmlspecialchars($conv['content']) ?></p>
+                        <?php if (isset($conv['message_read']) && !$conv['message_read'] && $conv['receiver_id'] == $_SESSION['user']['id']): ?>
+                            <span class="unread-dot"></span>
+                        <?php endif; ?>
+                    </div>
+                </a>
+                <hr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Aucune conversation.</p>
+        <?php endif; ?>
     </aside>
     <section class="conversation-content">
-        <!-- Conversation sélectionnée s'affichera ici -->
-        <!--<div class="conversation-placeholder">Sélectionnez une conversation</div>-->
-
-        <button class="btn-retour"><i class="fa fa-arrow-left"></i> retour</button>
-
-        <div class="conversation-details">
-            <div class="conversation-header">
-                <img src="assets/users/Alexlecture.jpg" alt="Photo de profil de l'utilisateur">
-                <p class="conversation-username">Alexlecture</p>
-            </div>
-            <div class="conversation-messages">
-                <div class="conversation-recipient">
-                    <p class="conversation-time">21.08 15:44</p>
-                    <p class="conversation-message">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        <?php if (!empty($messages)): ?>
+            <button class="btn-retour"><i class="fa fa-arrow-left"></i> retour</button>
+            <div class="conversation-details">
+                <?php
+                // Trouver la conversation sélectionnée
+                $interlocuteur_avatar = 'assets/users/default.png';
+                $interlocuteur_pseudo = '';
+                if (!empty($conversations) && isset($_GET['with'])) {
+                    foreach ($conversations as $conv) {
+                        $conv_id = ($conv['sender_id'] == $_SESSION['user']['id']) ? $conv['receiver_id'] : $conv['sender_id'];
+                        if ($conv_id == $_GET['with']) {
+                            $interlocuteur_avatar = $conv['avatar'] ?? 'assets/users/default.png';
+                            $interlocuteur_pseudo = $conv['pseudo'] ?? '';
+                            break;
+                        }
+                    }
+                }
+                ?>
+                <div class="conversation-header">
+                    <img src="<?= htmlspecialchars($interlocuteur_avatar) ?>" alt="Photo de profil de l'utilisateur">
+                    <p class="conversation-username"><?= htmlspecialchars($interlocuteur_pseudo) ?></p>
                 </div>
-                <div class="conversation-sender">
-                    <div class="sender">
-                        <img src="assets/users/Alexlecture.jpg" alt="Photo de profil de l'utilisateur">
-                        <p class="conversation-time"> 21.08 15:44</p>
-                    </div>
-                    <p class="conversation-message">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <div class="conversation-messages">
+                    <?php foreach ($messages as $msg): ?>
+                        <?php if ($msg['receiver_id'] == $_SESSION['user']['id']): ?>
+                            <div class="conversation-sender">
+                                <div class="sender">
+                                    <img src="<?= htmlspecialchars($interlocuteur_avatar ?? 'assets/users/default.png') ?>" alt="Votre avatar">
+                                    <p class="conversation-time"><?= date('d.m H:i', strtotime($msg['send_at'])) ?></p>
+                                </div>
+                                <p class="conversation-message"><?= htmlspecialchars($msg['content']) ?></p>
+                            </div>
+                        <?php else: ?>
+                            <div class="conversation-recipient">
+                                <p class="conversation-time"><?= date('d.m H:i', strtotime($msg['send_at'])) ?></p>
+                                <p class="conversation-message"><?= htmlspecialchars($msg['content']) ?></p>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
+                <form class="message-form" method="POST" action="index.php?page=messages_send">
+                    <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($messages[0]['sender_id'] == $_SESSION['user']['id'] ? $messages[0]['receiver_id'] : $messages[0]['sender_id']) ?>">
+                    <input type="text" name="content" placeholder="Écrire un message..." required />
+                    <button type="submit" class="btn">Envoyer</button>
+                </form>
             </div>
-            <form class="message-form">
-                <input type="text" placeholder="Écrire un message..." />
-                <button type="submit" class="btn">Envoyer</button>
-            </form>
-
-
-        </div>
+        <?php else: ?>
+            <div class="conversation-placeholder">Sélectionnez une conversation</div>
+        <?php endif; ?>
     </section>
 </div>
 
@@ -86,7 +92,12 @@
     }
 
     document.querySelectorAll('.message-card').forEach(card => {
-        card.addEventListener('click', showConversation);
+        card.addEventListener('click', function(e) {
+            if (window.matchMedia('(max-width: 1023px)').matches) {
+                e.preventDefault();
+                showConversation();
+            }
+        });
     });
 
     document.addEventListener('click', function(e) {
