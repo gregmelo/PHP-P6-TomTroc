@@ -6,6 +6,7 @@ class HomeController {
         $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
         $booksModel = new BooksModel($pdo);
         $lastBooks = $booksModel->getLastBooks(4);
+        
         ob_start();
         // $lastBooks sera disponible dans la vue
         require __DIR__ . '/../views/home.php';

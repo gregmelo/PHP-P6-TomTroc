@@ -1,4 +1,3 @@
-
 <?php $title = "Page du livre " . htmlspecialchars($book['title'] ?? ''); ?>
 
 <section class="book-navigation"><a href="index.php?page=books">Nos livres</a> > <?= htmlspecialchars($book['title'] ?? '') ?></section>
@@ -13,7 +12,7 @@
         <h3>description</h3>
         <p><?= nl2br(htmlspecialchars($book['description'] ?? '')) ?></p>
         <h3>propriétaire</h3>
-        <a href="index.php?page=public_account&id=<?= $book['id_user'] ?>">
+        <a href="index.php?page=<?= (isset($_SESSION['user']['id']) && $_SESSION['user']['id'] == $book['id_user']) ? 'account' : 'public_account&id=' . $book['id_user'] ?>">
             <div class="proprietaire-infos">
                 <div class="avatar">
                     <img src="<?= htmlspecialchars($book['owner_avatar'] ?? 'assets/users/default.png') ?>" alt="Photo de profil de <?= htmlspecialchars($book['owner_pseudo'] ?? '') ?>">
@@ -22,6 +21,10 @@
                 <p><?= htmlspecialchars($book['owner_pseudo'] ?? '') ?></p>
             </div>
         </a>
-        <a href="#" class="btn">Envoyer un message</a>
+        <?php if (isset($_SESSION['user']['id']) && $_SESSION['user']['id'] == $book['id_user']): ?>
+            <a href="#" class="btn" style="pointer-events: none; opacity: 0.5; cursor: not-allowed;">Envoyer un message</a>
+        <?php else: ?>
+            <a href="index.php?page=messages&with=<?= $book['id_user'] ?>" class="btn">Envoyer un message</a>
+        <?php endif; ?>
     </section>
 </div>

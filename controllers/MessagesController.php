@@ -1,7 +1,9 @@
 
 <?php
-class MessagesController {
-    public function index() {
+class MessagesController
+{
+    public function index()
+    {
         if (!isset($_SESSION['user']['id'])) {
             header('Location: index.php?page=login');
             exit;
@@ -17,13 +19,46 @@ class MessagesController {
         if ($selected) {
             $messagesModel->markAsRead($userId, $selected);
         }
+        $selected = isset($_GET['with']) ? intval($_GET['with']) : null;
+        $messages = $selected ? $messagesModel->getConversationMessages($userId, $selected) : [];
+        if ($selected) {
+            $messagesModel->markAsRead($userId, $selected);
+        }
+
+        // Ajout pour avatar/pseudo de l'interlocuteur
+        require_once __DIR__ . '/../models/UserModel.php';
+        $userModel = new UserModel($pdo);
+        $interlocuteur_avatar = 'assets/users/default.png';
+        $interlocuteur_pseudo = '';
+        if ($selected) {
+            // Recherche dans les conversations existantes
+            foreach ($conversations as $conv) {
+                $conv_id = ($conv['sender_id'] == $userId) ? $conv['receiver_id'] : $conv['sender_id'];
+                if ($conv_id == $selected) {
+                    $interlocuteur_avatar = $conv['avatar'] ?? 'assets/users/default.png';
+                    $interlocuteur_pseudo = $conv['pseudo'] ?? '';
+                    break;
+                }
+            }
+            // Si aucune conversation existante, récupérer l'utilisateur cible
+            if (empty($interlocuteur_pseudo)) {
+                $destinataire = $userModel->getUserById($selected);
+                if ($destinataire) {
+                    $interlocuteur_avatar = $destinataire['avatar'] ?? 'assets/users/default.png';
+                    $interlocuteur_pseudo = $destinataire['pseudo'] ?? '';
+                }
+            }
+        }
+
+        // Passe ces variables à la vue
         ob_start();
         require __DIR__ . '/../views/messages.php';
         $content = ob_get_clean();
         require_once __DIR__ . '/../views/main.php';
     }
 
-    public function send() {
+    public function send()
+    {
         if (!isset($_SESSION['user']['id'])) {
             header('Location: index.php?page=login');
             exit;

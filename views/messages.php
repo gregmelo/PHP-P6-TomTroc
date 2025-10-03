@@ -23,24 +23,9 @@
         <?php endif; ?>
     </aside>
     <section class="conversation-content">
-        <?php if (!empty($messages)): ?>
+        <?php if (!empty($messages) || isset($_GET['with'])): ?>
             <button class="btn-retour"><i class="fa fa-arrow-left"></i> retour</button>
             <div class="conversation-details">
-                <?php
-                // Trouver la conversation sélectionnée
-                $interlocuteur_avatar = 'assets/users/default.png';
-                $interlocuteur_pseudo = '';
-                if (!empty($conversations) && isset($_GET['with'])) {
-                    foreach ($conversations as $conv) {
-                        $conv_id = ($conv['sender_id'] == $_SESSION['user']['id']) ? $conv['receiver_id'] : $conv['sender_id'];
-                        if ($conv_id == $_GET['with']) {
-                            $interlocuteur_avatar = $conv['avatar'] ?? 'assets/users/default.png';
-                            $interlocuteur_pseudo = $conv['pseudo'] ?? '';
-                            break;
-                        }
-                    }
-                }
-                ?>
                 <div class="conversation-header">
                     <img src="<?= htmlspecialchars($interlocuteur_avatar) ?>" alt="Photo de profil de l'utilisateur">
                     <p class="conversation-username"><?= htmlspecialchars($interlocuteur_pseudo) ?></p>
@@ -64,7 +49,7 @@
                     <?php endforeach; ?>
                 </div>
                 <form class="message-form" method="POST" action="index.php?page=messages_send">
-                    <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($messages[0]['sender_id'] == $_SESSION['user']['id'] ? $messages[0]['receiver_id'] : $messages[0]['sender_id']) ?>">
+                    <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($receiver_id) ?>">
                     <input type="text" name="content" placeholder="Écrire un message..." required />
                     <button type="submit" class="btn">Envoyer</button>
                 </form>

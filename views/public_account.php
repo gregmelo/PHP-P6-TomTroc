@@ -1,17 +1,5 @@
 <?php
 
-$id_user = isset($_GET['id']) ? intval($_GET['id']) : null;
-require_once __DIR__ . '/../config/_config.php';
-require_once __DIR__ . '/../models/UserModel.php';
-require_once __DIR__ . '/../models/BooksModel.php';
-
-$pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
-$userModel = new UserModel($pdo);
-$booksModel = new BooksModel($pdo);
-
-$user = $id_user ? $userModel->getUserById($id_user) : null;
-$books = $id_user ? $booksModel->getUserBooks($id_user) : [];
-
 function getMemberDuration($creation_date)
 {
     $date = new DateTime($creation_date);
@@ -38,7 +26,12 @@ function getMemberDuration($creation_date)
             <p class="public-account-during">Membre depuis <?php echo getMemberDuration($user['creation_date']); ?></p>
             <h3>bibliothèque</h3>
             <p class="books-numbers"><i class="fa-solid fa-book"></i> <?= count($books) ?> livres</p>
-            <button type="submit" class="btn">Écrire un message</button>
+            <!--<button type="submit" class="btn">Écrire un message</button>-->
+            <?php if (isset($_SESSION['user']['id']) && $_SESSION['user']['id'] == $user['id']): ?>
+                <button type="button" class="btn" style="pointer-events: none; opacity: 0.5; cursor: not-allowed;">Écrire un message</button>
+            <?php else: ?>
+                <button type="button" onclick="location.href='index.php?page=messages&with=<?= $user['id'] ?>'" class="btn">Écrire un message</button>
+            <?php endif; ?>
         </section>
     </div>
     <section class="public-account-books-list">
@@ -56,7 +49,9 @@ function getMemberDuration($creation_date)
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <p>Aucun livre dans la bibliothèque.</p>
+            <tr>
+                <td colspan="4">Aucun livre dans la bibliothèque.</td>
+            </tr>
         <?php endif; ?>
     </section>
     <section class="public-account-books-table">

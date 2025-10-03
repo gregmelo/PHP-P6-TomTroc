@@ -20,22 +20,34 @@ class LoginController
 
     public function account()
     {
-    require_once __DIR__ . '/../config/_config.php';
-    require_once __DIR__ . '/../models/BooksModel.php';
-    $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-    $booksModel = new BooksModel($pdo);
-    $userId = $_SESSION['user']['id'];
-    $userBooks = $booksModel->getUserBooks($userId);
-    // Passage à la vue
-    ob_start();
-    // $userBooks sera disponible dans la vue
-    require __DIR__ . '/../views/account.php';
-    $content = ob_get_clean();
-    require_once __DIR__ . '/../views/main.php';
+        require_once __DIR__ . '/../config/_config.php';
+        require_once __DIR__ . '/../models/BooksModel.php';
+        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
+        $booksModel = new BooksModel($pdo);
+        $userId = $_SESSION['user']['id'];
+        $userBooks = $booksModel->getUserBooks($userId);
+        // Passage à la vue
+        ob_start();
+        // $userBooks sera disponible dans la vue
+        require __DIR__ . '/../views/account.php';
+        $content = ob_get_clean();
+        require_once __DIR__ . '/../views/main.php';
     }
 
     public function public_account()
     {
+        $id_user = isset($_GET['id']) ? intval($_GET['id']) : null;
+        require_once __DIR__ . '/../config/_config.php';
+        require_once __DIR__ . '/../models/UserModel.php';
+        require_once __DIR__ . '/../models/BooksModel.php';
+
+        $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
+        $userModel = new UserModel($pdo);
+        $booksModel = new BooksModel($pdo);
+
+        $user = $id_user ? $userModel->getUserById($id_user) : null;
+        $books = $id_user ? $booksModel->getUserBooks($id_user) : [];
+
         ob_start();
         require_once __DIR__ . '/../views/public_account.php';
         $content = ob_get_clean();

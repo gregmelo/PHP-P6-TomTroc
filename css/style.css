@@ -2325,7 +2325,7 @@ footer {
     flex: 1;
     padding: 35px 0 0 44px;
     overflow-y: auto;
-    max-height: 100vh;
+    max-height: 100%;
     height: auto;
   }
   .messages-container .conversation-content .btn-retour {
@@ -2371,6 +2371,7 @@ footer {
     flex-direction: column;
     justify-content: flex-end;
     max-height: 60vh;
+    height: 400px;
     overflow-y: auto;
     flex: 1;
   }
