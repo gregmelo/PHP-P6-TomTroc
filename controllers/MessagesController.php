@@ -37,6 +37,7 @@ class MessagesController
                 if ($conv_id == $selected) {
                     $interlocuteur_avatar = $conv['avatar'] ?? 'assets/users/default.png';
                     $interlocuteur_pseudo = $conv['pseudo'] ?? '';
+                    $interlocuteur_id = $conv_id ?? null;
                     break;
                 }
             }
@@ -46,6 +47,7 @@ class MessagesController
                 if ($destinataire) {
                     $interlocuteur_avatar = $destinataire['avatar'] ?? 'assets/users/default.png';
                     $interlocuteur_pseudo = $destinataire['pseudo'] ?? '';
+                    $interlocuteur_id = $destinataire['id'] ?? null;
                 }
             }
         }

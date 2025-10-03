@@ -3,7 +3,7 @@
 <section class="book-navigation"><a href="index.php?page=books">Nos livres</a> > <?= htmlspecialchars($book['title'] ?? '') ?></section>
 <div class="content-book-details">
     <section class="illustration-book-detail">
-        <img src="<?= htmlspecialchars($book['cover'] ?? 'assets/books/default.png') ?>" alt="Couverture du livre">
+        <img src="<?= htmlspecialchars($book['cover'] ?? 'assets/books/default.png') ?>" alt="Couverture du livre <?= htmlspecialchars($book['title'] ?? '') ?>">
     </section>
     <section class="book-detail-infos">
         <h1><?= htmlspecialchars($book['title'] ?? '') ?></h1>

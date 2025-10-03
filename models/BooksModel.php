@@ -46,4 +46,25 @@ class BooksModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+    public function updateBook($id, $title, $author, $description, $status, $cover = null)
+    {
+        if ($cover) {
+            $sql = "UPDATE book SET title=?, author=?, description=?, availability=?, cover=? WHERE id=?";
+            $params = [$title, $author, $description, $status, $cover, $id];
+        } else {
+            $sql = "UPDATE book SET title=?, author=?, description=?, availability=? WHERE id=?";
+            $params = [$title, $author, $description, $status, $id];
+        }
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+    }
+
+    public function bookDelete($id){
+        $sql = "DELETE FROM book WHERE id = ?";
+        $params = [$id];
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+    }
 }

@@ -49,7 +49,7 @@
                     <?php endforeach; ?>
                 </div>
                 <form class="message-form" method="POST" action="index.php?page=messages_send">
-                    <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($receiver_id) ?>">
+                    <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($interlocuteur_id) ?>">
                     <input type="text" name="content" placeholder="Écrire un message..." required />
                     <button type="submit" class="btn">Envoyer</button>
                 </form>

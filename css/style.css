@@ -1361,6 +1361,9 @@ footer {
   width: fit-content;
   margin-top: 16px;
 }
+.content-account .account-books-list .account-book-card .account-book-infos .account-book-details .tag-red {
+  background-color: var(--secondary);
+}
 .content-account .account-books-list .account-book-card p {
   max-width: 220px;
   font-family: var(--font-body);
@@ -1548,6 +1551,9 @@ footer {
     border-radius: 30px;
     width: fit-content;
     margin-top: 16px;
+  }
+  .content-account .account-books-table table .tag-red {
+    background-color: var(--secondary);
   }
 }
 .content-public-account {

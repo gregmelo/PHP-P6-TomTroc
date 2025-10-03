@@ -44,7 +44,7 @@ function getMemberDuration($creation_date)
                     <input type="text" id="email" name="email" value="<?php echo $user['email']; ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="avatar">Avatar</label>
+                    <label for="avatar" style="display:none;">Avatar</label>
                     <input type="file" name="avatar" id="photo-upload" accept="image/*" style="display:none;">
                 </div>
                 <div class="form-group">
@@ -82,7 +82,10 @@ function getMemberDuration($creation_date)
                         <div class="account-book-details">
                             <p><?= htmlspecialchars($book['title']) ?></p>
                             <p><?= htmlspecialchars($book['author']) ?></p>
-                            <div class="tag"><?= htmlspecialchars($book['availability'] ?? 'disponible') ?></div>
+                            <?php var_dump($book['availability']); ?>
+                            <div class="tag<?= (strtolower($book['availability'] ?? '') === 'indisponible') ? ' tag-red' : '' ?>">
+                                <?= htmlspecialchars($book['availability'] ?? 'Disponible') ?>
+                            </div>
                         </div>
                     </div>
                     <p><?= htmlspecialchars($book['description'] ?? '') ?></p>
@@ -93,7 +96,9 @@ function getMemberDuration($creation_date)
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <p>Aucun livre dans votre bibliothèque.</p>
+            <tr>
+                <td colspan="4">Aucun livre dans la bibliothèque.</td>
+            </tr>
         <?php endif; ?>
     </section>
     <section class="account-books-table">
@@ -118,10 +123,10 @@ function getMemberDuration($creation_date)
                             <td class="description-cell">
                                 <?= htmlspecialchars($book['description'] ?? '') ?>
                             </td>
-                            <td><span class="tag"><?= htmlspecialchars($book['availability'] ?? 'disponible') ?></span></td>
+                            <td><span class="tag<?= (strtolower($book['availability'] ?? '') === 'indisponible') ? ' tag-red' : '' ?>"><?= htmlspecialchars($book['availability'] ?? 'Disponible') ?></span></td>
                             <td>
                                 <a href="index.php?page=book_edit&id=<?= $book['id'] ?>" class="account-book-edit">&Eacute;diter</a>
-                                <a href="#" class="account-book-delete">Supprimer</a>
+                                <a href="index.php?page=book_delete&id=<?= $book['id'] ?>" class="account-book-delete">Supprimer</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

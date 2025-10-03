@@ -102,7 +102,8 @@
                         background-color: #EDF2F6;
                         padding: 0 15px;
                     }
-                    .infos-password{
+
+                    .infos-password {
                         @include mixins.paragraph(8px, 400, var(--text-main));
                     }
                 }
@@ -110,6 +111,7 @@
                 .success p {
                     @include mixins.paragraph(8px, 400, var(--primary-light));
                 }
+
                 .error p {
                     @include mixins.paragraph(8px, 400, var(--red));
                 }
@@ -177,6 +179,11 @@
                         width: fit-content;
                         margin-top: 16px;
                     }
+
+                    .tag-red {
+                        background-color: var(--secondary);
+                    }
+
                 }
             }
 
@@ -377,6 +384,10 @@
                     border-radius: 30px;
                     width: fit-content;
                     margin-top: 16px;
+                }
+
+                .tag-red {
+                    background-color: var(--secondary);
                 }
             }
         }

@@ -156,6 +156,10 @@ class LoginController
         $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
         $userModel = new UserModel($pdo);
         $userId = $_SESSION['user']['id'];
+        require_once __DIR__ . '/../models/BooksModel.php';
+        $bookModel = new BooksModel($pdo);
+        $userBooks = $bookModel->getUserBooks($userId);
+
 
         $errors = [];
         $success = '';

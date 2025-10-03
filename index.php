@@ -78,6 +78,16 @@ switch ($page) {
 		$controller = new LoginController();
 		$controller->updateAccount();
 		break;
+	case 'book_update':
+		require_once 'controllers/BooksController.php';
+		$controller = new BooksController();
+		$controller->book_update();
+		break;
+	case 'book_delete':
+		require_once 'controllers/BooksController.php';
+		$controller = new BooksController();
+		$controller->book_delete();
+		break;
 	default:
 		ob_start();
 		require_once 'views/error404.php';
