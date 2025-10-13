@@ -1,20 +1,46 @@
 <?php
-class MessagesModel {
-    // Compte le nombre de messages reçus non lus pour l'utilisateur
-    public function countUnreadMessages($userId) {
+
+/**
+ * Modèle de gestion des messages privés
+ * Gère les conversations, l'envoi et la lecture des messages
+ */
+class MessagesModel
+{
+    /**
+     * Compte le nombre de messages reçus non lus pour l'utilisateur
+     * @param int $userId
+     * @return int
+     */
+    public function countUnreadMessages($userId)
+    {
         $stmt = $this->pdo->prepare(
             "SELECT COUNT(*) FROM message WHERE receiver_id = :userId AND message_read = 0"
         );
         $stmt->execute(['userId' => $userId]);
         return (int)$stmt->fetchColumn();
     }
+    /**
+     * Instance PDO pour la connexion à la base
+     * @var PDO
+     */
     private $pdo;
-    public function __construct($pdo) {
+
+    /**
+     * Constructeur
+     * @param PDO $pdo
+     */
+    public function __construct($pdo)
+    {
         $this->pdo = $pdo;
     }
 
-    // Récupère la liste des conversations de l'utilisateur (groupées par interlocuteur)
-    public function getConversations($userId) {
+    /**
+     * Récupère la liste des conversations de l'utilisateur (groupées par interlocuteur)
+     * @param int $userId
+     * @return array
+     */
+    public function getConversations($userId)
+    {
         $stmt = $this->pdo->prepare(
             "SELECT m.*, u.pseudo, u.avatar
              FROM message m
@@ -27,8 +53,14 @@ class MessagesModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Récupère tous les messages d'une conversation entre deux utilisateurs
-    public function getConversationMessages($userId, $otherId) {
+    /**
+     * Récupère tous les messages d'une conversation entre deux utilisateurs
+     * @param int $userId
+     * @param int $otherId
+     * @return array
+     */
+    public function getConversationMessages($userId, $otherId)
+    {
         $stmt = $this->pdo->prepare(
             "SELECT m.*, u.pseudo, u.avatar
              FROM message m
@@ -41,8 +73,15 @@ class MessagesModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Envoie un nouveau message
-    public function sendMessage($senderId, $receiverId, $content) {
+    /**
+     * Envoie un nouveau message
+     * @param int $senderId
+     * @param int $receiverId
+     * @param string $content
+     * @return bool
+     */
+    public function sendMessage($senderId, $receiverId, $content)
+    {
         $stmt = $this->pdo->prepare(
             "INSERT INTO message (sender_id, receiver_id, content, send_at, message_read)
              VALUES (:senderId, :receiverId, :content, NOW(), 0)"
@@ -54,8 +93,14 @@ class MessagesModel {
         ]);
     }
 
-    // Marque tous les messages reçus comme lus dans une conversation
-    public function markAsRead($userId, $otherId) {
+    /**
+     * Marque tous les messages reçus comme lus dans une conversation
+     * @param int $userId
+     * @param int $otherId
+     * @return bool
+     */
+    public function markAsRead($userId, $otherId)
+    {
         $stmt = $this->pdo->prepare(
             "UPDATE message SET message_read = 1
              WHERE receiver_id = :userId AND sender_id = :otherId AND message_read = 0"

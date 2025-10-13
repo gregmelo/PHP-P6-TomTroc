@@ -1,3 +1,13 @@
+<?php
+
+/**
+ * Vue : Page d'accueil
+ * Affiche le bandeau principal, les derniers livres, le fonctionnement et les valeurs
+ * Variables attendues :
+ *   - $lastBooks : tableau des derniers livres ajoutés
+ */
+?>
+<!-- Bandeau principal -->
 <section class="hero">
     <div class="hero-content">
         <div class="hero-left">
@@ -12,6 +22,7 @@
         </div>
     </div>
 </section>
+<!-- Section derniers livres ajoutés -->
 <section class="last-books">
     <h2>Les derniers livres ajoutés</h2>
     <div class="last-books-list">
@@ -35,6 +46,7 @@
     </div>
     <a href="index.php?page=books" class="btn">Voir tous les livres</a>
 </section>
+<!-- Section fonctionnement de la plateforme -->
 <section class="functioning">
     <h2>Comment ça marche ?</h2>
     <p>Échanger des livres avec TomTroc c’est simple et amusant ! Suivez ces étapes pour commencer :</p>
@@ -47,8 +59,9 @@
     <a href="index.php?page=books" class="btn">Voir tous les livres</a>
 </section>
 
+<!-- Section valeurs de TomTroc -->
 <section class="values">
-        <img src="./assets/home/home_banner.jpg" alt="">
+    <img src="./assets/home/home_banner.jpg" alt="">
     <h2>Nos valeurs</h2>
     <p>
         Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté. Nos valeurs sont ancrées dans notre passion pour les livres et notre désir de créer des liens entre les lecteurs. Nous croyons en la puissance des histoires pour rassembler les gens et inspirer des conversations enrichissantes.<br><br>

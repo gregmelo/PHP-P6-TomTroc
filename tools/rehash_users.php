@@ -1,6 +1,10 @@
 <?php
-// Script pour régénérer les mots de passe hashés des utilisateurs existants
-// À lancer une seule fois puis supprimer pour la sécurité
+
+/**
+ * Script pour régénérer les mots de passe hashés des utilisateurs existants
+ * À lancer une seule fois puis supprimer pour la sécurité
+ * Utilise les identifiants en clair pour mettre à jour la base
+ */
 
 require_once __DIR__ . '/../config/_config.php';
 

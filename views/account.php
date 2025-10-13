@@ -1,5 +1,14 @@
-<?php $title = "Page mon compte"; ?>
 <?php
+
+/**
+ * Vue : Mon compte utilisateur
+ * Affiche les informations personnelles et la bibliothèque de l'utilisateur
+ * Variables attendues :
+ *   - $user : tableau des infos utilisateur
+ *   - $userBooks : tableau des livres de l'utilisateur
+ *   - $errors, $success : messages éventuels
+ */
+$title = "Page mon compte";
 if (!isset($_SESSION)) session_start();
 if (!isset($_SESSION['user'])) {
     header('Location: index.php?page=login');
@@ -7,6 +16,7 @@ if (!isset($_SESSION['user'])) {
 }
 $user = $_SESSION['user'];
 
+// Fonction pour calculer la durée d'adhésion
 function getMemberDuration($creation_date)
 {
     $date = new DateTime($creation_date);
@@ -22,12 +32,14 @@ function getMemberDuration($creation_date)
     }
     return '';
 }
-
 ?>
 
+<!-- Contenu principal de la page compte utilisateur -->
 <div class="content-account">
     <h1>Mon compte</h1>
+    <!-- Informations et formulaire utilisateur -->
     <div class="account-infos-group">
+        <!-- Section infos utilisateur -->
         <section class="account-infos">
             <img src="<?php echo $user['avatar']; ?>" alt="Avatar de <?php echo $user['pseudo']; ?>" class="avatar-account">
             <button type="button" id="change-photo-btn">modifier</button>
@@ -36,6 +48,7 @@ function getMemberDuration($creation_date)
             <h3>bibliothèque</h3>
             <p class="books-numbers"><i class="fa-solid fa-book"></i> <?php echo count($userBooks); ?> livre<?php echo count($userBooks) > 1 ? 's' : ''; ?></p>
         </section>
+        <!-- Section formulaire de modification -->
         <section class="personal-infos">
             <p>Vos informations personnelles</p>
             <form action="index.php?page=updateAccount" method="post" enctype="multipart/form-data" id="account-form">
@@ -73,6 +86,7 @@ function getMemberDuration($creation_date)
 
         </section>
     </div>
+    <!-- Liste des livres de l'utilisateur (cartes) -->
     <section class="account-books-list">
         <?php if (!empty($userBooks)): ?>
             <?php foreach ($userBooks as $book): ?>
@@ -101,6 +115,7 @@ function getMemberDuration($creation_date)
             </tr>
         <?php endif; ?>
     </section>
+    <!-- Tableau des livres de l'utilisateur -->
     <section class="account-books-table">
         <table>
             <thead>
@@ -139,6 +154,7 @@ function getMemberDuration($creation_date)
     </section>
 </div>
 
+<!-- Script JS pour la gestion de l'upload de photo -->
 <script>
     document.getElementById('change-photo-btn').addEventListener('click', function() {
         document.getElementById('photo-upload').click();

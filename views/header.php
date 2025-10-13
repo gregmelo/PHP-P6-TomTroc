@@ -1,3 +1,13 @@
+<?php
+
+/**
+ * Vue : En-tête du site
+ * Affiche le logo, la barre de navigation et le menu responsive
+ * Variables attendues :
+ *   - $title : titre de la page
+ *   - $unreadMessagesCount : nombre de messages non lus
+ */
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

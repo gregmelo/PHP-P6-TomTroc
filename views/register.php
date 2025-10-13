@@ -1,7 +1,17 @@
-<?php $title = "page d'inscription"; ?>
+<?php
+
+/**
+ * Vue : Formulaire d'inscription
+ * Affiche le formulaire pour créer un compte utilisateur
+ * Variables attendues :
+ *   - $errors : tableau des erreurs éventuelles
+ */
+$title = "page d'inscription";
+?>
 
 <!-- Formulaire d'inscription -->
 <div class="content-login">
+    <!-- Section formulaire -->
     <section class="connexion">
         <h2>Inscription</h2>
         <form action="index.php?page=process_register" method="post">
@@ -28,6 +38,7 @@
             <p>Déjà inscrit ? <a href="index.php?page=login">Connectez-vous</a></p>
         </form>
     </section>
+    <!-- Illustration à droite -->
     <section class="illustration-connexion">
         <img src="./assets/connexion/illustration_connexion.jpg" alt="Illustration de connexion">
     </section>

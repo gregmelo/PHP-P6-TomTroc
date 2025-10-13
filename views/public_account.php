@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Vue : Profil public d'un utilisateur
+ * Affiche les infos et la bibliothèque d'un autre utilisateur
+ * Variables attendues :
+ *   - $user : tableau des infos utilisateur
+ *   - $books : tableau des livres de l'utilisateur
+ */
+
+// Fonction pour calculer la durée d'adhésion
 function getMemberDuration($creation_date)
 {
     $date = new DateTime($creation_date);
@@ -15,9 +24,10 @@ function getMemberDuration($creation_date)
     }
     return '';
 }
-
 ?>
+<!-- Contenu principal du profil public -->
 <div class="content-public-account">
+    <!-- Infos utilisateur -->
     <div class="public-account-infos-group">
         <section class="public-account-infos">
             <img src="<?= htmlspecialchars($user['avatar'] ?? 'assets/users/default.png') ?>" alt="Avatar de <?= htmlspecialchars($user['pseudo'] ?? '') ?>" class="avatar-public-account">
@@ -34,6 +44,7 @@ function getMemberDuration($creation_date)
             <?php endif; ?>
         </section>
     </div>
+    <!-- Liste des livres de l'utilisateur (cartes) -->
     <section class="public-account-books-list">
         <?php if (!empty($books)): ?>
             <?php foreach ($books as $book): ?>
@@ -54,6 +65,7 @@ function getMemberDuration($creation_date)
             </tr>
         <?php endif; ?>
     </section>
+    <!-- Tableau des livres de l'utilisateur -->
     <section class="public-account-books-table">
         <table>
             <thead>

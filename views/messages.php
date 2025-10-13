@@ -1,4 +1,18 @@
+<?php
+
+/**
+ * Vue : Messagerie privée
+ * Affiche la liste des conversations et le contenu d'une conversation
+ * Variables attendues :
+ *   - $conversations : liste des conversations
+ *   - $messages : messages de la conversation sélectionnée
+ *   - $interlocuteur_avatar, $interlocuteur_pseudo, $interlocuteur_id
+ */
+$title = "Messagerie";
+?>
+<!-- Conteneur principal de la messagerie -->
 <div class="messages-container">
+    <!-- Liste des conversations -->
     <aside class="messages-list">
         <h1>Messagerie</h1>
         <?php if (!empty($conversations)): ?>
@@ -22,6 +36,7 @@
             <p>Aucune conversation.</p>
         <?php endif; ?>
     </aside>
+    <!-- Contenu de la conversation sélectionnée -->
     <section class="conversation-content">
         <?php if (!empty($messages) || isset($_GET['with'])): ?>
             <button class="btn-retour"><i class="fa fa-arrow-left"></i> retour</button>
@@ -48,6 +63,7 @@
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
+                <!-- Formulaire d'envoi de message -->
                 <form class="message-form" method="POST" action="index.php?page=messages_send">
                     <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($interlocuteur_id) ?>">
                     <input type="text" name="content" placeholder="Écrire un message..." required />
@@ -55,12 +71,14 @@
                 </form>
             </div>
         <?php else: ?>
+            <!-- Message d'attente -->
             <div class="conversation-placeholder">Sélectionnez une conversation</div>
         <?php endif; ?>
     </section>
 </div>
 
 
+<!-- Script JS pour la gestion responsive de la messagerie -->
 <script>
     // Responsive JS pour affichage des conversations
     const conversationHTML = document.querySelector('.conversation-content').innerHTML;

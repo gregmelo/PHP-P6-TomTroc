@@ -1,6 +1,9 @@
 
 <?php
-// Point d'entrée du site
+/**
+ * Point d'entrée du site TomTroc
+ * Routeur principal qui gère la navigation entre les pages
+ */
 require_once 'config/_config.php';
 
 // Détermination de la page demandée

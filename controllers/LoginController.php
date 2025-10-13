@@ -1,7 +1,13 @@
 
 <?php
+/**
+ * Contrôleur de gestion des utilisateurs (authentification, inscription, compte)
+ */
 class LoginController
 {
+    /**
+     * Affiche le formulaire de connexion
+     */
     public function login()
     {
         ob_start();
@@ -10,6 +16,9 @@ class LoginController
         require_once __DIR__ . '/../views/main.php';
     }
 
+    /**
+     * Affiche le formulaire d'inscription
+     */
     public function register()
     {
         ob_start();
@@ -18,6 +27,9 @@ class LoginController
         require_once __DIR__ . '/../views/main.php';
     }
 
+    /**
+     * Affiche la page de compte utilisateur avec ses livres
+     */
     public function account()
     {
         require_once __DIR__ . '/../config/_config.php';
@@ -34,6 +46,9 @@ class LoginController
         require_once __DIR__ . '/../views/main.php';
     }
 
+    /**
+     * Affiche le profil public d'un utilisateur et ses livres
+     */
     public function public_account()
     {
         $id_user = isset($_GET['id']) ? intval($_GET['id']) : null;
@@ -56,6 +71,7 @@ class LoginController
 
     /**
      * Retourne la liste des utilisateurs (id, pseudo, email)
+     * @return array
      */
     public function getAllUsers()
     {
@@ -71,6 +87,9 @@ class LoginController
     }
 
 
+    /**
+     * Traite le formulaire d'inscription
+     */
     public function processRegister()
     {
         require_once __DIR__ . '/../config/_config.php';
@@ -108,6 +127,9 @@ class LoginController
         require __DIR__ . '/../views/main.php';
     }
 
+    /**
+     * Traite le formulaire de connexion
+     */
     public function processLogin()
     {
         require_once __DIR__ . '/../config/_config.php';
@@ -149,6 +171,9 @@ class LoginController
         $content = ob_get_clean();
         require __DIR__ . '/../views/main.php';
     }
+    /**
+     * Met à jour les informations du compte utilisateur
+     */
     public function updateAccount()
     {
         require_once __DIR__ . '/../config/_config.php';

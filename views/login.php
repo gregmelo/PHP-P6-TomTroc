@@ -1,7 +1,17 @@
-<?php $title = "Page de connexion"; ?>
+<?php
+
+/**
+ * Vue : Formulaire de connexion
+ * Affiche le formulaire pour se connecter
+ * Variables attendues :
+ *   - $errors : tableau des erreurs éventuelles
+ */
+$title = "Page de connexion";
+?>
 
 <!-- Formulaire de connexion -->
 <div class="content-login">
+    <!-- Section formulaire -->
     <section class="connexion">
         <h2>Connexion</h2>
         <form action="index.php?page=process_login" method="post">
@@ -24,6 +34,7 @@
             <p>Pas encore de compte ? <a href="index.php?page=register">Inscrivez-vous</a></p>
         </form>
     </section>
+    <!-- Illustration à droite -->
     <section class="illustration-connexion">
         <img src="./assets/connexion/illustration_connexion.jpg" alt="Illustration de connexion">
     </section>

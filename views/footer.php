@@ -1,3 +1,10 @@
+<?php
+
+/**
+ * Vue : Pied de page du site
+ * Affiche les liens et le logo du footer
+ */
+?>
 <footer>
     <div class="footer-content">
         <p><a href="#">Politique de confidentialité</a></p>
@@ -9,4 +16,5 @@
     </div>
 </footer>
 </body>
+
 </html>

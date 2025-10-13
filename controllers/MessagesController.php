@@ -1,7 +1,13 @@
 
 <?php
+/**
+ * Contrôleur de gestion des messages privés entre utilisateurs
+ */
 class MessagesController
 {
+    /**
+     * Affiche la page de messagerie et les conversations de l'utilisateur
+     */
     public function index()
     {
         if (!isset($_SESSION['user']['id'])) {
@@ -59,6 +65,9 @@ class MessagesController
         require_once __DIR__ . '/../views/main.php';
     }
 
+    /**
+     * Traite l'envoi d'un message privé
+     */
     public function send()
     {
         if (!isset($_SESSION['user']['id'])) {
