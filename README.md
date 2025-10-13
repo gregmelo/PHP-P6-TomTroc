@@ -56,6 +56,11 @@ Voici quelques comptes de test pour vous connecter :
 | Lotrfanclub67   | LotrFan67!   |
 
 ## Problèmes courants
+
+Il est possible que la librairie intl ne soit pas activée sur votre serveur par défaut. Cette librairie sert notamment à traduire les dates en francais. Dans ce cas, vous pouvez soit utiliser l'interface de votre serveur local pour activer l'extention (wamp), soit aller modifier directement le fichier php.ini.
+
+Ce projet a été réalisé avec PHP 8.2. Bien que d'autres versions de PHP puissent fonctionner, il n'est pas garanti que le projet fonctionne avec des versions antérieures.
+
 - **Page blanche ou erreur 500** : Vérifiez la configuration de la base de données et les droits d’accès.
 - **Impossible de se connecter** : Vérifiez les identifiants et la casse.
 - **Images non affichées** : Vérifiez le chemin des fichiers dans le dossier `assets/books`.
