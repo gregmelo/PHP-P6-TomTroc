@@ -7,7 +7,13 @@ class BooksController
         require_once __DIR__ . '/../models/BooksModel.php';
         $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
         $booksModel = new BooksModel($pdo);
-        $books = $booksModel->getAllBooks();
+            // Gestion de la recherche par titre
+            $search = isset($_GET['search']) ? trim($_GET['search']) : '';
+            if ($search !== '') {
+                $books = $booksModel->searchBooksByTitle($search);
+            } else {
+                $books = $booksModel->getAllBooks();
+            }
         // Passage à la vue
         ob_start();
         // $books sera disponible dans la vue

@@ -3,10 +3,14 @@
 <div class="content-books">
     <section class="books-section-header">
         <h1>Nos livres à l'échange</h1>
-        <div class="search-bar-wrapper">
-            <input type="text" placeholder="Rechercher un livre" class="search-bar">
+        <?php if (isset($_GET['search']) && trim($_GET['search']) !== ''): ?>
+            <p style="color: #888;">Recherche : <strong><?= htmlspecialchars($_GET['search']) ?></strong></p>
+        <?php endif; ?>
+        <form method="GET" action="index.php" class="search-bar-wrapper">
+            <input type="hidden" name="page" value="books">
+            <input type="text" name="search" placeholder="Rechercher un livre" class="search-bar">
             <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
+        </form>
     </section>
     <section class="books-section-list">
         <?php if (!empty($books)): ?>
@@ -31,3 +35,35 @@
 
     </section>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.querySelector('.search-bar');
+    const booksSection = document.querySelector('.books-section-list');
+    const form = document.querySelector('.search-bar-wrapper');
+
+    // Empêche le submit classique
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+    });
+
+    searchInput.addEventListener('input', function() {
+        const search = searchInput.value;
+        // Requête AJAX
+        const params = new URLSearchParams({
+            page: 'books',
+            search: search
+        });
+        fetch('index.php?' + params.toString())
+            .then(response => response.text())
+            .then(html => {
+                // Extraire la nouvelle liste des livres
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newBooksSection = doc.querySelector('.books-section-list');
+                if (newBooksSection) {
+                    booksSection.innerHTML = newBooksSection.innerHTML;
+                }
+            });
+    });
+});
+</script>

@@ -61,10 +61,25 @@ class BooksModel
         $stmt->execute($params);
     }
 
-    public function bookDelete($id){
+    public function bookDelete($id)
+    {
         $sql = "DELETE FROM book WHERE id = ?";
         $params = [$id];
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
     }
+        /**
+         * Recherche les livres par titre (partiel, insensible à la casse)
+         */
+        public function searchBooksByTitle($search)
+        {
+            $stmt = $this->pdo->prepare(
+                "SELECT b.*, u.pseudo AS owner_pseudo, u.avatar AS owner_avatar
+                 FROM book b
+                 JOIN user u ON b.id_user = u.id
+                 WHERE LOWER(b.title) LIKE LOWER(:search)"
+            );
+            $stmt->execute(['search' => '%' . $search . '%']);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
 }
