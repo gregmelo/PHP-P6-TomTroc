@@ -1,5 +1,11 @@
 
 <?php
+
+require_once __DIR__ . '/../config/_config.php'; // Configuration
+require_once __DIR__ . '/../config/Database.php'; // Database singleton
+require_once __DIR__ . '/../models/MessagesModel.php'; // Modèle messages
+require_once __DIR__ . '/../models/UserModel.php'; // Modèle utilisateurs
+
 /**
  * Contrôleur de gestion des messages privés entre utilisateurs
  */
@@ -14,10 +20,8 @@ class MessagesController
             header('Location: index.php?page=login');
             exit;
         }
-        require_once __DIR__ . '/../config/_config.php';
-        require_once __DIR__ . '/../models/MessagesModel.php';
-        $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
-        $messagesModel = new MessagesModel($pdo);
+    $pdo = Database::getInstance();
+    $messagesModel = new MessagesModel($pdo);
         $userId = $_SESSION['user']['id'];
         $conversations = $messagesModel->getConversations($userId);
         $selected = isset($_GET['with']) ? intval($_GET['with']) : null;
@@ -31,9 +35,8 @@ class MessagesController
             $messagesModel->markAsRead($userId, $selected);
         }
 
-        // Ajout pour avatar/pseudo de l'interlocuteur
-        require_once __DIR__ . '/../models/UserModel.php';
-        $userModel = new UserModel($pdo);
+    // Ajout pour avatar/pseudo de l'interlocuteur
+    $userModel = new UserModel($pdo);
         $interlocuteur_avatar = 'assets/users/default.png';
         $interlocuteur_pseudo = '';
         if ($selected) {
@@ -75,9 +78,7 @@ class MessagesController
             exit;
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            require_once __DIR__ . '/../config/_config.php';
-            require_once __DIR__ . '/../models/MessagesModel.php';
-            $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
+            $pdo = Database::getInstance();
             $messagesModel = new MessagesModel($pdo);
             $senderId = $_SESSION['user']['id'];
             $receiverId = intval($_POST['receiver_id']);

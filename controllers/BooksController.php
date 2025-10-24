@@ -1,5 +1,9 @@
 <?php
 
+require_once __DIR__ . '/../config/_config.php'; // Configuration
+require_once __DIR__ . '/../config/Database.php'; // Database singleton
+require_once __DIR__ . '/../models/BooksModel.php'; // Modèle
+
 /**
  * Contrôleur de gestion des livres
  * Gère l'affichage, la modification, la suppression et la recherche des livres
@@ -12,10 +16,8 @@ class BooksController
      */
     public function books_list()
     {
-        require_once __DIR__ . '/../config/_config.php'; // Configuration
-        require_once __DIR__ . '/../models/BooksModel.php'; // Modèle
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-        $booksModel = new BooksModel($pdo);
+    $pdo = Database::getInstance();
+    $booksModel = new BooksModel($pdo);
         // Gestion de la recherche par titre
         $search = isset($_GET['search']) ? trim($_GET['search']) : '';
         if ($search !== '') {
@@ -36,10 +38,8 @@ class BooksController
      */
     public function book_details()
     {
-        require_once __DIR__ . '/../config/_config.php';
-        require_once __DIR__ . '/../models/BooksModel.php';
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-        $booksModel = new BooksModel($pdo);
+    $pdo = Database::getInstance();
+    $booksModel = new BooksModel($pdo);
         $bookId = isset($_GET['id']) ? intval($_GET['id']) : 0; // Récupère l'id du livre
         $book = $booksModel->getBookById($bookId);
         // Passage à la vue
@@ -55,10 +55,8 @@ class BooksController
      */
     public function book_edit()
     {
-        require_once __DIR__ . '/../config/_config.php';
-        require_once __DIR__ . '/../models/BooksModel.php';
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-        $booksModel = new BooksModel($pdo);
+    $pdo = Database::getInstance();
+    $booksModel = new BooksModel($pdo);
         $bookId = isset($_GET['id']) ? intval($_GET['id']) : 0; // Id du livre à éditer
         $book = $booksModel->getBookById($bookId);
 
@@ -73,10 +71,8 @@ class BooksController
      */
     public function book_update()
     {
-        require_once __DIR__ . '/../config/_config.php';
-        require_once __DIR__ . '/../models/BooksModel.php';
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-        $booksModel = new BooksModel($pdo);
+    $pdo = Database::getInstance();
+    $booksModel = new BooksModel($pdo);
         $bookId = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
         // Récupération des données du formulaire
@@ -108,10 +104,8 @@ class BooksController
      */
     public function book_delete()
     {
-        require_once __DIR__ . '/../config/_config.php';
-        require_once __DIR__ . '/../models/BooksModel.php';
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-        $booksModel = new BooksModel($pdo);
+    $pdo = Database::getInstance();
+    $booksModel = new BooksModel($pdo);
         $bookId = isset($_GET['id']) ? intval($_GET['id']) : 0; // Id du livre à supprimer
         $booksModel->bookDelete($bookId);
         // Redirection vers le compte utilisateur

@@ -1,5 +1,9 @@
 <?php
 
+require_once __DIR__ . '/../config/_config.php'; // Configuration
+require_once __DIR__ . '/../config/Database.php'; // Database singleton
+require_once __DIR__ . '/../models/BooksModel.php'; // Modèle
+
 /**
  * Contrôleur de la page d'accueil
  * Affiche les derniers livres ajoutés
@@ -11,10 +15,8 @@ class HomeController
      */
     public function index()
     {
-        require_once __DIR__ . '/../config/_config.php'; // Configuration
-        require_once __DIR__ . '/../models/BooksModel.php'; // Modèle
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-        $booksModel = new BooksModel($pdo);
+    $pdo = Database::getInstance();
+    $booksModel = new BooksModel($pdo);
         $lastBooks = $booksModel->getLastBooks(4); // Récupère les 4 derniers livres
 
         ob_start();

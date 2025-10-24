@@ -1,5 +1,11 @@
 
 <?php
+
+require_once __DIR__ . '/../config/_config.php'; // Configuration
+require_once __DIR__ . '/../config/Database.php'; // Database singleton
+require_once __DIR__ . '/../models/UserModel.php'; // Modèle utilisateur
+require_once __DIR__ . '/../models/BooksModel.php'; // Modèle livres
+
 /**
  * Contrôleur de gestion des utilisateurs (authentification, inscription, compte)
  */
@@ -32,10 +38,8 @@ class LoginController
      */
     public function account()
     {
-        require_once __DIR__ . '/../config/_config.php';
-        require_once __DIR__ . '/../models/BooksModel.php';
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-        $booksModel = new BooksModel($pdo);
+    $pdo = Database::getInstance();
+    $booksModel = new BooksModel($pdo);
         $userId = $_SESSION['user']['id'];
         $userBooks = $booksModel->getUserBooks($userId);
         // Passage à la vue
@@ -52,13 +56,9 @@ class LoginController
     public function public_account()
     {
         $id_user = isset($_GET['id']) ? intval($_GET['id']) : null;
-        require_once __DIR__ . '/../config/_config.php';
-        require_once __DIR__ . '/../models/UserModel.php';
-        require_once __DIR__ . '/../models/BooksModel.php';
-
-        $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
-        $userModel = new UserModel($pdo);
-        $booksModel = new BooksModel($pdo);
+    $pdo = Database::getInstance();
+    $userModel = new UserModel($pdo);
+    $booksModel = new BooksModel($pdo);
 
         $user = $id_user ? $userModel->getUserById($id_user) : null;
         $books = $id_user ? $booksModel->getUserBooks($id_user) : [];
@@ -75,10 +75,8 @@ class LoginController
      */
     public function getAllUsers()
     {
-        require_once __DIR__ . '/../config/_config.php';
         try {
-            $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo = Database::getInstance();
             $stmt = $pdo->query("SELECT id, pseudo, email FROM user");
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -92,10 +90,8 @@ class LoginController
      */
     public function processRegister()
     {
-        require_once __DIR__ . '/../config/_config.php';
-        require_once __DIR__ . '/../models/UserModel.php';
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-        $userModel = new UserModel($pdo);
+    $pdo = Database::getInstance();
+    $userModel = new UserModel($pdo);
 
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -132,10 +128,8 @@ class LoginController
      */
     public function processLogin()
     {
-        require_once __DIR__ . '/../config/_config.php';
-        require_once __DIR__ . '/../models/UserModel.php';
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-        $userModel = new UserModel($pdo);
+    $pdo = Database::getInstance();
+    $userModel = new UserModel($pdo);
 
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -176,13 +170,10 @@ class LoginController
      */
     public function updateAccount()
     {
-        require_once __DIR__ . '/../config/_config.php';
-        require_once __DIR__ . '/../models/UserModel.php';
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-        $userModel = new UserModel($pdo);
-        $userId = $_SESSION['user']['id'];
-        require_once __DIR__ . '/../models/BooksModel.php';
-        $bookModel = new BooksModel($pdo);
+    $pdo = Database::getInstance();
+    $userModel = new UserModel($pdo);
+    $userId = $_SESSION['user']['id'];
+    $bookModel = new BooksModel($pdo);
         $userBooks = $bookModel->getUserBooks($userId);
 
 
