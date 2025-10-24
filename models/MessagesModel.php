@@ -44,12 +44,16 @@ class MessagesModel
         $stmt = $this->pdo->prepare(
             "SELECT m.*, u.pseudo, u.avatar
              FROM message m
-             JOIN user u ON (u.id = IF(m.sender_id = :userId, m.receiver_id, m.sender_id))
-             WHERE m.sender_id = :userId OR m.receiver_id = :userId
+             JOIN user u ON (u.id = IF(m.sender_id = :userId_if, m.receiver_id, m.sender_id))
+             WHERE m.sender_id = :userId_w1 OR m.receiver_id = :userId_w2
              GROUP BY u.id
              ORDER BY MAX(m.send_at) DESC"
         );
-        $stmt->execute(['userId' => $userId]);
+        $stmt->execute([
+            'userId_if' => $userId,
+            'userId_w1' => $userId,
+            'userId_w2' => $userId
+        ]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -65,11 +69,16 @@ class MessagesModel
             "SELECT m.*, u.pseudo, u.avatar
              FROM message m
              JOIN user u ON u.id = m.sender_id
-             WHERE (m.sender_id = :userId AND m.receiver_id = :otherId)
-                OR (m.sender_id = :otherId AND m.receiver_id = :userId)
+             WHERE (m.sender_id = :userId_1 AND m.receiver_id = :otherId_1)
+                OR (m.sender_id = :otherId_2 AND m.receiver_id = :userId_2)
              ORDER BY m.send_at ASC"
         );
-        $stmt->execute(['userId' => $userId, 'otherId' => $otherId]);
+        $stmt->execute([
+            'userId_1' => $userId,
+            'otherId_1' => $otherId,
+            'otherId_2' => $otherId,
+            'userId_2' => $userId
+        ]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

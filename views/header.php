@@ -6,7 +6,10 @@
  * Variables attendues :
  *   - $title : titre de la page
  *   - $unreadMessagesCount : nombre de messages non lus
- */
+*/
+?>
+<?php // Détermine la page courante via le paramètre GET 'page' (par défaut 'home')
+$currentPage = isset($_GET['page']) && $_GET['page'] !== '' ? $_GET['page'] : 'home';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -26,16 +29,16 @@
         </div>
         <div class="navbar" id="navbar">
             <nav class="navbar-left">
-                <a href="index.php?page=home" class="active">Accueil</a>
-                <a href="index.php?page=books">Nos livres à l'échange</a>
+                <a href="index.php?page=home" class="<?= $currentPage === 'home' ? 'active' : '' ?>">Accueil</a>
+                <a href="index.php?page=books" class="<?= $currentPage === 'books' ? 'active' : '' ?>">Nos livres à l'échange</a>
             </nav>
             <nav class="navbar-right">
-                <a href="index.php?page=messages"><i class="fa-regular fa-message"></i> Messagerie<?php if (isset($_SESSION['user']) && $unreadMessagesCount > 0): ?> <span class="message-badge"><?= $unreadMessagesCount ?></span><?php endif; ?></a>
-                <a href="index.php?page=account"><i class="fa-regular fa-user"></i> Mon compte</a>
+                <a href="index.php?page=messages" class="<?= $currentPage === 'messages' ? 'active' : '' ?>"><i class="fa-regular fa-message"></i> Messagerie<?php if (isset($_SESSION['user']) && isset($unreadMessagesCount) && $unreadMessagesCount > 0): ?> <span class="message-badge"><?= $unreadMessagesCount ?></span><?php endif; ?></a>
+                <a href="index.php?page=account" class="<?= $currentPage === 'account' ? 'active' : '' ?>"><i class="fa-regular fa-user"></i> Mon compte</a>
                 <?php if (isset($_SESSION['user'])): ?>
-                    <a href="index.php?page=logout">Déconnexion</a>
+                    <a href="index.php?page=logout" class="<?= $currentPage === 'logout' ? 'active' : '' ?>">Déconnexion</a>
                 <?php else: ?>
-                    <a href="index.php?page=login">Connexion</a>
+                    <a href="index.php?page=login" class="<?= $currentPage === 'login' ? 'active' : '' ?>">Connexion</a>
                 <?php endif; ?>
             </nav>
         </div>
