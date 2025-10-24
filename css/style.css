@@ -1067,6 +1067,12 @@ footer {
   align-items: center;
   justify-content: center;
 }
+.content-book-details .book-detail-infos .btn-disabled {
+  background-color: #E8F2EE;
+  color: #4f4f4f;
+  pointer-events: none;
+  cursor: not-allowed;
+}
 
 @media (min-width: 1024px) {
   .book-navigation {
@@ -1654,6 +1660,12 @@ footer {
   background-color: var(--primary);
   color: white;
   border: none;
+}
+.content-public-account .public-account-infos-group .public-account-infos .btn-disabled {
+  background-color: #E8F2EE;
+  color: #4f4f4f;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 .content-public-account .public-account-books-list {
   display: flex;

@@ -38,7 +38,7 @@ function getMemberDuration($creation_date)
             <p class="books-numbers"><i class="fa-solid fa-book"></i> <?= count($books) ?> livres</p>
             <!--<button type="submit" class="btn">Écrire un message</button>-->
             <?php if (isset($_SESSION['user']['id']) && $_SESSION['user']['id'] == $user['id']): ?>
-                <button type="button" class="btn" style="pointer-events: none; opacity: 0.5; cursor: not-allowed;">Écrire un message</button>
+                <button type="button" class="btn btn-disabled">Écrire un message</button>
             <?php else: ?>
                 <button type="button" onclick="location.href='index.php?page=messages&with=<?= $user['id'] ?>'" class="btn">Écrire un message</button>
             <?php endif; ?>

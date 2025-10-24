@@ -116,6 +116,13 @@
             align-items: center;
             justify-content: center;
         }
+
+        .btn-disabled {
+            background-color: #E8F2EE;
+            color: #4f4f4f;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
     }
 }
 

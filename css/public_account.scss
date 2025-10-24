@@ -62,21 +62,28 @@
             }
 
 
-                .btn {
-                    width: fit-content;
-                    height: 63px;
-                    text-align: center;
-                    background-color: var(--main-bg);
-                    color: var(--primary);
-                    border: 1px solid var(--primary);
-                    margin-bottom: 56px;
+            .btn {
+                width: fit-content;
+                height: 63px;
+                text-align: center;
+                background-color: var(--main-bg);
+                color: var(--primary);
+                border: 1px solid var(--primary);
+                margin-bottom: 56px;
 
-                    &:hover {
-                        background-color: var(--primary);
-                        color: white;
-                        border: none;
-                    }
+                &:hover {
+                    background-color: var(--primary);
+                    color: white;
+                    border: none;
                 }
+            }
+
+            .btn-disabled {
+                background-color: #E8F2EE;
+                color: #4f4f4f;
+                pointer-events: none;
+                cursor: not-allowed;
+            }
         }
     }
 
@@ -193,6 +200,7 @@
                 .books-numbers {
                     padding-bottom: 48px;
                 }
+
                 .btn {
                     width: max-content;
                 }
@@ -217,6 +225,7 @@
                     border-top-left-radius: 20px;
                     border-top-right-radius: 20px;
                 }
+
                 thead tr {
                     height: 45px;
                     vertical-align: middle;

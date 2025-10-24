@@ -37,7 +37,7 @@ $title = "Page du livre " . htmlspecialchars($book['title'] ?? '');
         </a>
         <!-- Bouton d'envoi de message -->
         <?php if (isset($_SESSION['user']['id']) && $_SESSION['user']['id'] == $book['id_user']): ?>
-            <a href="#" class="btn" style="pointer-events: none; opacity: 0.5; cursor: not-allowed;">Envoyer un message</a>
+            <a href="#" class="btn btn-disabled">Envoyer un message</a>
         <?php else: ?>
             <a href="index.php?page=messages&with=<?= $book['id_user'] ?>" class="btn">Envoyer un message</a>
         <?php endif; ?>
