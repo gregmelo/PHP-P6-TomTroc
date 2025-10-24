@@ -10,7 +10,7 @@
     padding: 0 20px;
 
     h1 {
-        @include mixins.title(30px, 400, #000000);
+        @include mixins.title(var(--font-title), 30px, 400, #000000);
         padding-top: 55px;
 
     }
@@ -84,6 +84,18 @@
             height: 50px;
             align-items: center;
             display: flex;
+
+            label {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
         }
     }
 

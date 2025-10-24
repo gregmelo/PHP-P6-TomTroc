@@ -7,8 +7,8 @@
     flex-direction: column;
     gap: 32px;
     background-color: var(--section-bg);
-    h2{
-        @include mixins.title(30px, 400);
+    h1{
+        @include mixins.title(var(--font-title), 30px, 400);
         text-align: start;
     }
     form {
@@ -64,8 +64,8 @@
             width: 50%;
             gap: 0;
             justify-content: center;
-            h2{
-                @include mixins.title(36px, 400, #000000);
+            h1{
+                @include mixins.title(var(--font-title), 36px, 400, #000000);
                 margin-bottom: 56px;
                 margin-left: 150px;
             }

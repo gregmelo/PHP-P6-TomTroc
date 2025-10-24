@@ -66,7 +66,8 @@ $title = "Messagerie";
                 <!-- Formulaire d'envoi de message -->
                 <form class="message-form" method="POST" action="index.php?page=messages_send">
                     <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($interlocuteur_id) ?>">
-                    <input type="text" name="content" placeholder="Écrire un message..." required />
+                    <label for="send-message">Écrire un message</label>
+                    <input id="send-message" type="text" name="content" placeholder="Écrire un message..." required />
                     <button type="submit" class="btn">Envoyer</button>
                 </form>
             </div>

@@ -100,7 +100,7 @@ header {
 }
 
 .hero-left h1 {
-    @include mixins.title(36px, 400);
+    @include mixins.title(var(--font-title), 36px, 400);
     color: #000;
 }
 
@@ -146,7 +146,7 @@ header {
 }
 
 .last-books h2 {
-    @include mixins.title(32px, 400);
+    @include mixins.title(var(--font-title), 32px, 400);
 }
 
 .last-books-list {
@@ -172,7 +172,7 @@ header {
     top: 16px;
     left: 117px;
     font-weight: 500;
-    font-size: 9px;
+    font-size: 12px;
     font-family: var(--font-body);
     color: #FFFFFF;
     background-color: var(--primary);
@@ -183,6 +183,7 @@ header {
 
 .book-card .book-tag-red {
     background-color: var(--secondary);
+    left: 108px;
 }
 
 .book-card img {
@@ -210,7 +211,7 @@ header {
 }
 
 .book-infos p.seller {
-    @include mixins.paragraph(10px, 400, var(--text-light));
+    @include mixins.paragraph(12px, 400, var(--text-light));
 }
 
 .functioning {
@@ -223,7 +224,7 @@ header {
 }
 
 .functioning h2 {
-    @include mixins.title(32px, 400);
+    @include mixins.title(var(--font-title), 32px, 400);
     padding-bottom: 24px;
 }
 
@@ -274,7 +275,7 @@ header {
 }
 
 .values h2 {
-    @include mixins.title(32px, 400);
+    @include mixins.title(var(--font-title), 32px, 400);
     padding-bottom: 24px;
 }
 

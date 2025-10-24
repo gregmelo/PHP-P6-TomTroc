@@ -19,7 +19,8 @@ $title = "Page nos livres à l'échange";
         <?php endif; ?>
         <form method="GET" action="index.php" class="search-bar-wrapper">
             <input type="hidden" name="page" value="books">
-            <input type="text" name="search" placeholder="Rechercher un livre" class="search-bar">
+            <label for="search-input">Rechercher un livre</label>
+            <input id="search-input" type="text" name="search" placeholder="Rechercher un livre" class="search-bar" aria-label="Rechercher un livre">
             <i class="fa-solid fa-magnifying-glass"></i>
         </form>
     </section>

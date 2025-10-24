@@ -7,11 +7,6 @@
     flex-direction: column;
     gap: 32px;
 
-    h1 {
-        @include mixins.title(var(--font-title), 30px, 400, #000000);
-        padding-bottom: 8px;
-    }
-
     .public-account-infos-group {
         display: flex;
         flex-direction: column;
@@ -46,7 +41,7 @@
                 margin-bottom: 48px;
             }
 
-            h2 {
+            h1 {
                 @include mixins.title(var(--font-title), 24px, 400, var(--text-main));
                 padding-bottom: 11px;
             }
@@ -56,8 +51,8 @@
                 padding-bottom: 21px;
             }
 
-            h3 {
-                @include mixins.title(var(--font-body), 8px, 600, var(--text-main));
+            h2 {
+                @include mixins.title(var(--font-body), 12px, 600, var(--text-main));
                 padding-bottom: 6px;
             }
 
@@ -247,7 +242,7 @@
                 th {
                     height: 55px;
                     background-color: white;
-                    @include mixins.paragraph(8px, 600, var(--text-main));
+                    @include mixins.paragraph(12px, 600, var(--text-main));
                     vertical-align: bottom;
                     border-bottom: 1px solid var(--main-bg);
                     padding-bottom: 8px;

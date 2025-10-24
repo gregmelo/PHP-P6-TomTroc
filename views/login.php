@@ -13,7 +13,7 @@ $title = "Page de connexion";
 <div class="content-login">
     <!-- Section formulaire -->
     <section class="connexion">
-        <h2>Connexion</h2>
+        <h1>Connexion</h1>
         <form action="index.php?page=process_login" method="post">
             <div class="form-group">
                 <label for="email">Adresse email</label>

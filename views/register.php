@@ -13,7 +13,7 @@ $title = "page d'inscription";
 <div class="content-login">
     <!-- Section formulaire -->
     <section class="connexion">
-        <h2>Inscription</h2>
+        <h1>Inscription</h1>
         <form action="index.php?page=process_register" method="post">
             <div class="form-group">
                 <label for="pseudo">Pseudo</label>

@@ -53,7 +53,7 @@
             }
 
             h3 {
-                @include mixins.title(var(--font-body), 8px, 600, var(--text-main));
+                @include mixins.title(var(--font-body), 12px, 600, var(--text-main));
                 padding-bottom: 6px;
             }
 
@@ -172,7 +172,7 @@
                     }
 
                     .tag {
-                        @include mixins.paragraph(9px, 500, #FFFFFF);
+                        @include mixins.paragraph(12px, 500, #FFFFFF);
                         background-color: var(--primary-light);
                         padding: 4px 13px;
                         border-radius: 30px;
@@ -307,7 +307,7 @@
                 th {
                     height: 55px;
                     background-color: white;
-                    @include mixins.paragraph(8px, 600, var(--text-main));
+                    @include mixins.paragraph(12px, 600, var(--text-main));
                     vertical-align: bottom;
                     border-bottom: 1px solid var(--main-bg);
                     padding-bottom: 8px;
@@ -378,7 +378,7 @@
                 }
 
                 .tag {
-                    @include mixins.paragraph(9px, 500, #FFFFFF);
+                    @include mixins.paragraph(12px, 500, #FFFFFF);
                     background-color: var(--primary-light);
                     padding: 4px 13px;
                     border-radius: 30px;

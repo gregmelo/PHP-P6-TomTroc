@@ -32,9 +32,9 @@ function getMemberDuration($creation_date)
         <section class="public-account-infos">
             <img src="<?= htmlspecialchars($user['avatar'] ?? 'assets/users/default.png') ?>" alt="Avatar de <?= htmlspecialchars($user['pseudo'] ?? '') ?>" class="avatar-public-account">
             <hr>
-            <h2><?= htmlspecialchars($user['pseudo'] ?? '') ?></h2>
+            <h1><?= htmlspecialchars($user['pseudo'] ?? '') ?></h1>
             <p class="public-account-during">Membre depuis <?php echo getMemberDuration($user['creation_date']); ?></p>
-            <h3>bibliothèque</h3>
+            <h2>bibliothèque</h2>
             <p class="books-numbers"><i class="fa-solid fa-book"></i> <?= count($books) ?> livres</p>
             <!--<button type="submit" class="btn">Écrire un message</button>-->
             <?php if (isset($_SESSION['user']['id']) && $_SESSION['user']['id'] == $user['id']): ?>

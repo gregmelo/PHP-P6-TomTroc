@@ -21,7 +21,7 @@ $title = "Page de modification du livre";
         <form action="index.php?page=book_update&id=<?= $book['id'] ?>" method="post" enctype="multipart/form-data" id="book-edit-form">
             <!-- Section image du livre -->
             <div class="form-group form-group-img">
-                <label for="title">Photo</label>
+                <label for="photo-edit-upload">Photo</label>
                 <img src="<?= htmlspecialchars($book['cover']) ?>" alt="couverture du livre <?= htmlspecialchars($book['title'] ?? '') ?>">
                 <button type="button" id="book-edit-photo-btn">Modifier la photo</button>
                 <input type="file" accept="image/*" style="display:none;" id="photo-edit-upload">
@@ -29,7 +29,7 @@ $title = "Page de modification du livre";
             <!-- Champs du formulaire -->
             <div class="form-group-fields">
                 <div class="form-group" style="display: none;">
-                    <label for="cover" style="display:none;">Couverture</label>
+                    <label for="cover-upload" style="display:none;">Couverture</label>
                     <input type="file" name="cover" id="cover-upload" accept="image/*" style="display:none;">
                 </div>
                 <div class="form-group">

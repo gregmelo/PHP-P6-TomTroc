@@ -14,7 +14,7 @@
             <h1>Rejoignez nos lecteurs passionnés</h1>
             <p>Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture.
                 Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres.</p>
-            <a href="#" class="btn">Découvrir</a>
+            <a href="index.php?page=books" class="btn">Découvrir</a>
         </div>
         <div class="hero-right">
             <img src="./assets/home/hero_img.jpg" alt="">
@@ -28,17 +28,20 @@
     <div class="last-books-list">
         <?php if (!empty($lastBooks)): ?>
             <?php foreach ($lastBooks as $book): ?>
-                <div class="book-card">
-                    <div class="book-infos">
-                        <h3 class="title"><?= htmlspecialchars($book['title']) ?></h3>
-                        <p class="author"><?= htmlspecialchars($book['author']) ?></p>
-                        <p class="seller">Vendu par : <?= htmlspecialchars($book['owner_pseudo'] ?? '') ?></p>
+                <!-- Carte cliquable : redirige vers la page de détail du livre -->
+                <a class="book-link" href="index.php?page=book_details&id=<?= $book['id'] ?>" aria-label="Voir le détail du livre <?= htmlspecialchars($book['title'] ?? '') ?>">
+                    <div class="book-card">
+                        <div class="book-infos">
+                            <h3 class="title"><?= htmlspecialchars($book['title']) ?></h3>
+                            <p class="author"><?= htmlspecialchars($book['author']) ?></p>
+                            <p class="seller">Vendu par : <?= htmlspecialchars($book['owner_pseudo'] ?? '') ?></p>
+                        </div>
+                        <div class="book-tag<?= (isset($book['availability']) && $book['availability'] !== 'Disponible') ? ' book-tag-red' : '' ?>">
+                            <?= htmlspecialchars($book['availability'] ?? 'Disponible') ?>
+                        </div>
+                        <img src="<?= htmlspecialchars($book['cover'] ?? 'assets/books/default.png') ?>" alt="Couverture du livre <?= htmlspecialchars($book['title'] ?? '') ?>">
                     </div>
-                    <div class="book-tag<?= (isset($book['availability']) && $book['availability'] !== 'Disponible') ? ' book-tag-red' : '' ?>">
-                        <?= htmlspecialchars($book['availability'] ?? 'Disponible') ?>
-                    </div>
-                    <img src="<?= htmlspecialchars($book['cover'] ?? 'assets/books/default.png') ?>" alt="Couverture du livre <?= htmlspecialchars($book['title'] ?? '') ?>">
-                </div>
+                </a>
             <?php endforeach; ?>
         <?php else: ?>
             <p>Aucun livre à afficher.</p>

@@ -176,7 +176,7 @@
             }
 
             h3 {
-                @include mixins.title(var(--font-body), 8px, 600, var(--text-main));
+                @include mixins.title(var(--font-body), 12px, 600, var(--text-main));
                 padding-bottom: 16px;
             }
 

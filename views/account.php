@@ -57,7 +57,7 @@ function getMemberDuration($creation_date)
                     <input type="text" id="email" name="email" value="<?php echo $user['email']; ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="avatar" style="display:none;">Avatar</label>
+                    <label for="photo-upload" style="display:none;">Avatar</label>
                     <input type="file" name="avatar" id="photo-upload" accept="image/*" style="display:none;">
                 </div>
                 <div class="form-group">
