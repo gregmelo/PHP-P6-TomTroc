@@ -1,8 +1,6 @@
 <?php
 
 require_once __DIR__ . '/../config/_config.php'; // Configuration
-require_once __DIR__ . '/../config/Database.php'; // Database singleton
-require_once __DIR__ . '/../models/BooksModel.php'; // Modèle
 
 /**
  * Contrôleur de la page d'accueil
@@ -15,9 +13,8 @@ class HomeController
      */
     public function index()
     {
-    $pdo = Database::getInstance();
-    $booksModel = new BooksModel($pdo);
-        $lastBooks = $booksModel->getLastBooks(4); // Récupère les 4 derniers livres
+    $booksModel = new BooksModel();
+    $lastBooks = $booksModel->getLastBooks(4); // Récupère les 4 derniers livres (objets)
 
         ob_start();
         // $lastBooks sera disponible dans la vue

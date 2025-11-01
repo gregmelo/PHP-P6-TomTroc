@@ -4,7 +4,10 @@
  * Modèle de gestion des messages privés
  * Gère les conversations, l'envoi et la lecture des messages
  */
-class MessagesModel
+// L'entité Message est autoloadée via config/autoload.php
+// BaseModel centralise la connexion PDO
+require_once __DIR__ . '/BaseModel.php';
+class MessagesModel extends BaseModel
 {
     /**
      * Compte le nombre de messages reçus non lus pour l'utilisateur
@@ -18,20 +21,6 @@ class MessagesModel
         );
         $stmt->execute(['userId' => $userId]);
         return (int)$stmt->fetchColumn();
-    }
-    /**
-     * Instance PDO pour la connexion à la base
-     * @var PDO
-     */
-    private $pdo;
-
-    /**
-     * Constructeur
-     * @param PDO $pdo
-     */
-    public function __construct($pdo)
-    {
-        $this->pdo = $pdo;
     }
 
     /**
@@ -54,7 +43,12 @@ class MessagesModel
             'userId_w1' => $userId,
             'userId_w2' => $userId
         ]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $convs = [];
+        foreach ($rows as $r) {
+            $convs[] = Message::fromArray($r);
+        }
+        return $convs;
     }
 
     /**
@@ -79,7 +73,12 @@ class MessagesModel
             'otherId_2' => $otherId,
             'userId_2' => $userId
         ]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $msgs = [];
+        foreach ($rows as $r) {
+            $msgs[] = Message::fromArray($r);
+        }
+        return $msgs;
     }
 
     /**

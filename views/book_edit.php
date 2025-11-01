@@ -18,11 +18,11 @@ $title = "Page de modification du livre";
     <!-- Formulaire d'édition du livre -->
     <div class="content-book-edit-form">
         <h1>Modifier les informations</h1>
-        <form action="index.php?page=book_update&id=<?= $book['id'] ?>" method="post" enctype="multipart/form-data" id="book-edit-form">
+    <form action="index.php?page=book_update&id=<?= $book ? $book->getId() : '' ?>" method="post" enctype="multipart/form-data" id="book-edit-form">
             <!-- Section image du livre -->
             <div class="form-group form-group-img">
                 <label for="photo-edit-upload">Photo</label>
-                <img src="<?= htmlspecialchars($book['cover']) ?>" alt="couverture du livre <?= htmlspecialchars($book['title'] ?? '') ?>">
+                <img src="<?= $book ? htmlspecialchars($book->getCover() ?? 'assets/books/default.png') : 'assets/books/default.png' ?>" alt="couverture du livre <?= $book ? htmlspecialchars($book->getTitle()) : '' ?>">
                 <button type="button" id="book-edit-photo-btn">Modifier la photo</button>
                 <input type="file" accept="image/*" style="display:none;" id="photo-edit-upload">
             </div>
@@ -34,24 +34,22 @@ $title = "Page de modification du livre";
                 </div>
                 <div class="form-group">
                     <label for="title">Titre</label>
-                    <input type="text" id="title" name="title" value="<?= htmlspecialchars($book['title'] ?? '') ?>" required>
+                    <input type="text" id="title" name="title" value="<?= $book ? htmlspecialchars($book->getTitle()) : '' ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="author">Auteur</label>
-                    <input type="text" id="author" name="author" value="<?= htmlspecialchars($book['author'] ?? '') ?>" required>
+                    <input type="text" id="author" name="author" value="<?= $book ? htmlspecialchars($book->getAuthor()) : '' ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="commentaire">Commentaire</label>
-                    <textarea id="commentaire" name="commentaire" required>
-                        <?= htmlspecialchars($book['description'] ?? '') ?>
-                    </textarea>
+                    <textarea id="commentaire" name="commentaire" required><?= $book ? htmlspecialchars($book->getDescription()) : '' ?></textarea>
                 </div>
                 <div class="form-group">
                     <label for="status">Statut</label>
                     <div class="select-wrapper">
                         <select class="select-custom" id="status" name="status">
-                            <option value="disponible" <?= ($book['availability'] ?? '') === 'Disponible' ? 'selected' : '' ?>>Disponible</option>
-                            <option value="indisponible" <?= ($book['availability'] ?? '') === 'Indisponible' ? 'selected' : '' ?>>Indisponible</option>
+                                <option value="disponible" <?= ($book && $book->getAvailability() === 'Disponible') ? 'selected' : '' ?>>Disponible</option>
+                                <option value="indisponible" <?= ($book && $book->getAvailability() === 'Indisponible') ? 'selected' : '' ?>>Indisponible</option>
                         </select>
                         <i class="fa fa-chevron-down"></i>
                     </div>

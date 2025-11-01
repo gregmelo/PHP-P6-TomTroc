@@ -2,9 +2,6 @@
 <?php
 
 require_once __DIR__ . '/../config/_config.php'; // Configuration
-require_once __DIR__ . '/../config/Database.php'; // Database singleton
-require_once __DIR__ . '/../models/MessagesModel.php'; // Modèle messages
-require_once __DIR__ . '/../models/UserModel.php'; // Modèle utilisateurs
 
 /**
  * Contrôleur de gestion des messages privés entre utilisateurs
@@ -20,12 +17,11 @@ class MessagesController
             header('Location: index.php?page=login');
             exit;
         }
-    $pdo = Database::getInstance();
-    $messagesModel = new MessagesModel($pdo);
+    $messagesModel = new MessagesModel();
         $userId = $_SESSION['user']['id'];
-        $conversations = $messagesModel->getConversations($userId);
-        $selected = isset($_GET['with']) ? intval($_GET['with']) : null;
-        $messages = $selected ? $messagesModel->getConversationMessages($userId, $selected) : [];
+    $conversations = $messagesModel->getConversations($userId);
+    $selected = isset($_GET['with']) ? intval($_GET['with']) : null;
+    $messages = $selected ? $messagesModel->getConversationMessages($userId, $selected) : [];
         if ($selected) {
             $messagesModel->markAsRead($userId, $selected);
         }
@@ -36,16 +32,16 @@ class MessagesController
         }
 
     // Ajout pour avatar/pseudo de l'interlocuteur
-    $userModel = new UserModel($pdo);
+    $userModel = new UserModel();
         $interlocuteur_avatar = 'assets/users/default.png';
         $interlocuteur_pseudo = '';
         if ($selected) {
-            // Recherche dans les conversations existantes
+            // Recherche dans les conversations existantes (maintenant Message objects)
             foreach ($conversations as $conv) {
-                $conv_id = ($conv['sender_id'] == $userId) ? $conv['receiver_id'] : $conv['sender_id'];
+                $conv_id = ($conv->getSenderId() == $userId) ? $conv->getReceiverId() : $conv->getSenderId();
                 if ($conv_id == $selected) {
-                    $interlocuteur_avatar = $conv['avatar'] ?? 'assets/users/default.png';
-                    $interlocuteur_pseudo = $conv['pseudo'] ?? '';
+                    $interlocuteur_avatar = $conv->getSenderAvatar() ?? 'assets/users/default.png';
+                    $interlocuteur_pseudo = $conv->getSenderPseudo() ?? '';
                     $interlocuteur_id = $conv_id ?? null;
                     break;
                 }
@@ -54,14 +50,16 @@ class MessagesController
             if (empty($interlocuteur_pseudo)) {
                 $destinataire = $userModel->getUserById($selected);
                 if ($destinataire) {
-                    $interlocuteur_avatar = $destinataire['avatar'] ?? 'assets/users/default.png';
-                    $interlocuteur_pseudo = $destinataire['pseudo'] ?? '';
-                    $interlocuteur_id = $destinataire['id'] ?? null;
+                    // $destinataire est maintenant un objet User
+                    $interlocuteur_avatar = $destinataire->getAvatar() ?? 'assets/users/default.png';
+                    $interlocuteur_pseudo = $destinataire->getPseudo() ?? '';
+                    $interlocuteur_id = $destinataire->getId() ?? null;
                 }
             }
         }
 
-        // Passe ces variables à la vue
+    // Les vues attendent des tableaux ou objets ; on passe les objets Message et conversations
+    // Passe ces variables à la vue
         ob_start();
         require __DIR__ . '/../views/messages.php';
         $content = ob_get_clean();
@@ -78,8 +76,7 @@ class MessagesController
             exit;
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $pdo = Database::getInstance();
-            $messagesModel = new MessagesModel($pdo);
+            $messagesModel = new MessagesModel();
             $senderId = $_SESSION['user']['id'];
             $receiverId = intval($_POST['receiver_id']);
             $content = trim($_POST['content']);

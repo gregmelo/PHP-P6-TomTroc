@@ -6,40 +6,41 @@
  * Variables attendues :
  *   - $book : tableau des infos du livre
  */
-$title = "Page du livre " . htmlspecialchars($book['title'] ?? '');
+// $book est un objet Book
+$title = "Page du livre " . ($book ? htmlspecialchars($book->getTitle()) : '');
 ?>
 
 <!-- Fil d'Ariane -->
-<section class="book-navigation"><a href="index.php?page=books">Nos livres</a> > <?= htmlspecialchars($book['title'] ?? '') ?></section>
+<section class="book-navigation"><a href="index.php?page=books">Nos livres</a> > <?= $book ? htmlspecialchars($book->getTitle()) : '' ?></section>
 <!-- Contenu principal de la page détail livre -->
 <div class="content-book-details">
     <!-- Illustration du livre -->
     <section class="illustration-book-detail">
-        <img src="<?= htmlspecialchars($book['cover'] ?? 'assets/books/default.png') ?>" alt="Couverture du livre <?= htmlspecialchars($book['title'] ?? '') ?>">
+    <img src="<?= $book ? htmlspecialchars($book->getCover() ?? 'assets/books/default.png') : 'assets/books/default.png' ?>" alt="Couverture du livre <?= $book ? htmlspecialchars($book->getTitle()) : '' ?>">
     </section>
     <!-- Informations détaillées du livre -->
     <section class="book-detail-infos">
-        <h1><?= htmlspecialchars($book['title'] ?? '') ?></h1>
-        <h2>par <?= htmlspecialchars($book['author'] ?? '') ?></h2>
+    <h1><?= $book ? htmlspecialchars($book->getTitle()) : '' ?></h1>
+    <h2>par <?= $book ? htmlspecialchars($book->getAuthor()) : '' ?></h2>
         <hr>
         <h3>description</h3>
-        <p><?= nl2br(htmlspecialchars($book['description'] ?? '')) ?></p>
+    <p><?= $book ? nl2br(htmlspecialchars($book->getDescription() ?? '')) : '' ?></p>
         <h3>propriétaire</h3>
         <!-- Lien vers le compte du propriétaire -->
-        <a href="index.php?page=<?= (isset($_SESSION['user']['id']) && $_SESSION['user']['id'] == $book['id_user']) ? 'account' : 'public_account&id=' . $book['id_user'] ?>">
+    <a href="index.php?page=<?= (isset($_SESSION['user']['id']) && $book && $_SESSION['user']['id'] == $book->getUserId()) ? 'account' : 'public_account&id=' . ($book ? $book->getUserId() : '') ?>">
             <div class="proprietaire-infos">
                 <div class="avatar">
-                    <img src="<?= htmlspecialchars($book['owner_avatar'] ?? 'assets/users/default.png') ?>" alt="Photo de profil de <?= htmlspecialchars($book['owner_pseudo'] ?? '') ?>">
+                    <img src="<?= $book ? htmlspecialchars($book->getOwnerAvatar() ?? 'assets/users/default.png') : 'assets/users/default.png' ?>" alt="Photo de profil de <?= $book ? htmlspecialchars($book->getOwnerPseudo()) : '' ?>">
                     <div class="overlay"></div>
                 </div>
-                <p><?= htmlspecialchars($book['owner_pseudo'] ?? '') ?></p>
+                <p><?= $book ? htmlspecialchars($book->getOwnerPseudo()) : '' ?></p>
             </div>
         </a>
         <!-- Bouton d'envoi de message -->
-        <?php if (isset($_SESSION['user']['id']) && $_SESSION['user']['id'] == $book['id_user']): ?>
+    <?php if ($book && isset($_SESSION['user']['id']) && $_SESSION['user']['id'] == $book->getUserId()): ?>
             <a href="#" class="btn btn-disabled">Envoyer un message</a>
         <?php else: ?>
-            <a href="index.php?page=messages&with=<?= $book['id_user'] ?>" class="btn">Envoyer un message</a>
+            <a href="index.php?page=messages&with=<?= $book ? $book->getUserId() : '' ?>" class="btn">Envoyer un message</a>
         <?php endif; ?>
     </section>
 </div>

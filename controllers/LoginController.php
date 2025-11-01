@@ -2,9 +2,6 @@
 <?php
 
 require_once __DIR__ . '/../config/_config.php'; // Configuration
-require_once __DIR__ . '/../config/Database.php'; // Database singleton
-require_once __DIR__ . '/../models/UserModel.php'; // Modèle utilisateur
-require_once __DIR__ . '/../models/BooksModel.php'; // Modèle livres
 
 /**
  * Contrôleur de gestion des utilisateurs (authentification, inscription, compte)
@@ -38,9 +35,12 @@ class LoginController
      */
     public function account()
     {
-    $pdo = Database::getInstance();
-    $booksModel = new BooksModel($pdo);
+    $booksModel = new BooksModel();
         $userId = $_SESSION['user']['id'];
+        // Récupérer l'utilisateur depuis le modèle pour avoir un objet User
+        $userModel = new UserModel();
+        $userObj = $userModel->getUserById($userId);
+        $user = $userObj ? $userObj : $_SESSION['user'];
         $userBooks = $booksModel->getUserBooks($userId);
         // Passage à la vue
         ob_start();
@@ -56,12 +56,13 @@ class LoginController
     public function public_account()
     {
         $id_user = isset($_GET['id']) ? intval($_GET['id']) : null;
-    $pdo = Database::getInstance();
-    $userModel = new UserModel($pdo);
-    $booksModel = new BooksModel($pdo);
+    $userModel = new UserModel();
+    $booksModel = new BooksModel();
 
-        $user = $id_user ? $userModel->getUserById($id_user) : null;
-        $books = $id_user ? $booksModel->getUserBooks($id_user) : [];
+    $userObj = $id_user ? $userModel->getUserById($id_user) : null;
+    // Passer l'objet User à la vue (la vue utilisera les getters)
+    $user = $userObj ? $userObj : null;
+    $books = $id_user ? $booksModel->getUserBooks($id_user) : [];
 
         ob_start();
         require_once __DIR__ . '/../views/public_account.php';
@@ -76,9 +77,8 @@ class LoginController
     public function getAllUsers()
     {
         try {
-            $pdo = Database::getInstance();
-            $stmt = $pdo->query("SELECT id, pseudo, email FROM user");
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $userModel = new UserModel();
+            return $userModel->getAllUsers();
         } catch (PDOException $e) {
             return [];
         }
@@ -90,8 +90,7 @@ class LoginController
      */
     public function processRegister()
     {
-    $pdo = Database::getInstance();
-    $userModel = new UserModel($pdo);
+    $userModel = new UserModel();
 
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -128,8 +127,7 @@ class LoginController
      */
     public function processLogin()
     {
-    $pdo = Database::getInstance();
-    $userModel = new UserModel($pdo);
+    $userModel = new UserModel();
 
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -142,16 +140,10 @@ class LoginController
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $errors[] = "L'adresse email n'est pas valide.";
             } else {
-                $user = $userModel->getUserByEmail($email);
-                if ($user && password_verify($password, $user['password'])) {
-                    // Authentification OK
-                    $_SESSION['user'] = [
-                        'id' => $user['id'],
-                        'pseudo' => $user['pseudo'],
-                        'email' => $user['email'],
-                        'creation_date' => $user['creation_date'],
-                        'avatar' => $user['avatar']
-                    ];
+                $userObj = $userModel->getUserByEmail($email);
+                if ($userObj && password_verify($password, $userObj->getPassword())) {
+                    // Authentification OK — on stocke seulement les champs publics en session
+                    $_SESSION['user'] = $userObj->toPublicArray();
                     header('Location: index.php?page=account');
                     exit;
                 } else {
@@ -170,11 +162,10 @@ class LoginController
      */
     public function updateAccount()
     {
-    $pdo = Database::getInstance();
-    $userModel = new UserModel($pdo);
+    $userModel = new UserModel();
     $userId = $_SESSION['user']['id'];
-    $bookModel = new BooksModel($pdo);
-        $userBooks = $bookModel->getUserBooks($userId);
+    $bookModel = new BooksModel();
+    $userBooks = $bookModel->getUserBooks($userId);
 
 
         $errors = [];

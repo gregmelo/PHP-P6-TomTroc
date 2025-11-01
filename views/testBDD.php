@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/../controllers/LoginController.php';
+// Helpers pour vues (user_get)
+require_once __DIR__ . '/_helpers.php';
 $controller = new LoginController();
 $users = $controller->getAllUsers();
 ?>
@@ -15,9 +17,9 @@ $users = $controller->getAllUsers();
 	<tbody>
 		<?php foreach ($users as $user): ?>
 			<tr>
-				<td><?= htmlspecialchars($user['id']) ?></td>
-				<td><?= htmlspecialchars($user['pseudo']) ?></td>
-				<td><?= htmlspecialchars($user['email']) ?></td>
+				<td><?= htmlspecialchars(user_get($user, 'id')) ?></td>
+				<td><?= htmlspecialchars(user_get($user, 'pseudo')) ?></td>
+				<td><?= htmlspecialchars(user_get($user, 'email')) ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>

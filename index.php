@@ -5,6 +5,8 @@
  * Routeur principal qui gère la navigation entre les pages
  */
 require_once 'config/_config.php';
+// Autoload des classes (models, controllers, services, views)
+require_once 'config/autoload.php';
 
 // Détermination de la page demandée
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';

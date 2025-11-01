@@ -17,15 +17,18 @@ $title = "Messagerie";
         <h1>Messagerie</h1>
         <?php if (!empty($conversations)): ?>
             <?php foreach ($conversations as $conv): ?>
-                <a href="index.php?page=messages&with=<?= htmlspecialchars($conv['sender_id'] == $_SESSION['user']['id'] ? $conv['receiver_id'] : $conv['sender_id']) ?>" class="message-card" data-conversation="<?= htmlspecialchars($conv['sender_id'] == $_SESSION['user']['id'] ? $conv['receiver_id'] : $conv['sender_id']) ?>">
-                    <img src="<?= htmlspecialchars($conv['avatar'] ?? 'assets/users/default.png') ?>" alt="Photo de profil de l'utilisateur">
+                <?php
+                    $otherId = ($conv->getSenderId() == $_SESSION['user']['id']) ? $conv->getReceiverId() : $conv->getSenderId();
+                ?>
+                <a href="index.php?page=messages&with=<?= htmlspecialchars($otherId) ?>" class="message-card" data-conversation="<?= htmlspecialchars($otherId) ?>">
+                    <img src="<?= htmlspecialchars($conv->getSenderAvatar() ?? 'assets/users/default.png') ?>" alt="Photo de profil de l'utilisateur">
                     <div class="message-infos">
                         <div class="message-details">
-                            <p class="message-username"><?= htmlspecialchars($conv['pseudo']) ?></p>
-                            <p class="message-time"><?= date('H:i', strtotime($conv['send_at'])) ?></p>
+                            <p class="message-username"><?= htmlspecialchars($conv->getSenderPseudo() ?? '') ?></p>
+                            <p class="message-time"><?= date('H:i', strtotime($conv->getSendAt())) ?></p>
                         </div>
-                        <p class="last-message"><?= htmlspecialchars($conv['content']) ?></p>
-                        <?php if (isset($conv['message_read']) && !$conv['message_read'] && $conv['receiver_id'] == $_SESSION['user']['id']): ?>
+                        <p class="last-message"><?= htmlspecialchars($conv->getContent()) ?></p>
+                        <?php if (!$conv->isRead() && $conv->getReceiverId() == $_SESSION['user']['id']): ?>
                             <span class="unread-dot"></span>
                         <?php endif; ?>
                     </div>
@@ -47,18 +50,18 @@ $title = "Messagerie";
                 </div>
                 <div class="conversation-messages">
                     <?php foreach ($messages as $msg): ?>
-                        <?php if ($msg['receiver_id'] == $_SESSION['user']['id']): ?>
+                        <?php if ($msg->getReceiverId() == $_SESSION['user']['id']): ?>
                             <div class="conversation-sender">
                                 <div class="sender">
                                     <img src="<?= htmlspecialchars($interlocuteur_avatar ?? 'assets/users/default.png') ?>" alt="Votre avatar">
-                                    <p class="conversation-time"><?= date('d.m H:i', strtotime($msg['send_at'])) ?></p>
+                                    <p class="conversation-time"><?= date('d.m H:i', strtotime($msg->getSendAt())) ?></p>
                                 </div>
-                                <p class="conversation-message"><?= htmlspecialchars($msg['content']) ?></p>
+                                <p class="conversation-message"><?= htmlspecialchars($msg->getContent()) ?></p>
                             </div>
                         <?php else: ?>
                             <div class="conversation-recipient">
-                                <p class="conversation-time"><?= date('d.m H:i', strtotime($msg['send_at'])) ?></p>
-                                <p class="conversation-message"><?= htmlspecialchars($msg['content']) ?></p>
+                                <p class="conversation-time"><?= date('d.m H:i', strtotime($msg->getSendAt())) ?></p>
+                                <p class="conversation-message"><?= htmlspecialchars($msg->getContent()) ?></p>
                             </div>
                         <?php endif; ?>
                     <?php endforeach; ?>

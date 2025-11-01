@@ -29,17 +29,17 @@ $title = "Page nos livres à l'échange";
         <?php if (!empty($books)): ?>
             <?php foreach ($books as $book): ?>
                 <!-- Carte d'un livre -->
-                <a href="index.php?page=book_details&id=<?= $book['id'] ?>">
+                <a href="index.php?page=book_details&id=<?= $book->getId() ?>">
                     <div class="book-card">
                         <div class="book-infos">
-                            <h3 class="title"><?= htmlspecialchars($book['title']) ?></h3>
-                            <p class="author"><?= htmlspecialchars($book['author']) ?></p>
-                            <p class="seller">Vendu par : <?= htmlspecialchars($book['owner_pseudo'] ?? '') ?></p>
+                            <h3 class="title"><?= htmlspecialchars($book->getTitle()) ?></h3>
+                            <p class="author"><?= htmlspecialchars($book->getAuthor()) ?></p>
+                            <p class="seller">Vendu par : <?= htmlspecialchars($book->getOwnerPseudo() ?? '') ?></p>
                         </div>
-                        <div class="book-tag<?= (isset($book['availability']) && $book['availability'] !== 'Disponible') ? ' book-tag-red' : '' ?>">
-                            <?= htmlspecialchars($book['availability'] ?? 'Disponible') ?>
+                        <div class="book-tag<?= ($book->getAvailability() ?? 'Disponible') !== 'Disponible' ? ' book-tag-red' : '' ?>">
+                            <?= htmlspecialchars($book->getAvailability() ?? 'Disponible') ?>
                         </div>
-                        <img src="<?= htmlspecialchars($book['cover'] ?? 'assets/books/default.png') ?>" alt="Couverture du livre <?= htmlspecialchars($book['title'] ?? '') ?>">
+                        <img src="<?= htmlspecialchars($book->getCover() ?? 'assets/books/default.png') ?>" alt="Couverture du livre <?= htmlspecialchars($book->getTitle() ?? '') ?>">
                     </div>
                 </a>
             <?php endforeach; ?>

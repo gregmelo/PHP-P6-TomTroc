@@ -4,36 +4,30 @@
  * Modèle de gestion des livres
  * Gère les opérations CRUD et la recherche sur les livres
  */
-class BooksModel
+// L'entité Book est autoloadée via config/autoload.php
+// BaseModel centralise la connexion PDO
+require_once __DIR__ . '/BaseModel.php';
+class BooksModel extends BaseModel
 {
-    /**
-     * Instance PDO pour la connexion à la base
-     * @var PDO
-     */
-    private $pdo;
-
-    /**
-     * Constructeur
-     * @param PDO $pdo
-     */
-    public function __construct($pdo)
-    {
-        $this->pdo = $pdo;
-    }
     /**
      * Récupère les livres d'un utilisateur
      * @param int $userId
-     * @return array
+     * @return Book[]
      */
     public function getUserBooks($userId)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM book WHERE id_user = :user_id");
+    $stmt = $this->pdo->prepare("SELECT * FROM book WHERE id_user = :user_id");
         $stmt->execute(['user_id' => $userId]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $books = [];
+        foreach ($rows as $r) {
+            $books[] = Book::fromArray($r);
+        }
+        return $books;
     }
     /**
      * Récupère tous les livres
-     * @return array
+     * @return Book[]
      */
     public function getAllBooks()
     {
@@ -42,12 +36,17 @@ class BooksModel
              FROM book b
              JOIN user u ON b.id_user = u.id"
         );
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $books = [];
+        foreach ($rows as $r) {
+            $books[] = Book::fromArray($r);
+        }
+        return $books;
     }
     /**
      * Récupère un livre par son id
      * @param int $id
-     * @return array|false
+     * @return Book|null
      */
     public function getBookById($id)
     {
@@ -58,12 +57,16 @@ class BooksModel
              WHERE b.id = :id"
         );
         $stmt->execute(['id' => $id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            return Book::fromArray($row);
+        }
+        return null;
     }
     /**
      * Récupère les derniers livres ajoutés
      * @param int $limit
-     * @return array
+     * @return Book[]
      */
     public function getLastBooks($limit = 4)
     {
@@ -76,7 +79,12 @@ class BooksModel
         );
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $books = [];
+        foreach ($rows as $r) {
+            $books[] = Book::fromArray($r);
+        }
+        return $books;
     }
 
 
@@ -117,7 +125,7 @@ class BooksModel
     /**
      * Recherche les livres par titre (partiel, insensible à la casse)
      * @param string $search
-     * @return array
+     * @return Book[]
      */
     public function searchBooksByTitle($search)
     {
@@ -128,6 +136,11 @@ class BooksModel
              WHERE LOWER(b.title) LIKE LOWER(:search)"
         );
         $stmt->execute(['search' => '%' . $search . '%']);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $books = [];
+        foreach ($rows as $r) {
+            $books[] = Book::fromArray($r);
+        }
+        return $books;
     }
 }

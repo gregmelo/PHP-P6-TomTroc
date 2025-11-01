@@ -4,22 +4,10 @@
  * Modèle de gestion des utilisateurs
  * Gère l'inscription, la connexion, la modification et la récupération des utilisateurs
  */
-class UserModel
+// BaseModel centralise la connexion PDO
+require_once __DIR__ . '/BaseModel.php';
+class UserModel extends BaseModel
 {
-    /**
-     * Instance PDO pour la connexion à la base
-     * @var PDO
-     */
-    private $pdo;
-
-    /**
-     * Constructeur
-     * @param PDO $pdo
-     */
-    public function __construct($pdo)
-    {
-        $this->pdo = $pdo;
-    }
 
     /**
      * Vérifie l'unicité du pseudo et de l'email
@@ -69,13 +57,17 @@ class UserModel
     /**
      * Récupère un utilisateur par son email
      * @param string $email
-     * @return array|false
+     * @return User|null
      */
     public function getUserByEmail($email)
     {
         $stmt = $this->pdo->prepare("SELECT * FROM user WHERE email = :email");
         $stmt->execute(['email' => $email]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            return User::fromArray($row);
+        }
+        return null;
     }
 
     /**
@@ -145,12 +137,26 @@ class UserModel
     /**
      * Récupère un utilisateur par son id
      * @param int $id
-     * @return array|false
+     * @return User|null
      */
     public function getUserById($id)
     {
         $stmt = $this->pdo->prepare("SELECT * FROM user WHERE id = :id");
         $stmt->execute(['id' => $id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            return User::fromArray($row);
+        }
+        return null;
+    }
+
+    /**
+     * Retourne la liste des utilisateurs (id, pseudo, email)
+     * @return array
+     */
+    public function getAllUsers()
+    {
+        $stmt = $this->pdo->query("SELECT id, pseudo, email FROM user");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
